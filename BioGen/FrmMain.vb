@@ -254,9 +254,6 @@ Public Class FrmMain
         End If
     End Sub
 
-    Private Sub BiographyToolStripMenuItem2_Click(sender As Object, e As EventArgs) Handles BiographyToolStripMenuItem2.Click
-        FrmOpenBiography.Show()
-    End Sub
 
 
 #End Region
@@ -875,48 +872,6 @@ Public Class FrmMain
 
 #End Region
 
-#Region "***** select your viewing options *****"
-
-    Private Sub CbxPresidents_CheckedChanged(sender As Object, e As EventArgs) Handles CbxPresidents.CheckedChanged
-        DisplayTextFile(TextFileName)
-    End Sub
-
-    Private Sub CbxBirthdays_CheckedChanged(sender As Object, e As EventArgs) Handles CbxBirthdays.CheckedChanged
-        DisplayTextFile(TextFileName)
-    End Sub
-
-    Private Sub CbxEvents_CheckedChanged(sender As Object, e As EventArgs) Handles CbxEvents.CheckedChanged
-        DisplayTextFile(TextFileName)
-    End Sub
-
-    Private Sub RbtnAll_CheckedChanged(sender As Object, e As EventArgs) Handles RbtnAll.CheckedChanged
-        If RbtnAll.Checked Then
-            RbtnIndividual.BackColor = Color.Bisque
-            RbtnAll.BackColor = Color.DeepSkyBlue
-            CbxPresidents.Enabled = True
-            CbxEvents.Enabled = True
-            CbxBirthdays.Enabled = True
-            BioGenDatabase(AllDatabaseFile)
-            DisplayTextFile(AllDatabaseFile)
-            RtxBiography.Select()
-        End If
-    End Sub
-
-    Private Sub RbtnIndividual_CheckedChanged(sender As Object, e As EventArgs) Handles RbtnIndividual.CheckedChanged
-        If RbtnIndividual.Checked Then
-            FrmOpenBiography.BtnDelete.Enabled = False
-            FrmOpenBiography.BtnEdit.Enabled = False
-            RbtnIndividual.Checked = False
-            RbtnIndividual.BackColor = Color.DeepSkyBlue
-            RbtnAll.BackColor = Color.Bisque
-            CbxPresidents.Enabled = True
-            CbxEvents.Enabled = True
-            CbxBirthdays.Enabled = True
-            FrmOpenBiography.Show()
-        End If
-    End Sub
-#End Region
-
 #Region "**** Catagories *****"
 
     Private Sub Button1_Click_1(sender As Object, e As EventArgs) Handles Button1.Click
@@ -949,16 +904,16 @@ Public Class FrmMain
                         'birth record = (0) type (1) birthdate in ticks, (2) name
 
                         Dim birthdate = New Date(Convert.ToInt64(recordarray(1)))
-                        outputtext.Append("   Born: " & recordarray(2) & " born on ")
+                        outputtext.Append("   " & recordarray(2) & " BORN on ")
                         outputtext.Append(CnvDate(CStr(birthdate)))
                         outputtext.Append(vbCrLf & vbCrLf)
 
                     Case "Bday" 'birthday record
-                        If CbxBirthdays.Checked Then
+                        If FrmSelectView.CbxBirthdays.Checked Then
                             'birthday record = (0) type, (1) birthday, (2) name, (3) birth date
 
                             Dim birthday = New Date(Convert.ToInt64(recordarray(1)))
-                            outputtext.Append("   Bday: " & recordarray(2) & " was ")
+                            outputtext.Append("   " & recordarray(2) & " TURNED ")
                             Dim num As Long = DateDiff(DateInterval.Year, CDate(recordarray(3)), birthday)
                             outputtext.Append(" " & Words_1_999(CInt(num)) & " on ")
                             outputtext.Append(CStr(birthday))
@@ -969,7 +924,7 @@ Public Class FrmMain
                         'death record = (0) type, (1) death date in ticks, (2) name, (3) birth date
 
                         Dim death = New DateTime(Convert.ToInt64(recordarray(1)))
-                        outputtext.Append("   Died: " & recordarray(2) & " on " & CnvDate(CStr(death)))
+                        outputtext.Append("   " & recordarray(2) & " PASSED on " & CnvDate(CStr(death)))
                         If CDate(CnvDate(recordarray(3))).Month >= death.Month Then
                             If CDate(CnvDate(recordarray(3))).Month = death.Month Then
                                 If CDate(recordarray(3)).Day < death.Day Then
@@ -988,8 +943,8 @@ Public Class FrmMain
                     Case "Pres" 'president record
                         'presidents record (0) type, (1) date term began (2) name
 
-                        If CbxPresidents.Checked Then
-                            outputtext.Append("   Pres: " & recordarray(2) & " took the oath on ")
+                        If FrmSelectView.CbxPresidents.Checked Then
+                            outputtext.Append("   PRESIDENT " & recordarray(2) & " took the oath on ")
                             Dim termdate = New DateTime(Convert.ToInt64(recordarray(1)))
                             outputtext.Append(" - " & CnvDate(CStr(termdate)))
                             outputtext.Append(vbCrLf & vbCrLf)
@@ -997,9 +952,9 @@ Public Class FrmMain
                     Case "Evnt" 'event record
                         'event record = (0) type, (1) date of event in ticks (2) description of event
 
-                        If CbxEvents.Checked Then
+                        If FrmSelectView.CbxEvents.Checked Then
                             Dim eventdate As New DateTime(Convert.ToInt64(recordarray(1)))
-                            outputtext.Append("   Evnt: " & recordarray(2) & " on ")
+                            outputtext.Append("   " & recordarray(2).ToUpper & " on ")
                             outputtext.Append(CnvDate(eventdate.ToShortDateString))
                             outputtext.Append(vbCrLf & vbCrLf)
                         End If
@@ -1019,6 +974,26 @@ Public Class FrmMain
     Private Sub BtnSelectView_Click(sender As Object, e As EventArgs) Handles BtnSelectView.Click
         FrmSelectView.Show()
     End Sub
+
+    Private Sub SelectToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SelectToolStripMenuItem.Click
+        FrmOpenBiography.BtnOption.Text = "Select"
+        FrmOpenBiography.Show()
+    End Sub
+
+    Private Sub NewToolStripMenuItem_Click_1(sender As Object, e As EventArgs) Handles NewToolStripMenuItem.Click
+        FrmNewBio.Show()
+    End Sub
+
+    Private Sub EditToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles EditToolStripMenuItem1.Click
+        FrmOpenBiography.BtnOption.Text = "Edit"
+        FrmOpenBiography.Show()
+    End Sub
+
+    Private Sub DeleteToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles DeleteToolStripMenuItem1.Click
+        FrmOpenBiography.BtnOption.Text = "Delete"
+        FrmOpenBiography.Show()
+    End Sub
+
 
 #End Region
 

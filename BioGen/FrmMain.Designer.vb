@@ -26,7 +26,11 @@ Partial Class FrmMain
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FrmMain))
         Me.MnuMain = New System.Windows.Forms.MenuStrip()
         Me.BiographyToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.BiographyToolStripMenuItem2 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.BiographyToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.SelectToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.NewToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.EditToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.DeleteToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.SettingsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.FactoryResetToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripSeparator5 = New System.Windows.Forms.ToolStripSeparator()
@@ -73,25 +77,17 @@ Partial Class FrmMain
         Me.FontDialog1 = New System.Windows.Forms.FontDialog()
         Me.lblSelectedBiography = New System.Windows.Forms.Label()
         Me.PnlSelectView = New System.Windows.Forms.Panel()
-        Me.PnlView = New System.Windows.Forms.Panel()
-        Me.Label4 = New System.Windows.Forms.Label()
-        Me.RbtnIndividual = New System.Windows.Forms.RadioButton()
-        Me.RbtnAll = New System.Windows.Forms.RadioButton()
-        Me.Label1 = New System.Windows.Forms.Label()
-        Me.CbxEvents = New System.Windows.Forms.CheckBox()
-        Me.CbxBirthdays = New System.Windows.Forms.CheckBox()
-        Me.CbxPresidents = New System.Windows.Forms.CheckBox()
+        Me.BtnSelectView = New System.Windows.Forms.Button()
         Me.PnlBiography = New System.Windows.Forms.Panel()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.CheckedListBox1 = New System.Windows.Forms.CheckedListBox()
         Me.Label5 = New System.Windows.Forms.Label()
-        Me.BtnSelectView = New System.Windows.Forms.Button()
+        Me.LblView = New System.Windows.Forms.Label()
         Me.MnuMain.SuspendLayout()
         Me.ContextMenuStrip1.SuspendLayout()
         Me.PnlEditor.SuspendLayout()
         Me.MnuEditor.SuspendLayout()
         Me.PnlSelectView.SuspendLayout()
-        Me.PnlView.SuspendLayout()
         Me.PnlBiography.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -108,16 +104,41 @@ Partial Class FrmMain
         '
         'BiographyToolStripMenuItem
         '
-        Me.BiographyToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.BiographyToolStripMenuItem2, Me.SettingsToolStripMenuItem, Me.ToolStripSeparator5, Me.ExitToolStripMenuItem, Me.ToolStripSeparator1})
+        Me.BiographyToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.BiographyToolStripMenuItem1, Me.SettingsToolStripMenuItem, Me.ToolStripSeparator5, Me.ExitToolStripMenuItem, Me.ToolStripSeparator1})
         Me.BiographyToolStripMenuItem.Name = "BiographyToolStripMenuItem"
         Me.BiographyToolStripMenuItem.Size = New System.Drawing.Size(46, 25)
         Me.BiographyToolStripMenuItem.Text = "File"
         '
-        'BiographyToolStripMenuItem2
+        'BiographyToolStripMenuItem1
         '
-        Me.BiographyToolStripMenuItem2.Name = "BiographyToolStripMenuItem2"
-        Me.BiographyToolStripMenuItem2.Size = New System.Drawing.Size(151, 26)
-        Me.BiographyToolStripMenuItem2.Text = "Biography"
+        Me.BiographyToolStripMenuItem1.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SelectToolStripMenuItem, Me.NewToolStripMenuItem, Me.EditToolStripMenuItem1, Me.DeleteToolStripMenuItem1})
+        Me.BiographyToolStripMenuItem1.Name = "BiographyToolStripMenuItem1"
+        Me.BiographyToolStripMenuItem1.Size = New System.Drawing.Size(151, 26)
+        Me.BiographyToolStripMenuItem1.Text = "Biography"
+        '
+        'SelectToolStripMenuItem
+        '
+        Me.SelectToolStripMenuItem.Name = "SelectToolStripMenuItem"
+        Me.SelectToolStripMenuItem.Size = New System.Drawing.Size(124, 26)
+        Me.SelectToolStripMenuItem.Text = "Select"
+        '
+        'NewToolStripMenuItem
+        '
+        Me.NewToolStripMenuItem.Name = "NewToolStripMenuItem"
+        Me.NewToolStripMenuItem.Size = New System.Drawing.Size(124, 26)
+        Me.NewToolStripMenuItem.Text = "New"
+        '
+        'EditToolStripMenuItem1
+        '
+        Me.EditToolStripMenuItem1.Name = "EditToolStripMenuItem1"
+        Me.EditToolStripMenuItem1.Size = New System.Drawing.Size(124, 26)
+        Me.EditToolStripMenuItem1.Text = "Edit"
+        '
+        'DeleteToolStripMenuItem1
+        '
+        Me.DeleteToolStripMenuItem1.Name = "DeleteToolStripMenuItem1"
+        Me.DeleteToolStripMenuItem1.Size = New System.Drawing.Size(124, 26)
+        Me.DeleteToolStripMenuItem1.Text = "Delete"
         '
         'SettingsToolStripMenuItem
         '
@@ -186,7 +207,7 @@ Partial Class FrmMain
         '
         Me.LblCurrentBiography.Font = New System.Drawing.Font("Copperplate Gothic Bold", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LblCurrentBiography.ForeColor = System.Drawing.Color.Black
-        Me.LblCurrentBiography.Location = New System.Drawing.Point(115, 51)
+        Me.LblCurrentBiography.Location = New System.Drawing.Point(97, 51)
         Me.LblCurrentBiography.Name = "LblCurrentBiography"
         Me.LblCurrentBiography.Size = New System.Drawing.Size(381, 32)
         Me.LblCurrentBiography.TabIndex = 2
@@ -245,12 +266,12 @@ Partial Class FrmMain
         Me.TxtFacts.BackColor = System.Drawing.Color.FromArgb(CType(CType(55, Byte), Integer), CType(CType(55, Byte), Integer), CType(CType(55, Byte), Integer))
         Me.TxtFacts.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.TxtFacts.ForeColor = System.Drawing.Color.White
-        Me.TxtFacts.Location = New System.Drawing.Point(18, 79)
+        Me.TxtFacts.Location = New System.Drawing.Point(18, 46)
         Me.TxtFacts.Multiline = True
         Me.TxtFacts.Name = "TxtFacts"
         Me.TxtFacts.ReadOnly = True
         Me.TxtFacts.ScrollBars = System.Windows.Forms.ScrollBars.Both
-        Me.TxtFacts.Size = New System.Drawing.Size(532, 733)
+        Me.TxtFacts.Size = New System.Drawing.Size(532, 766)
         Me.TxtFacts.TabIndex = 8
         '
         'PnlEditor
@@ -444,101 +465,23 @@ Partial Class FrmMain
         Me.PnlSelectView.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.PnlSelectView.BackColor = System.Drawing.Color.OldLace
+        Me.PnlSelectView.Controls.Add(Me.LblView)
         Me.PnlSelectView.Controls.Add(Me.BtnSelectView)
-        Me.PnlSelectView.Controls.Add(Me.PnlView)
-        Me.PnlSelectView.Controls.Add(Me.Label1)
-        Me.PnlSelectView.Controls.Add(Me.CbxEvents)
-        Me.PnlSelectView.Controls.Add(Me.CbxBirthdays)
-        Me.PnlSelectView.Controls.Add(Me.CbxPresidents)
         Me.PnlSelectView.Controls.Add(Me.TxtFacts)
         Me.PnlSelectView.Location = New System.Drawing.Point(18, 97)
         Me.PnlSelectView.Name = "PnlSelectView"
         Me.PnlSelectView.Size = New System.Drawing.Size(550, 828)
         Me.PnlSelectView.TabIndex = 16
         '
-        'PnlView
+        'BtnSelectView
         '
-        Me.PnlView.BackColor = System.Drawing.Color.Bisque
-        Me.PnlView.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.PnlView.Controls.Add(Me.Label4)
-        Me.PnlView.Controls.Add(Me.RbtnIndividual)
-        Me.PnlView.Controls.Add(Me.RbtnAll)
-        Me.PnlView.Location = New System.Drawing.Point(182, 3)
-        Me.PnlView.Name = "PnlView"
-        Me.PnlView.Size = New System.Drawing.Size(296, 35)
-        Me.PnlView.TabIndex = 25
-        '
-        'Label4
-        '
-        Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(7, 6)
-        Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(129, 20)
-        Me.Label4.TabIndex = 2
-        Me.Label4.Text = "Select Biography"
-        '
-        'RbtnIndividual
-        '
-        Me.RbtnIndividual.AutoSize = True
-        Me.RbtnIndividual.Location = New System.Drawing.Point(191, 4)
-        Me.RbtnIndividual.Name = "RbtnIndividual"
-        Me.RbtnIndividual.Size = New System.Drawing.Size(93, 24)
-        Me.RbtnIndividual.TabIndex = 1
-        Me.RbtnIndividual.Text = "Individual"
-        Me.RbtnIndividual.UseVisualStyleBackColor = True
-        '
-        'RbtnAll
-        '
-        Me.RbtnAll.AutoSize = True
-        Me.RbtnAll.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.RbtnAll.Location = New System.Drawing.Point(142, 3)
-        Me.RbtnAll.Name = "RbtnAll"
-        Me.RbtnAll.Size = New System.Drawing.Size(43, 24)
-        Me.RbtnAll.TabIndex = 0
-        Me.RbtnAll.Text = "All"
-        Me.RbtnAll.UseVisualStyleBackColor = True
-        '
-        'Label1
-        '
-        Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(14, 10)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(87, 20)
-        Me.Label1.TabIndex = 24
-        Me.Label1.Text = "View Panel"
-        '
-        'CbxEvents
-        '
-        Me.CbxEvents.AutoSize = True
-        Me.CbxEvents.Enabled = False
-        Me.CbxEvents.Location = New System.Drawing.Point(449, 49)
-        Me.CbxEvents.Name = "CbxEvents"
-        Me.CbxEvents.Size = New System.Drawing.Size(77, 24)
-        Me.CbxEvents.TabIndex = 19
-        Me.CbxEvents.Text = "Events"
-        Me.CbxEvents.UseVisualStyleBackColor = True
-        '
-        'CbxBirthdays
-        '
-        Me.CbxBirthdays.AutoSize = True
-        Me.CbxBirthdays.Enabled = False
-        Me.CbxBirthdays.Location = New System.Drawing.Point(349, 49)
-        Me.CbxBirthdays.Name = "CbxBirthdays"
-        Me.CbxBirthdays.Size = New System.Drawing.Size(94, 24)
-        Me.CbxBirthdays.TabIndex = 18
-        Me.CbxBirthdays.Text = "Birthdays"
-        Me.CbxBirthdays.UseVisualStyleBackColor = True
-        '
-        'CbxPresidents
-        '
-        Me.CbxPresidents.AutoSize = True
-        Me.CbxPresidents.Enabled = False
-        Me.CbxPresidents.Location = New System.Drawing.Point(240, 49)
-        Me.CbxPresidents.Name = "CbxPresidents"
-        Me.CbxPresidents.Size = New System.Drawing.Size(103, 24)
-        Me.CbxPresidents.TabIndex = 17
-        Me.CbxPresidents.Text = "Presidents"
-        Me.CbxPresidents.UseVisualStyleBackColor = True
+        Me.BtnSelectView.BackColor = System.Drawing.Color.Bisque
+        Me.BtnSelectView.Location = New System.Drawing.Point(18, 12)
+        Me.BtnSelectView.Name = "BtnSelectView"
+        Me.BtnSelectView.Size = New System.Drawing.Size(216, 28)
+        Me.BtnSelectView.TabIndex = 26
+        Me.BtnSelectView.Text = "Select View"
+        Me.BtnSelectView.UseVisualStyleBackColor = False
         '
         'PnlBiography
         '
@@ -561,6 +504,7 @@ Partial Class FrmMain
         Me.Button1.TabIndex = 17
         Me.Button1.Text = "Button1"
         Me.Button1.UseVisualStyleBackColor = True
+        Me.Button1.Visible = False
         '
         'CheckedListBox1
         '
@@ -569,6 +513,7 @@ Partial Class FrmMain
         Me.CheckedListBox1.Name = "CheckedListBox1"
         Me.CheckedListBox1.Size = New System.Drawing.Size(302, 235)
         Me.CheckedListBox1.TabIndex = 16
+        Me.CheckedListBox1.Visible = False
         '
         'Label5
         '
@@ -580,15 +525,14 @@ Partial Class FrmMain
         Me.Label5.TabIndex = 18
         Me.Label5.Text = "Biography Area"
         '
-        'BtnSelectView
+        'LblView
         '
-        Me.BtnSelectView.BackColor = System.Drawing.Color.Bisque
-        Me.BtnSelectView.Location = New System.Drawing.Point(18, 44)
-        Me.BtnSelectView.Name = "BtnSelectView"
-        Me.BtnSelectView.Size = New System.Drawing.Size(216, 28)
-        Me.BtnSelectView.TabIndex = 26
-        Me.BtnSelectView.Text = "Select View"
-        Me.BtnSelectView.UseVisualStyleBackColor = False
+        Me.LblView.AutoSize = True
+        Me.LblView.Location = New System.Drawing.Point(255, 16)
+        Me.LblView.Name = "LblView"
+        Me.LblView.Size = New System.Drawing.Size(134, 20)
+        Me.LblView.TabIndex = 27
+        Me.LblView.Text = "No View Selected"
         '
         'FrmMain
         '
@@ -624,8 +568,6 @@ Partial Class FrmMain
         Me.MnuEditor.PerformLayout()
         Me.PnlSelectView.ResumeLayout(False)
         Me.PnlSelectView.PerformLayout()
-        Me.PnlView.ResumeLayout(False)
-        Me.PnlView.PerformLayout()
         Me.PnlBiography.ResumeLayout(False)
         Me.ResumeLayout(False)
         Me.PerformLayout()
@@ -675,23 +617,20 @@ Partial Class FrmMain
     Friend WithEvents SelectAllToolStripMenuItem1 As ToolStripMenuItem
     Friend WithEvents lblSelectedBiography As Label
     Friend WithEvents ToolStripSeparator1 As ToolStripSeparator
-    Friend WithEvents BiographyToolStripMenuItem2 As ToolStripMenuItem
     Friend WithEvents ToolStripSeparator5 As ToolStripSeparator
     Friend WithEvents PnlSelectView As Panel
-    Friend WithEvents CbxEvents As CheckBox
-    Friend WithEvents CbxBirthdays As CheckBox
-    Friend WithEvents CbxPresidents As CheckBox
     Friend WithEvents PnlBiography As Panel
     Friend WithEvents ResearchToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents OnThisDateToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents FamilySearchToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents Label1 As Label
-    Friend WithEvents PnlView As Panel
-    Friend WithEvents Label4 As Label
-    Friend WithEvents RbtnIndividual As RadioButton
-    Friend WithEvents RbtnAll As RadioButton
     Friend WithEvents Label5 As Label
     Friend WithEvents Button1 As Button
     Friend WithEvents CheckedListBox1 As CheckedListBox
     Friend WithEvents BtnSelectView As Button
+    Friend WithEvents BiographyToolStripMenuItem1 As ToolStripMenuItem
+    Friend WithEvents SelectToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents NewToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents EditToolStripMenuItem1 As ToolStripMenuItem
+    Friend WithEvents DeleteToolStripMenuItem1 As ToolStripMenuItem
+    Friend WithEvents LblView As Label
 End Class

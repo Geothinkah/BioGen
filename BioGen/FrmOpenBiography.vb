@@ -38,8 +38,6 @@ Public Class FrmOpenBiography
         Try
 
             'Dim indx As Integer 'used to hold the index of the item selected
-            BtnDelete.Enabled = True
-            BtnEdit.Enabled = True
             indx = LstvOpenBiography.SelectedIndices(0)
             BiographyRecord = Split(BiographyArray(indx), delimiter) '** Module Array - fills the array with the records variables
             BiographyArrayIndex = indx
@@ -57,7 +55,7 @@ Public Class FrmOpenBiography
 
     End Sub
 
-    Private Sub BtnOK_Click(sender As Object, e As EventArgs) Handles BtnOK.Click
+    Private Sub BtnOK_Click(sender As Object, e As EventArgs)
         If BioName = Nothing Then 'nothing was selected
             Beep()
             MsgBox("Please Select a Biography")
@@ -70,66 +68,11 @@ Public Class FrmOpenBiography
         'Create the database
         FrmMain.BioGenDatabase(TextFileName)
 
-        'Display the information for the selected biography from it's database
-        FrmMain.LblCurrentBiography.Text = BioName 'assign the name of the currently selected biography to the label
-
+        'Display the text file
         FrmMain.DisplayTextFile(TextFileName)
-
+        FrmMain.LblView.Text = BioName
         Close()
 
-    End Sub
-
-    Private Sub FrmOpenBiography_Closed(sender As Object, e As EventArgs) Handles Me.Closed
-        'if nothing was selected then set the radio button states and their respective colors
-        If TextFileName = AllDatabaseFile Then
-            FrmMain.RbtnAll.BackColor = Color.DeepSkyBlue
-            FrmMain.RbtnAll.Checked = True
-            FrmMain.RbtnIndividual.BackColor = Color.Bisque
-        End If
-    End Sub
-
-    Private Sub BtnNew_Click(sender As Object, e As EventArgs) Handles BtnNew.Click
-        FrmNewBio.Show()
-        Close()
-    End Sub
-
-    Private Sub BtnDelete_Click(sender As Object, e As EventArgs) Handles BtnDelete.Click
-        Beep()
-        If MsgBox("Are you sure you want to delete " & BioName & "?", CType(vbYesNo + vbQuestion, Global.Microsoft.VisualBasic.MsgBoxStyle), "Quit") = vbYes Then
-            DeleteRecord(DataPath, BiographyFile, CStr(BioID), 0)
-            TextFileName = BioID & "_" & BioName.Replace(" ", "") & ".tsv" ' remove spaces from their name for use in the filename
-            Try
-                My.Computer.FileSystem.DeleteFile(DataPath & "\" & TextFileName)
-            Catch ex As Exception
-            End Try
-
-            LoadBiographies()
-        End If
-
-    End Sub
-
-    Private Sub BtnEdit_Click(sender As Object, e As EventArgs) Handles BtnEdit.Click
-        'set buttons on the Form FrmNewBio
-        FrmNewBio.BtnAdd.Enabled = False
-        FrmNewBio.BtnSave.Enabled = True
-
-        'Assign the variables
-        AssignVariables()
-
-        'set form fields
-
-        FrmNewBio.TxtName.Text = BioName
-        FrmNewBio.TxtNickName.Text = BioNickName
-        FrmNewBio.CbxLiving.Text = BioLiving
-        FrmNewBio.DtpBirthDate.Value = BioBirthDate
-        FrmNewBio.DtpDeathDate.Value = BioDeathDate
-        'do something with the recordid
-
-
-        TextFileName = BioID & "_" & BioName.Replace(" ", "") & ".tsv" ' remove spaces from their name for use in the filename
-
-        FrmNewBio.Show()
-        Close()
     End Sub
 
     Private Sub AssignVariables()
@@ -145,9 +88,68 @@ Public Class FrmOpenBiography
         BioLiving = BiographyRecord(3)
         BioDeathDate = CDate(BiographyRecord(4))
         BioNickName = BiographyRecord(5)
+        TextFileName = BioID & "_" & BioName.Replace(" ", "") & ".tsv" ' remove spaces from their name for use in the filename
     End Sub
 
     Private Sub BtnExit_Click(sender As Object, e As EventArgs) Handles BtnExit.Click
         Close()
+    End Sub
+
+    Private Sub BtnOption_Click(sender As Object, e As EventArgs) Handles BtnOption.Click
+        Select Case BtnOption.Text
+            Case "Select"
+                If BioName = Nothing Then 'nothing was selected
+                    Beep()
+                    MsgBox("Please Select a Biography")
+                    Return
+                End If
+
+                'Assign Module level variables
+                AssignVariables()
+
+                FrmSelectView.LblSelectedBiography.Text = BioName
+                'FrmMain.LblView.Text = BioName
+                Close()
+
+            Case "Edit"
+                'set buttons on the Form FrmNewBio
+                FrmNewBio.BtnAdd.Enabled = False
+                FrmNewBio.BtnSave.Enabled = True
+
+                'Assign the variables
+                AssignVariables()
+
+                'set form fields
+                FrmNewBio.TxtName.Text = BioName
+                FrmNewBio.TxtNickName.Text = BioNickName
+                FrmNewBio.CbxLiving.Text = BioLiving
+                FrmNewBio.DtpBirthDate.Value = BioBirthDate
+                FrmNewBio.DtpDeathDate.Value = BioDeathDate
+                'do something with the recordid
+
+
+                TextFileName = BioID & "_" & BioName.Replace(" ", "") & ".tsv" ' remove spaces from their name for use in the filename
+
+                FrmNewBio.Show()
+                Close()
+
+            Case "Delete"
+                Beep()
+                If MsgBox("Are you sure you want to delete " & BioName & "?", CType(vbYesNo + vbQuestion, Global.Microsoft.VisualBasic.MsgBoxStyle), "Quit") = vbYes Then
+                    DeleteRecord(DataPath, BiographyFile, CStr(BioID), 0)
+                    TextFileName = BioID & "_" & BioName.Replace(" ", "") & ".tsv" ' remove spaces from their name for use in the filename
+                    Try
+                        My.Computer.FileSystem.DeleteFile(DataPath & "\" & TextFileName)
+                    Catch ex As Exception
+                    End Try
+
+                    LoadBiographies()
+                End If
+                FrmMain.lblSelectedBiography.Text = "No Biography Selected"
+                FrmMain.TxtFacts.Text = ""
+                Close()
+            Case Else
+
+        End Select
     End Sub
 End Class

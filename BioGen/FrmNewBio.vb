@@ -30,9 +30,7 @@ Public Class FrmNewBio
         'save the settings file
         SaveSettings()
 
-        'ready FrmMain
-        FrmMain.LblCurrentBiography.Text = BioName
-
+        'ready main form
         FrmMain.Enabled = True
 
         'creating the textfile
@@ -42,10 +40,6 @@ Public Class FrmNewBio
             'display the database  
             FrmMain.DisplayTextFile(TextFileName)
 
-        'ready main form and close this one out
-        FrmMain.CbxPresidents.Enabled = True
-        FrmMain.CbxBirthdays.Enabled = True
-        FrmMain.CbxEvents.Enabled = True
         Close()
     End Sub
 
@@ -61,14 +55,11 @@ Public Class FrmNewBio
             Return
         End If
 
-        'remember to delete their textfile out also
-        'TextFileName = BiographyRecord(0) & "_" & BiographyRecord(1).Replace(" ", "") & ".tsv" ' remove spaces from their name for use in the filename
         'Delete Files
         Try
             My.Computer.FileSystem.DeleteFile(DataPath & "\" & TextFileName)
         Catch ex As Exception
         End Try
-        MsgBox("delete bio id " & BioID)
         Dim unused = DeleteRecord(DataPath, BiographyFile, CStr(BioID), 0)
         AddRecord()
         FrmOpenBiography.Show()
@@ -113,7 +104,6 @@ Public Class FrmNewBio
 
 
             'append the new biography record to the BiographyFile
-            MsgBox("write " & SelectedBiography)
             Try
                 Dim biographywriter As New StreamWriter(DataPath & "\" & BiographyFile, True) 'True appends the record to the file. False replaces the file.
                 biographywriter.WriteLine(SelectedBiography)

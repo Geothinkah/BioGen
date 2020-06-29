@@ -27,11 +27,8 @@ Partial Class FrmOpenBiography
         Me.txtvName = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.txtvBirthDate = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.txtvLiving = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-        Me.BtnOK = New System.Windows.Forms.Button()
-        Me.BtnNew = New System.Windows.Forms.Button()
-        Me.BtnDelete = New System.Windows.Forms.Button()
-        Me.BtnEdit = New System.Windows.Forms.Button()
         Me.BtnExit = New System.Windows.Forms.Button()
+        Me.BtnOption = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'LstvOpenBiography
@@ -70,55 +67,6 @@ Partial Class FrmOpenBiography
         Me.txtvLiving.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         Me.txtvLiving.Width = 100
         '
-        'BtnOK
-        '
-        Me.BtnOK.BackColor = System.Drawing.Color.Bisque
-        Me.BtnOK.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.BtnOK.Location = New System.Drawing.Point(311, 425)
-        Me.BtnOK.Name = "BtnOK"
-        Me.BtnOK.Size = New System.Drawing.Size(75, 29)
-        Me.BtnOK.TabIndex = 2
-        Me.BtnOK.Text = "Select"
-        Me.BtnOK.UseVisualStyleBackColor = False
-        '
-        'BtnNew
-        '
-        Me.BtnNew.BackColor = System.Drawing.Color.Bisque
-        Me.BtnNew.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.BtnNew.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.BtnNew.Location = New System.Drawing.Point(12, 425)
-        Me.BtnNew.Name = "BtnNew"
-        Me.BtnNew.Size = New System.Drawing.Size(75, 29)
-        Me.BtnNew.TabIndex = 4
-        Me.BtnNew.Text = "New"
-        Me.BtnNew.UseVisualStyleBackColor = False
-        '
-        'BtnDelete
-        '
-        Me.BtnDelete.BackColor = System.Drawing.Color.Bisque
-        Me.BtnDelete.Enabled = False
-        Me.BtnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.BtnDelete.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.BtnDelete.Location = New System.Drawing.Point(108, 425)
-        Me.BtnDelete.Name = "BtnDelete"
-        Me.BtnDelete.Size = New System.Drawing.Size(75, 29)
-        Me.BtnDelete.TabIndex = 5
-        Me.BtnDelete.Text = "Delete"
-        Me.BtnDelete.UseVisualStyleBackColor = False
-        '
-        'BtnEdit
-        '
-        Me.BtnEdit.BackColor = System.Drawing.Color.Bisque
-        Me.BtnEdit.Enabled = False
-        Me.BtnEdit.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.BtnEdit.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.BtnEdit.Location = New System.Drawing.Point(206, 425)
-        Me.BtnEdit.Name = "BtnEdit"
-        Me.BtnEdit.Size = New System.Drawing.Size(75, 29)
-        Me.BtnEdit.TabIndex = 6
-        Me.BtnEdit.Text = "Edit"
-        Me.BtnEdit.UseVisualStyleBackColor = False
-        '
         'BtnExit
         '
         Me.BtnExit.BackColor = System.Drawing.Color.Bisque
@@ -130,17 +78,25 @@ Partial Class FrmOpenBiography
         Me.BtnExit.Text = "Exit"
         Me.BtnExit.UseVisualStyleBackColor = False
         '
+        'BtnOption
+        '
+        Me.BtnOption.BackColor = System.Drawing.Color.Bisque
+        Me.BtnOption.FlatStyle = System.Windows.Forms.FlatStyle.Popup
+        Me.BtnOption.Location = New System.Drawing.Point(361, 425)
+        Me.BtnOption.Name = "BtnOption"
+        Me.BtnOption.Size = New System.Drawing.Size(75, 29)
+        Me.BtnOption.TabIndex = 9
+        Me.BtnOption.Text = "Option"
+        Me.BtnOption.UseVisualStyleBackColor = False
+        '
         'FrmOpenBiography
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.DeepSkyBlue
         Me.ClientSize = New System.Drawing.Size(529, 470)
+        Me.Controls.Add(Me.BtnOption)
         Me.Controls.Add(Me.BtnExit)
-        Me.Controls.Add(Me.BtnEdit)
-        Me.Controls.Add(Me.BtnDelete)
-        Me.Controls.Add(Me.BtnNew)
-        Me.Controls.Add(Me.BtnOK)
         Me.Controls.Add(Me.LstvOpenBiography)
         Me.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
@@ -160,9 +116,6 @@ Partial Class FrmOpenBiography
     Friend WithEvents txtvName As ColumnHeader
     Friend WithEvents txtvBirthDate As ColumnHeader
     Friend WithEvents txtvLiving As ColumnHeader
-    Friend WithEvents BtnOK As Button
-    Friend WithEvents BtnNew As Button
-    Friend WithEvents BtnDelete As Button
-    Friend WithEvents BtnEdit As Button
     Friend WithEvents BtnExit As Button
+    Friend WithEvents BtnOption As Button
 End Class
