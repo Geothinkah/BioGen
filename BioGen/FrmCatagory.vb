@@ -50,7 +50,11 @@ Public Class FrmCatagory
                         categorywriter.WriteLine(categoryrecord)
                         categorywriter.Close()
                         SaveSettings()
-
+                        SelectedCategoryFile = catfilename
+                        SelectedCategoryID = id
+                        SelectedCategoryName = catname
+                        FrmMain.LblCategory.Text = SelectedCategoryName
+                        FrmMain.LblCategory.Visible = True
                         Close()
                     End If
                 Catch ex As Exception
@@ -88,5 +92,7 @@ Public Class FrmCatagory
         Return recordflag
     End Function
 
-
+    Private Sub FrmCatagory_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        FrmMain.LblCategory.Visible = False
+    End Sub
 End Class

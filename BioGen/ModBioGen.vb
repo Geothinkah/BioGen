@@ -1,9 +1,16 @@
 ﻿Imports System.IO
 Module ModBioGen
+#Region "***** Category Variables *****"
+    'catagory record = "(0) id, (1) name, (2) file name associated with this catagory
+    Friend SelectedCategoryID As Integer
+    Friend SelectedCategoryName As String
+    Friend SelectedCategoryFile As String
+    Friend CategoryArray(100) As String
 
+#End Region
 #Region "***** Variables *****"
     Friend CategoryFile As String = "Category.tsv"
-    'catagory record = "(0) id, (1) name, (2) file name associated with this catagory
+
 
     Friend AllDatabaseFile As String = "AllDatabaseFile.tsv"
     Friend BiographyFile As String = "Biography.tsv"

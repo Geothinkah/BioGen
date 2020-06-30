@@ -80,14 +80,15 @@ Partial Class FrmMain
         Me.LblView = New System.Windows.Forms.Label()
         Me.BtnSelectView = New System.Windows.Forms.Button()
         Me.PnlBiography = New System.Windows.Forms.Panel()
-        Me.Button1 = New System.Windows.Forms.Button()
-        Me.CheckedListBox1 = New System.Windows.Forms.CheckedListBox()
-        Me.Label5 = New System.Windows.Forms.Label()
+        Me.LblCategory = New System.Windows.Forms.Label()
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
         Me.CatagoryToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.SelectToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.NewToolStripMenuItem2 = New System.Windows.Forms.ToolStripMenuItem()
         Me.EditToolStripMenuItem2 = New System.Windows.Forms.ToolStripMenuItem()
         Me.DeleteToolStripMenuItem2 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.MnuMain.SuspendLayout()
         Me.ContextMenuStrip1.SuspendLayout()
         Me.PnlEditor.SuspendLayout()
@@ -228,10 +229,10 @@ Partial Class FrmMain
         Me.RtxBiography.BackColor = System.Drawing.Color.FromArgb(CType(CType(55, Byte), Integer), CType(CType(55, Byte), Integer), CType(CType(55, Byte), Integer))
         Me.RtxBiography.ContextMenuStrip = Me.ContextMenuStrip1
         Me.RtxBiography.ForeColor = System.Drawing.Color.White
-        Me.RtxBiography.Location = New System.Drawing.Point(13, 56)
+        Me.RtxBiography.Location = New System.Drawing.Point(16, 56)
         Me.RtxBiography.Name = "RtxBiography"
         Me.RtxBiography.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical
-        Me.RtxBiography.Size = New System.Drawing.Size(754, 755)
+        Me.RtxBiography.Size = New System.Drawing.Size(756, 755)
         Me.RtxBiography.TabIndex = 7
         Me.RtxBiography.Text = ""
         '
@@ -504,42 +505,22 @@ Partial Class FrmMain
             Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.PnlBiography.BackColor = System.Drawing.Color.OldLace
         Me.PnlBiography.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.PnlBiography.Controls.Add(Me.Button1)
-        Me.PnlBiography.Controls.Add(Me.CheckedListBox1)
+        Me.PnlBiography.Controls.Add(Me.TextBox1)
+        Me.PnlBiography.Controls.Add(Me.LblCategory)
         Me.PnlBiography.Controls.Add(Me.MenuStrip1)
         Me.PnlBiography.Location = New System.Drawing.Point(1382, 98)
         Me.PnlBiography.Name = "PnlBiography"
         Me.PnlBiography.Size = New System.Drawing.Size(519, 828)
         Me.PnlBiography.TabIndex = 17
         '
-        'Button1
+        'LblCategory
         '
-        Me.Button1.Location = New System.Drawing.Point(102, 382)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(304, 34)
-        Me.Button1.TabIndex = 17
-        Me.Button1.Text = "Button1"
-        Me.Button1.UseVisualStyleBackColor = True
-        Me.Button1.Visible = False
-        '
-        'CheckedListBox1
-        '
-        Me.CheckedListBox1.FormattingEnabled = True
-        Me.CheckedListBox1.Location = New System.Drawing.Point(105, 442)
-        Me.CheckedListBox1.Name = "CheckedListBox1"
-        Me.CheckedListBox1.Size = New System.Drawing.Size(302, 235)
-        Me.CheckedListBox1.TabIndex = 16
-        Me.CheckedListBox1.Visible = False
-        '
-        'Label5
-        '
-        Me.Label5.AutoSize = True
-        Me.Label5.Font = New System.Drawing.Font("Copperplate Gothic Bold", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label5.Location = New System.Drawing.Point(878, 58)
-        Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(152, 18)
-        Me.Label5.TabIndex = 18
-        Me.Label5.Text = "Biography Area"
+        Me.LblCategory.Location = New System.Drawing.Point(172, 32)
+        Me.LblCategory.Name = "LblCategory"
+        Me.LblCategory.Size = New System.Drawing.Size(181, 20)
+        Me.LblCategory.TabIndex = 20
+        Me.LblCategory.Text = "No Category Selected"
+        Me.LblCategory.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'MenuStrip1
         '
@@ -554,28 +535,56 @@ Partial Class FrmMain
         '
         'CatagoryToolStripMenuItem
         '
-        Me.CatagoryToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.NewToolStripMenuItem2, Me.EditToolStripMenuItem2, Me.DeleteToolStripMenuItem2})
+        Me.CatagoryToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SelectToolStripMenuItem1, Me.NewToolStripMenuItem2, Me.EditToolStripMenuItem2, Me.DeleteToolStripMenuItem2})
         Me.CatagoryToolStripMenuItem.Name = "CatagoryToolStripMenuItem"
         Me.CatagoryToolStripMenuItem.Size = New System.Drawing.Size(85, 25)
         Me.CatagoryToolStripMenuItem.Text = "Catagory"
         '
+        'SelectToolStripMenuItem1
+        '
+        Me.SelectToolStripMenuItem1.Name = "SelectToolStripMenuItem1"
+        Me.SelectToolStripMenuItem1.Size = New System.Drawing.Size(124, 26)
+        Me.SelectToolStripMenuItem1.Text = "Select"
+        '
         'NewToolStripMenuItem2
         '
         Me.NewToolStripMenuItem2.Name = "NewToolStripMenuItem2"
-        Me.NewToolStripMenuItem2.Size = New System.Drawing.Size(180, 26)
+        Me.NewToolStripMenuItem2.Size = New System.Drawing.Size(124, 26)
         Me.NewToolStripMenuItem2.Text = "New"
         '
         'EditToolStripMenuItem2
         '
         Me.EditToolStripMenuItem2.Name = "EditToolStripMenuItem2"
-        Me.EditToolStripMenuItem2.Size = New System.Drawing.Size(180, 26)
+        Me.EditToolStripMenuItem2.Size = New System.Drawing.Size(124, 26)
         Me.EditToolStripMenuItem2.Text = "Edit"
         '
         'DeleteToolStripMenuItem2
         '
         Me.DeleteToolStripMenuItem2.Name = "DeleteToolStripMenuItem2"
-        Me.DeleteToolStripMenuItem2.Size = New System.Drawing.Size(180, 26)
+        Me.DeleteToolStripMenuItem2.Size = New System.Drawing.Size(124, 26)
         Me.DeleteToolStripMenuItem2.Text = "Delete"
+        '
+        'Label5
+        '
+        Me.Label5.AutoSize = True
+        Me.Label5.Font = New System.Drawing.Font("Copperplate Gothic Bold", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label5.Location = New System.Drawing.Point(878, 58)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(152, 18)
+        Me.Label5.TabIndex = 18
+        Me.Label5.Text = "Biography Area"
+        '
+        'TextBox1
+        '
+        Me.TextBox1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.TextBox1.BackColor = System.Drawing.Color.FromArgb(CType(CType(55, Byte), Integer), CType(CType(55, Byte), Integer), CType(CType(55, Byte), Integer))
+        Me.TextBox1.Location = New System.Drawing.Point(19, 55)
+        Me.TextBox1.Multiline = True
+        Me.TextBox1.Name = "TextBox1"
+        Me.TextBox1.Size = New System.Drawing.Size(486, 755)
+        Me.TextBox1.TabIndex = 21
+        Me.TextBox1.Text = "textbox"
         '
         'FrmMain
         '
@@ -670,8 +679,6 @@ Partial Class FrmMain
     Friend WithEvents OnThisDateToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents FamilySearchToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents Label5 As Label
-    Friend WithEvents Button1 As Button
-    Friend WithEvents CheckedListBox1 As CheckedListBox
     Friend WithEvents BtnSelectView As Button
     Friend WithEvents BiographyToolStripMenuItem1 As ToolStripMenuItem
     Friend WithEvents SelectToolStripMenuItem As ToolStripMenuItem
@@ -684,4 +691,7 @@ Partial Class FrmMain
     Friend WithEvents NewToolStripMenuItem2 As ToolStripMenuItem
     Friend WithEvents EditToolStripMenuItem2 As ToolStripMenuItem
     Friend WithEvents DeleteToolStripMenuItem2 As ToolStripMenuItem
+    Friend WithEvents LblCategory As Label
+    Friend WithEvents SelectToolStripMenuItem1 As ToolStripMenuItem
+    Friend WithEvents TextBox1 As TextBox
 End Class

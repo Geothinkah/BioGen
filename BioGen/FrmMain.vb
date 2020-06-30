@@ -878,15 +878,15 @@ Public Class FrmMain
 
 #Region "**** Catagories *****"
 
-    Private Sub Button1_Click_1(sender As Object, e As EventArgs) Handles Button1.Click
-        Dim folderInfo As New IO.DirectoryInfo(DataPath) 'Or whatever dir path
-        Dim arrFilesInFolder() As IO.FileInfo
-        Dim fileInFolder As IO.FileInfo
-        arrFilesInFolder = folderInfo.GetFiles("*.*")
-        For Each fileInFolder In arrFilesInFolder
-            CheckedListBox1.Items.Add(fileInFolder.Name)
-        Next
-    End Sub
+    'Private Sub Button1_Click_1(sender As Object, e As EventArgs) Handles Button1.Click
+    '    Dim folderInfo As New IO.DirectoryInfo(DataPath) 'Or whatever dir path
+    '    Dim arrFilesInFolder() As IO.FileInfo
+    '    Dim fileInFolder As IO.FileInfo
+    '    arrFilesInFolder = folderInfo.GetFiles("*.*")
+    '    For Each fileInFolder In arrFilesInFolder
+    '        CheckedListBox1.Items.Add(fileInFolder.Name)
+    '    Next
+    'End Sub
 
 #End Region
 
@@ -999,10 +999,28 @@ Public Class FrmMain
     End Sub
 
     Private Sub NewToolStripMenuItem2_Click(sender As Object, e As EventArgs) Handles NewToolStripMenuItem2.Click
+        FrmCatagory.Text = "New Category"
         FrmCatagory.BtnOption.Text = "Save"
         FrmCatagory.Show()
     End Sub
 
+    Private Sub EditToolStripMenuItem2_Click(sender As Object, e As EventArgs) Handles EditToolStripMenuItem2.Click
+        FrmOpenCategory.Text = "Edit Category"
+        FrmOpenCategory.BtnOption.Text = "Edit"
+        FrmOpenCategory.Show()
+    End Sub
+
+    Private Sub SelectToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles SelectToolStripMenuItem1.Click
+        FrmOpenCategory.Text = "Select Category"
+        FrmOpenCategory.BtnOption.Text = "Select"
+        FrmOpenCategory.Show()
+    End Sub
+
+    Private Sub DeleteToolStripMenuItem2_Click(sender As Object, e As EventArgs) Handles DeleteToolStripMenuItem2.Click
+        FrmOpenCategory.Text = "Delete Category"
+        FrmOpenCategory.BtnOption.Text = "Delete"
+        FrmOpenCategory.Show()
+    End Sub
 
 #End Region
 

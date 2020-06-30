@@ -105,6 +105,12 @@
     <Compile Include="FrmOpenBiography.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="FrmOpenCategory.Designer.vb">
+      <DependentUpon>FrmOpenCategory.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FrmOpenCategory.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="FrmSelectView.Designer.vb">
       <DependentUpon>FrmSelectView.vb</DependentUpon>
     </Compile>
@@ -141,6 +147,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmOpenBiography.resx">
       <DependentUpon>FrmOpenBiography.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmOpenCategory.resx">
+      <DependentUpon>FrmOpenCategory.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmSelectView.resx">
       <DependentUpon>FrmSelectView.vb</DependentUpon>
