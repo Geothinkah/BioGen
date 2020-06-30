@@ -14,6 +14,12 @@
     End Sub
 
     Private Sub BtnView_Click(sender As Object, e As EventArgs) Handles BtnView.Click
+        If CbxSelectBiographies.Text = "All" Then
+            FrmMain.LblView.Text = "All Biographies"
+            TextFileName = AllDatabaseFile
+        Else
+            FrmMain.LblView.Text = BioName
+        End If
         FrmMain.BioGenDatabase(TextFileName)
         FrmMain.DisplayTextFile(TextFileName)
         Hide()

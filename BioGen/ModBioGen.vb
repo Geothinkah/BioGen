@@ -2,7 +2,9 @@
 Module ModBioGen
 
 #Region "***** Variables *****"
-    Friend CatagoryFile As String = "Catagory.tsv"
+    Friend CategoryFile As String = "Category.tsv"
+    'catagory record = "(0) id, (1) name, (2) file name associated with this catagory
+
     Friend AllDatabaseFile As String = "AllDatabaseFile.tsv"
     Friend BiographyFile As String = "Biography.tsv"
     Friend SettingsFile As String = "Settings.tsv"

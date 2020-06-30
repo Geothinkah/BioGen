@@ -383,6 +383,10 @@ Public Class FrmMain
         WriteEvents("Evnt", "6/25/1950", "Korean War began")
         RecordID += 1
         WriteEvents("Evnt", "7/27/1953", "Korean War ended")
+        RecordID += 1
+        WriteEvents("Evnt", "4/12/1861", "Civil War Began")
+        RecordID += 1
+        WriteEvents("Evnt", "4/9/1865", "Civil War Ended")
 
         'Create Presidents File
         'presidents record = (0) number of their presidency, (2) name, (3) term begin date, (4) term end date
@@ -992,6 +996,11 @@ Public Class FrmMain
     Private Sub DeleteToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles DeleteToolStripMenuItem1.Click
         FrmOpenBiography.BtnOption.Text = "Delete"
         FrmOpenBiography.Show()
+    End Sub
+
+    Private Sub NewToolStripMenuItem2_Click(sender As Object, e As EventArgs) Handles NewToolStripMenuItem2.Click
+        FrmCatagory.BtnOption.Text = "Save"
+        FrmCatagory.Show()
     End Sub
 
 
