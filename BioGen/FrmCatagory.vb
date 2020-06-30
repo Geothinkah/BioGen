@@ -62,6 +62,60 @@ Public Class FrmCatagory
                     Dim unused = MsgBox("Error trying to write the category record.")
                 End Try
 
+            Case "Edit"
+                Dim tempname As String
+                tempname = Trim(TxtName.Text)
+                MsgBox("Edit Routine")
+                'make sure a name is entered
+                If Trim(tempname) = "" Then
+                    Beep()
+                    MsgBox("You must supply a name for the catagory.")
+                    'Exit Try
+                Else
+                    'check to see if the catagory already exists
+                    If CheckForRecord(tempname) Then
+                        'catagory already exists, exit out
+                        Beep()
+                        MsgBox(tempname & " already exists.")
+                        'Note: I could check to see if they are just changing the case of a letter
+                        'but figure it's easy enough to change name and then change it back 
+                        'Exit Try
+                    Else
+
+                        'Rename the file associated with this category
+                        tempname = TxtName.Text.Replace(" ", "")
+                        Dim newfilename As String
+                        newfilename = CStr(SelectedCategoryID) & "_" & tempname & ".tsv"
+                        Try
+
+                            My.Computer.FileSystem.RenameFile(DataPath & newfilename, SelectedCategoryFile)
+                        Catch ex As Exception
+
+                        End Try
+                        SelectedCategoryFile = newfilename
+
+                        'delete record
+                        DeleteRecord(DataPath, CategoryFile, CStr(SelectedCategoryID), 0)
+
+                        'assign variables to newrecord
+                        Dim newrecord As String
+                        SelectedCategoryName = Trim(TxtName.Text)
+                        newrecord = SelectedCategoryID & vbTab & Trim(TxtName.Text) & vbTab & SelectedCategoryFile
+
+                        'append edited record
+                        Dim categorywriter As New StreamWriter(DataPath & "\" & CategoryFile, True) 'True = append, False = replace file
+                        categorywriter.WriteLine(newrecord)
+                        categorywriter.Close()
+
+                        FrmMain.LblCategory.Text = SelectedCategoryName
+                        FrmOpenCategory.BtnOption.Text = "Select"
+                        FrmOpenCategory.Show()
+                        Close()
+                    End If
+                End If
+            Case Else
+
+
         End Select
 
 

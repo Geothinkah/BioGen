@@ -80,6 +80,7 @@ Partial Class FrmMain
         Me.LblView = New System.Windows.Forms.Label()
         Me.BtnSelectView = New System.Windows.Forms.Button()
         Me.PnlBiography = New System.Windows.Forms.Panel()
+        Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.LblCategory = New System.Windows.Forms.Label()
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
         Me.CatagoryToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -88,7 +89,6 @@ Partial Class FrmMain
         Me.EditToolStripMenuItem2 = New System.Windows.Forms.ToolStripMenuItem()
         Me.DeleteToolStripMenuItem2 = New System.Windows.Forms.ToolStripMenuItem()
         Me.Label5 = New System.Windows.Forms.Label()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.MnuMain.SuspendLayout()
         Me.ContextMenuStrip1.SuspendLayout()
         Me.PnlEditor.SuspendLayout()
@@ -513,6 +513,18 @@ Partial Class FrmMain
         Me.PnlBiography.Size = New System.Drawing.Size(519, 828)
         Me.PnlBiography.TabIndex = 17
         '
+        'TextBox1
+        '
+        Me.TextBox1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.TextBox1.BackColor = System.Drawing.Color.FromArgb(CType(CType(55, Byte), Integer), CType(CType(55, Byte), Integer), CType(CType(55, Byte), Integer))
+        Me.TextBox1.Location = New System.Drawing.Point(19, 55)
+        Me.TextBox1.Multiline = True
+        Me.TextBox1.Name = "TextBox1"
+        Me.TextBox1.Size = New System.Drawing.Size(486, 755)
+        Me.TextBox1.TabIndex = 21
+        Me.TextBox1.Text = "textbox"
+        '
         'LblCategory
         '
         Me.LblCategory.Location = New System.Drawing.Point(172, 32)
@@ -573,18 +585,6 @@ Partial Class FrmMain
         Me.Label5.Size = New System.Drawing.Size(152, 18)
         Me.Label5.TabIndex = 18
         Me.Label5.Text = "Biography Area"
-        '
-        'TextBox1
-        '
-        Me.TextBox1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
-        Me.TextBox1.BackColor = System.Drawing.Color.FromArgb(CType(CType(55, Byte), Integer), CType(CType(55, Byte), Integer), CType(CType(55, Byte), Integer))
-        Me.TextBox1.Location = New System.Drawing.Point(19, 55)
-        Me.TextBox1.Multiline = True
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(486, 755)
-        Me.TextBox1.TabIndex = 21
-        Me.TextBox1.Text = "textbox"
         '
         'FrmMain
         '

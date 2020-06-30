@@ -53,15 +53,22 @@ Public Class FrmOpenCategory
                 FrmMain.LblCategory.Visible = True
                 Close()
             Case "Edit"
-                FrmCatagory.Text = "Edit Category"
+                'FrmCatagory.Text = "Edit Category"
                 FrmCatagory.BtnOption.Text = "Edit"
                 FrmCatagory.TxtName.Text = SelectedCategoryName
+                FrmCatagory.Show()
                 Close()
             Case "Delete"
-                FrmCatagory.Text = "Delete Category"
-                FrmCatagory.BtnOption.Text = "Delete"
-                FrmCatagory.TxtName.Text = SelectedCategoryName
-                Close()
+                Beep()
+                If MsgBox("Are you sure you want to delete " & SelectedCategoryName & "?", CType(vbYesNo + vbQuestion, Global.Microsoft.VisualBasic.MsgBoxStyle), "Quit") = vbYes Then
+                    DeleteRecord(DataPath, CategoryFile, CStr(SelectedCategoryID), 0)
+                    Try
+                        My.Computer.FileSystem.DeleteFile(DataPath & "\" & SelectedCategoryFile)
+                    Catch ex As Exception
+                    End Try
+                    LoadCategory()
+                End If
+                BtnOption.Text = "Select"
             Case Else
                 MsgBox("Unknow case in FrmOpenCategory: " & BtnOption.Text)
                 Close()
