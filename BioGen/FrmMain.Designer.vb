@@ -86,8 +86,8 @@ Partial Class FrmMain
         Me.CatagoryToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.SelectToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.NewToolStripMenuItem2 = New System.Windows.Forms.ToolStripMenuItem()
-        Me.EditToolStripMenuItem2 = New System.Windows.Forms.ToolStripMenuItem()
         Me.DeleteToolStripMenuItem2 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.RenameToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.MnuMain.SuspendLayout()
         Me.ContextMenuStrip1.SuspendLayout()
@@ -120,38 +120,38 @@ Partial Class FrmMain
         '
         Me.BiographyToolStripMenuItem1.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SelectToolStripMenuItem, Me.NewToolStripMenuItem, Me.EditToolStripMenuItem1, Me.DeleteToolStripMenuItem1})
         Me.BiographyToolStripMenuItem1.Name = "BiographyToolStripMenuItem1"
-        Me.BiographyToolStripMenuItem1.Size = New System.Drawing.Size(151, 26)
+        Me.BiographyToolStripMenuItem1.Size = New System.Drawing.Size(180, 26)
         Me.BiographyToolStripMenuItem1.Text = "Biography"
         '
         'SelectToolStripMenuItem
         '
         Me.SelectToolStripMenuItem.Name = "SelectToolStripMenuItem"
-        Me.SelectToolStripMenuItem.Size = New System.Drawing.Size(124, 26)
+        Me.SelectToolStripMenuItem.Size = New System.Drawing.Size(180, 26)
         Me.SelectToolStripMenuItem.Text = "Select"
         '
         'NewToolStripMenuItem
         '
         Me.NewToolStripMenuItem.Name = "NewToolStripMenuItem"
-        Me.NewToolStripMenuItem.Size = New System.Drawing.Size(124, 26)
+        Me.NewToolStripMenuItem.Size = New System.Drawing.Size(180, 26)
         Me.NewToolStripMenuItem.Text = "New"
         '
         'EditToolStripMenuItem1
         '
         Me.EditToolStripMenuItem1.Name = "EditToolStripMenuItem1"
-        Me.EditToolStripMenuItem1.Size = New System.Drawing.Size(124, 26)
+        Me.EditToolStripMenuItem1.Size = New System.Drawing.Size(180, 26)
         Me.EditToolStripMenuItem1.Text = "Edit"
         '
         'DeleteToolStripMenuItem1
         '
         Me.DeleteToolStripMenuItem1.Name = "DeleteToolStripMenuItem1"
-        Me.DeleteToolStripMenuItem1.Size = New System.Drawing.Size(124, 26)
+        Me.DeleteToolStripMenuItem1.Size = New System.Drawing.Size(180, 26)
         Me.DeleteToolStripMenuItem1.Text = "Delete"
         '
         'SettingsToolStripMenuItem
         '
         Me.SettingsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FactoryResetToolStripMenuItem})
         Me.SettingsToolStripMenuItem.Name = "SettingsToolStripMenuItem"
-        Me.SettingsToolStripMenuItem.Size = New System.Drawing.Size(151, 26)
+        Me.SettingsToolStripMenuItem.Size = New System.Drawing.Size(180, 26)
         Me.SettingsToolStripMenuItem.Text = "Settings"
         '
         'FactoryResetToolStripMenuItem
@@ -163,18 +163,18 @@ Partial Class FrmMain
         'ToolStripSeparator5
         '
         Me.ToolStripSeparator5.Name = "ToolStripSeparator5"
-        Me.ToolStripSeparator5.Size = New System.Drawing.Size(148, 6)
+        Me.ToolStripSeparator5.Size = New System.Drawing.Size(177, 6)
         '
         'ExitToolStripMenuItem
         '
         Me.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem"
-        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(151, 26)
+        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(180, 26)
         Me.ExitToolStripMenuItem.Text = "Exit"
         '
         'ToolStripSeparator1
         '
         Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
-        Me.ToolStripSeparator1.Size = New System.Drawing.Size(148, 6)
+        Me.ToolStripSeparator1.Size = New System.Drawing.Size(177, 6)
         '
         'ResearchToolStripMenuItem
         '
@@ -486,7 +486,6 @@ Partial Class FrmMain
         Me.LblView.Name = "LblView"
         Me.LblView.Size = New System.Drawing.Size(514, 20)
         Me.LblView.TabIndex = 27
-        Me.LblView.Text = "No View Selected"
         Me.LblView.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'BtnSelectView
@@ -547,7 +546,7 @@ Partial Class FrmMain
         '
         'CatagoryToolStripMenuItem
         '
-        Me.CatagoryToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SelectToolStripMenuItem1, Me.NewToolStripMenuItem2, Me.EditToolStripMenuItem2, Me.DeleteToolStripMenuItem2})
+        Me.CatagoryToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SelectToolStripMenuItem1, Me.NewToolStripMenuItem2, Me.DeleteToolStripMenuItem2, Me.RenameToolStripMenuItem})
         Me.CatagoryToolStripMenuItem.Name = "CatagoryToolStripMenuItem"
         Me.CatagoryToolStripMenuItem.Size = New System.Drawing.Size(85, 25)
         Me.CatagoryToolStripMenuItem.Text = "Catagory"
@@ -555,26 +554,26 @@ Partial Class FrmMain
         'SelectToolStripMenuItem1
         '
         Me.SelectToolStripMenuItem1.Name = "SelectToolStripMenuItem1"
-        Me.SelectToolStripMenuItem1.Size = New System.Drawing.Size(124, 26)
+        Me.SelectToolStripMenuItem1.Size = New System.Drawing.Size(137, 26)
         Me.SelectToolStripMenuItem1.Text = "Select"
         '
         'NewToolStripMenuItem2
         '
         Me.NewToolStripMenuItem2.Name = "NewToolStripMenuItem2"
-        Me.NewToolStripMenuItem2.Size = New System.Drawing.Size(124, 26)
+        Me.NewToolStripMenuItem2.Size = New System.Drawing.Size(137, 26)
         Me.NewToolStripMenuItem2.Text = "New"
-        '
-        'EditToolStripMenuItem2
-        '
-        Me.EditToolStripMenuItem2.Name = "EditToolStripMenuItem2"
-        Me.EditToolStripMenuItem2.Size = New System.Drawing.Size(124, 26)
-        Me.EditToolStripMenuItem2.Text = "Edit"
         '
         'DeleteToolStripMenuItem2
         '
         Me.DeleteToolStripMenuItem2.Name = "DeleteToolStripMenuItem2"
-        Me.DeleteToolStripMenuItem2.Size = New System.Drawing.Size(124, 26)
+        Me.DeleteToolStripMenuItem2.Size = New System.Drawing.Size(137, 26)
         Me.DeleteToolStripMenuItem2.Text = "Delete"
+        '
+        'RenameToolStripMenuItem
+        '
+        Me.RenameToolStripMenuItem.Name = "RenameToolStripMenuItem"
+        Me.RenameToolStripMenuItem.Size = New System.Drawing.Size(137, 26)
+        Me.RenameToolStripMenuItem.Text = "Rename"
         '
         'Label5
         '
@@ -689,9 +688,9 @@ Partial Class FrmMain
     Friend WithEvents MenuStrip1 As MenuStrip
     Friend WithEvents CatagoryToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents NewToolStripMenuItem2 As ToolStripMenuItem
-    Friend WithEvents EditToolStripMenuItem2 As ToolStripMenuItem
     Friend WithEvents DeleteToolStripMenuItem2 As ToolStripMenuItem
     Friend WithEvents LblCategory As Label
     Friend WithEvents SelectToolStripMenuItem1 As ToolStripMenuItem
     Friend WithEvents TextBox1 As TextBox
+    Friend WithEvents RenameToolStripMenuItem As ToolStripMenuItem
 End Class

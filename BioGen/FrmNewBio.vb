@@ -4,6 +4,7 @@ Public Class FrmNewBio
 
 #Region "***** Initialize *****"
     Private Sub FrmNewBio_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        FrmMain.LblView.Visible = False
         ReadSettings() ' need the next RecordID number
     End Sub
 
@@ -23,48 +24,51 @@ Public Class FrmNewBio
 
 #Region "***** Close *****"
 
-    Private Sub BtnAdd_Click(sender As Object, e As EventArgs) Handles BtnAdd.Click
+    'Private Sub BtnAdd_Click(sender As Object, e As EventArgs) Handles BtnAdd.Click
 
-        AddRecord()
+    '    AddRecord()
 
-        'save the settings file
-        SaveSettings()
+    '    'save the settings file
+    '    SaveSettings()
 
-        'ready main form
-        FrmMain.Enabled = True
+    '    'ready main form
+    '    FrmMain.Enabled = True
 
-        'creating the textfile
-        TextFileName = BiographyRecord(0) & "_" & BiographyRecord(1).Replace(" ", "") & ".tsv" ' remove spaces from their name for use in the filename
-            FrmMain.BioGenDatabase(TextFileName) 'create the database for this biography
+    '    'creating the textfile
+    '    TextFileName = BiographyRecord(0) & "_" & BiographyRecord(1).Replace(" ", "") & ".tsv" ' remove spaces from their name for use in the filename
+    '    FrmMain.BioGenDatabase(TextFileName) 'create the database for this biography
 
-            'display the database  
-            FrmMain.DisplayTextFile(TextFileName)
+    '    'display the database  
+    '    FrmMain.DisplayTextFile(TextFileName)
 
-        Close()
-    End Sub
+    '    FrmMain.LblView.Visible = True
+    '    FrmMain.LblView.Text = BiographyRecord(1)
+    '    Close()
+    'End Sub
 
     Private Sub BtnExit_Click(sender As Object, e As EventArgs) Handles BtnExit.Click
+        FrmMain.LblView.Visible = True
         Close()
     End Sub
 
-    Private Sub BtnSave_Click(sender As Object, e As EventArgs) Handles BtnSave.Click
-        If Trim(BioName) = "" Then
-            Beep()
-            MsgBox("Name is a required field")
-            TxtName.Select()
-            Return
-        End If
+    'Private Sub BtnSave_Click(sender As Object, e As EventArgs) Handles BtnSave.Click
+    '    If Trim(BioName) = "" Then
+    '        Beep()
+    '        MsgBox("Name is a required field")
+    '        TxtName.Select()
+    '        Return
+    '    End If
 
-        'Delete Files
-        Try
-            My.Computer.FileSystem.DeleteFile(DataPath & "\" & TextFileName)
-        Catch ex As Exception
-        End Try
-        Dim unused = DeleteRecord(DataPath, BiographyFile, CStr(BioID), 0)
-        AddRecord()
-        FrmOpenBiography.Show()
-        Close()
-    End Sub
+    '    'Delete Files
+    '    Try
+    '        My.Computer.FileSystem.DeleteFile(DataPath & "\" & TextFileName)
+    '    Catch ex As Exception
+    '    End Try
+    '    Dim unused = DeleteRecord(DataPath, BiographyFile, CStr(BioID), 0)
+    '    AddRecord()
+    '    FrmOpenBiography.Show()
+    '    Close()
+    'End Sub
     Private Sub AddRecord()
         If Trim(TxtName.Text) IsNot "" Then
 
@@ -118,6 +122,88 @@ Public Class FrmNewBio
             Return
         End If
         SaveSettings()
+    End Sub
+
+    Private Sub BtnOption_Click(sender As Object, e As EventArgs) Handles BtnOption.Click
+        Select Case BtnOption.Text
+            Case "Add"
+                If Trim(TxtName.Text) IsNot "" Then
+
+                    'set module level variables for the new biography
+                    RecordID += 1 'increase the id for use by this record
+                    BioID = RecordID 'assign the new RecordID to the BioID
+                    BioName = Trim(TxtName.Text)
+                    BioBirthDate = DtpBirthDate.Value
+                    BioLiving = CbxLiving.Text
+                    Select Case CbxLiving.Text
+                        Case "Yes"
+                            BioDeathDate = CDate("12/2/2005") 'my father's death date. I don't want the program to bomb out for lack of a date
+                        Case Else
+                            BioDeathDate = DtpDeathDate.Value
+                    End Select
+                    BioNickName = Trim(TxtNickName.Text)
+                    If BioNickName = Nothing Then 'If there is no nickname set it to their first name
+                        Dim namearray() = Split(BioName, " ")
+                        BioNickName = namearray(0)
+                    Else
+                        BioNickName = Trim(BioNickName)
+                    End If
+
+                    'create the string variable of the tab delimited record
+                    SelectedBiography = CStr(BioID) & vbTab _
+                & BioName & vbTab _
+                & BioBirthDate.ToShortDateString & vbTab _
+                & BioLiving & vbTab _
+                & BioDeathDate.ToShortDateString & vbTab _
+                & BioNickName
+
+                    'create BiographyRecord Array
+                    BiographyRecord = Split(SelectedBiography, vbTab) 'create fields
+
+                    'create the text file name
+                    TextFileName = BiographyRecord(0) & "_" & BiographyRecord(1).Replace(" ", "") & ".tsv" ' remove spaces from their name for use in the filename
+
+
+                    'append the new biography record to the BiographyFile
+                    Try
+                        Dim biographywriter As New StreamWriter(DataPath & "\" & BiographyFile, True) 'True appends the record to the file. False replaces the file.
+                        biographywriter.WriteLine(SelectedBiography)
+                        biographywriter.Close()
+                    Catch ex As Exception
+                        Dim unused = MsgBox("Error trying to write a new biography record")
+                    End Try
+                Else
+                    Beep()
+                    MsgBox("Name is a required field")
+                    TxtName.Select()
+                    Return
+                End If
+                SaveSettings()
+                Close()
+
+            Case "Save"
+                If Trim(BioName) = "" Then
+                    Beep()
+                    MsgBox("Name is a required field")
+                    TxtName.Select()
+                    Return
+                End If
+
+                'Delete Files
+                Try
+                    My.Computer.FileSystem.DeleteFile(DataPath & "\" & TextFileName)
+                Catch ex As Exception
+                End Try
+                Dim unused = DeleteRecord(DataPath, BiographyFile, CStr(BioID), 0)
+                AddRecord()
+
+                FrmOpenBiography.BtnOption.Text = "Select"
+
+                FrmOpenBiography.Show()
+                Close()
+            Case Else
+                MsgBox("Unknow Option")
+        End Select
     End Sub
 
 #End Region

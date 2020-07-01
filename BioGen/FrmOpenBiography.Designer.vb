@@ -71,7 +71,7 @@ Partial Class FrmOpenBiography
         '
         Me.BtnExit.BackColor = System.Drawing.Color.Bisque
         Me.BtnExit.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.BtnExit.Location = New System.Drawing.Point(442, 425)
+        Me.BtnExit.Location = New System.Drawing.Point(442, 404)
         Me.BtnExit.Name = "BtnExit"
         Me.BtnExit.Size = New System.Drawing.Size(75, 29)
         Me.BtnExit.TabIndex = 7
@@ -82,7 +82,7 @@ Partial Class FrmOpenBiography
         '
         Me.BtnOption.BackColor = System.Drawing.Color.Bisque
         Me.BtnOption.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.BtnOption.Location = New System.Drawing.Point(361, 425)
+        Me.BtnOption.Location = New System.Drawing.Point(361, 404)
         Me.BtnOption.Name = "BtnOption"
         Me.BtnOption.Size = New System.Drawing.Size(75, 29)
         Me.BtnOption.TabIndex = 9
@@ -94,20 +94,21 @@ Partial Class FrmOpenBiography
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.DeepSkyBlue
-        Me.ClientSize = New System.Drawing.Size(529, 470)
+        Me.ClientSize = New System.Drawing.Size(534, 444)
         Me.Controls.Add(Me.BtnOption)
         Me.Controls.Add(Me.BtnExit)
         Me.Controls.Add(Me.LstvOpenBiography)
         Me.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.Location = New System.Drawing.Point(25, 155)
         Me.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.MaximizeBox = False
-        Me.MaximumSize = New System.Drawing.Size(545, 509)
         Me.MinimizeBox = False
-        Me.MinimumSize = New System.Drawing.Size(545, 509)
         Me.Name = "FrmOpenBiography"
-        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.Manual
         Me.Text = "Open Biography"
+        Me.TopMost = True
         Me.ResumeLayout(False)
 
     End Sub

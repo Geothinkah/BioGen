@@ -62,10 +62,10 @@ Public Class FrmCatagory
                     Dim unused = MsgBox("Error trying to write the category record.")
                 End Try
 
-            Case "Edit"
+            Case "Rename"
                 Dim tempname As String
                 tempname = Trim(TxtName.Text)
-                MsgBox("Edit Routine")
+                'MsgBox("Edit Routine")
                 'make sure a name is entered
                 If Trim(tempname) = "" Then
                     Beep()
@@ -83,14 +83,13 @@ Public Class FrmCatagory
                     Else
 
                         'Rename the file associated with this category
-                        tempname = TxtName.Text.Replace(" ", "")
+                        tempname = Trim(TxtName.Text.Replace(" ", ""))
                         Dim newfilename As String
                         newfilename = CStr(SelectedCategoryID) & "_" & tempname & ".tsv"
                         Try
-
-                            My.Computer.FileSystem.RenameFile(DataPath & newfilename, SelectedCategoryFile)
+                            My.Computer.FileSystem.RenameFile(DataPath & "\" & SelectedCategoryFile, newfilename)
                         Catch ex As Exception
-
+                            MsgBox("Error renaming file. Why? File not closed? Maybe?")
                         End Try
                         SelectedCategoryFile = newfilename
 

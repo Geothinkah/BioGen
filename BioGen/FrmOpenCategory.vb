@@ -52,9 +52,9 @@ Public Class FrmOpenCategory
                 FrmMain.LblCategory.Text = SelectedCategoryName
                 FrmMain.LblCategory.Visible = True
                 Close()
-            Case "Edit"
+            Case "Rename"
                 'FrmCatagory.Text = "Edit Category"
-                FrmCatagory.BtnOption.Text = "Edit"
+                FrmCatagory.BtnOption.Text = "Rename"
                 FrmCatagory.TxtName.Text = SelectedCategoryName
                 FrmCatagory.Show()
                 Close()

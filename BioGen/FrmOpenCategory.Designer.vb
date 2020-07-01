@@ -61,9 +61,9 @@ Partial Class FrmOpenCategory
         '
         Me.BtnOption.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.BtnOption.BackColor = System.Drawing.Color.Bisque
-        Me.BtnOption.Location = New System.Drawing.Point(75, 227)
+        Me.BtnOption.Location = New System.Drawing.Point(12, 227)
         Me.BtnOption.Name = "BtnOption"
-        Me.BtnOption.Size = New System.Drawing.Size(68, 31)
+        Me.BtnOption.Size = New System.Drawing.Size(95, 31)
         Me.BtnOption.TabIndex = 2
         Me.BtnOption.Text = "Option"
         Me.BtnOption.UseVisualStyleBackColor = False
@@ -80,7 +80,7 @@ Partial Class FrmOpenCategory
         Me.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
-        Me.Location = New System.Drawing.Point(1395, 175)
+        Me.Location = New System.Drawing.Point(1395, 155)
         Me.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.MaximizeBox = False
         Me.MaximumSize = New System.Drawing.Size(229, 267)

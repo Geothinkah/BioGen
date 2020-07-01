@@ -1,5 +1,7 @@
 ﻿Imports System.IO
 Module ModBioGen
+    Friend ShowViewForm As Boolean = False 'this is used in the FrmOpenBiology to show FrmSelectView or not
+
 #Region "***** Category Variables *****"
     'catagory record = "(0) id, (1) name, (2) file name associated with this catagory
     Friend SelectedCategoryID As Integer
@@ -150,7 +152,7 @@ Module ModBioGen
         Dim currentline As String
         Try
             Dim filereader As New StreamReader(datapath & "\" & filename)
-            Dim filewriter As New StreamWriter(datapath & tempfile, True)
+            Dim filewriter As New StreamWriter(datapath & "\" & tempfile, True)
             Do While filereader.Peek() <> -1
                 currentline = filereader.ReadLine()
                 Dim currentrecord() As String = Split(currentline, vbTab)
@@ -164,7 +166,7 @@ Module ModBioGen
             filereader.Close()
 
             My.Computer.FileSystem.DeleteFile(datapath & "\" & filename)
-            My.Computer.FileSystem.RenameFile(datapath & tempfile, filename)
+            My.Computer.FileSystem.RenameFile(datapath & "\" & tempfile, filename)
 
         Catch ex As Exception
             Dim unused = MsgBox("Failed in the delete proceedure for file: " & filename)

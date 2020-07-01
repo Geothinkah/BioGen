@@ -905,8 +905,8 @@ Public Class FrmMain
                 Dim recordarray() As String = Split(recordstring, vbTab) 'create the record fields
                 Select Case recordarray(0) 'type of record
                     Case "Biog" 'birth record
-                        'birth record = (0) type (1) birthdate in ticks, (2) name
 
+                        'birth record = (0) type (1) birthdate in ticks, (2) name
                         Dim birthdate = New Date(Convert.ToInt64(recordarray(1)))
                         outputtext.Append("   " & recordarray(2) & " BORN on ")
                         outputtext.Append(CnvDate(CStr(birthdate)))
@@ -914,8 +914,8 @@ Public Class FrmMain
 
                     Case "Bday" 'birthday record
                         If FrmSelectView.CbxBirthdays.Checked Then
-                            'birthday record = (0) type, (1) birthday, (2) name, (3) birth date
 
+                            'birthday record = (0) type, (1) birthday, (2) name, (3) birth date
                             Dim birthday = New Date(Convert.ToInt64(recordarray(1)))
                             outputtext.Append("   " & recordarray(2) & " TURNED ")
                             Dim num As Long = DateDiff(DateInterval.Year, CDate(recordarray(3)), birthday)
@@ -925,8 +925,8 @@ Public Class FrmMain
                         End If
 
                     Case "Dead" 'death record
-                        'death record = (0) type, (1) death date in ticks, (2) name, (3) birth date
 
+                        'death record = (0) type, (1) death date in ticks, (2) name, (3) birth date
                         Dim death = New DateTime(Convert.ToInt64(recordarray(1)))
                         outputtext.Append("   " & recordarray(2) & " PASSED on " & CnvDate(CStr(death)))
                         If CDate(CnvDate(recordarray(3))).Month >= death.Month Then
@@ -945,8 +945,8 @@ Public Class FrmMain
                         outputtext.Append(vbCrLf & vbCrLf)
 
                     Case "Pres" 'president record
-                        'presidents record (0) type, (1) date term began (2) name
 
+                        'presidents record (0) type, (1) date term began (2) name
                         If FrmSelectView.CbxPresidents.Checked Then
                             outputtext.Append("   PRESIDENT " & recordarray(2) & " took the oath on ")
                             Dim termdate = New DateTime(Convert.ToInt64(recordarray(1)))
@@ -954,8 +954,8 @@ Public Class FrmMain
                             outputtext.Append(vbCrLf & vbCrLf)
                         End If
                     Case "Evnt" 'event record
-                        'event record = (0) type, (1) date of event in ticks (2) description of event
 
+                        'event record = (0) type, (1) date of event in ticks (2) description of event
                         If FrmSelectView.CbxEvents.Checked Then
                             Dim eventdate As New DateTime(Convert.ToInt64(recordarray(1)))
                             outputtext.Append("   " & recordarray(2).ToUpper & " on ")
@@ -976,15 +976,22 @@ Public Class FrmMain
     End Sub
 
     Private Sub BtnSelectView_Click(sender As Object, e As EventArgs) Handles BtnSelectView.Click
+        If BioName = "" Then
+            BioName = "All Biographies"
+        End If
+        FrmSelectView.LblSelectedBiography.Text = BioName
+        ShowViewForm = True 'used in FrmOpenBiology to not run the create textfile, show view form instead
         FrmSelectView.Show()
     End Sub
 
     Private Sub SelectToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SelectToolStripMenuItem.Click
+        ShowViewForm = False 'used in the FrmOpenBiology to run the create textfile, instead of view form
         FrmOpenBiography.BtnOption.Text = "Select"
         FrmOpenBiography.Show()
     End Sub
 
     Private Sub NewToolStripMenuItem_Click_1(sender As Object, e As EventArgs) Handles NewToolStripMenuItem.Click
+        FrmNewBio.BtnOption.Text = "Add"
         FrmNewBio.Show()
     End Sub
 
@@ -1004,12 +1011,6 @@ Public Class FrmMain
         FrmCatagory.Show()
     End Sub
 
-    Private Sub EditToolStripMenuItem2_Click(sender As Object, e As EventArgs) Handles EditToolStripMenuItem2.Click
-        FrmOpenCategory.Text = "Edit Category"
-        FrmOpenCategory.BtnOption.Text = "Edit"
-        FrmOpenCategory.Show()
-    End Sub
-
     Private Sub SelectToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles SelectToolStripMenuItem1.Click
         FrmOpenCategory.Text = "Select Category"
         FrmOpenCategory.BtnOption.Text = "Select"
@@ -1019,6 +1020,12 @@ Public Class FrmMain
     Private Sub DeleteToolStripMenuItem2_Click(sender As Object, e As EventArgs) Handles DeleteToolStripMenuItem2.Click
         FrmOpenCategory.Text = "Delete Category"
         FrmOpenCategory.BtnOption.Text = "Delete"
+        FrmOpenCategory.Show()
+    End Sub
+
+    Private Sub RenameToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles RenameToolStripMenuItem.Click
+        FrmOpenCategory.Text = "Rename Category"
+        FrmOpenCategory.BtnOption.Text = "Rename"
         FrmOpenCategory.Show()
     End Sub
 
