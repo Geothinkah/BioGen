@@ -15,9 +15,9 @@ Public Class FrmMain
     Dim ind As Byte = 0 'used in the tool strip menu ... it was added for the edit box menu
     Dim url As String 'used in the tool strip menu ... it was added for the edit box menu
 
-    Private Sub FrmMain_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        RtxBiography.Select() 'set the focus in the biography editor a richtextbox
-    End Sub
+    'Private Sub FrmMain_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+    '    RtxBiography.Select() 'set the focus in the biography editor a richtextbox
+    'End Sub
 
 
     Private Sub TimerMain_Tick(sender As Object, e As EventArgs) Handles TimerMain.Tick
@@ -892,7 +892,7 @@ Public Class FrmMain
 
 #Region "***** Display the TextFiles *****"
     Friend Sub DisplayTextFile(ByVal textfile As String)
-        TxtFacts.Clear() 'clear the textbox
+        TxtFacts.Text = Nothing 'clear the textbox
 
         'read the textfile and process each record
         Try
@@ -976,23 +976,13 @@ Public Class FrmMain
     End Sub
 
     Private Sub BtnSelectView_Click(sender As Object, e As EventArgs) Handles BtnSelectView.Click
-        If BioName = "" Then
-            BioName = "All Biographies"
-        End If
-        FrmSelectView.LblSelectedBiography.Text = BioName
-        ShowViewForm = True 'used in FrmOpenBiology to not run the create textfile, show view form instead
+        'If BioName = Nothing Then
+        '    BioName = "All Biographies"
+        'End If
+        ' FrmSelectView.LblSelectedBiography.Text = BioName
+        'ShowViewForm = True 'used in FrmOpenBiology to not run the create textfile, show view form instead
+
         FrmSelectView.Show()
-    End Sub
-
-    Private Sub SelectToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SelectToolStripMenuItem.Click
-        ShowViewForm = False 'used in the FrmOpenBiology to run the create textfile, instead of view form
-        FrmOpenBiography.BtnOption.Text = "Select"
-        FrmOpenBiography.Show()
-    End Sub
-
-    Private Sub NewToolStripMenuItem_Click_1(sender As Object, e As EventArgs) Handles NewToolStripMenuItem.Click
-        FrmNewBio.BtnOption.Text = "Add"
-        FrmNewBio.Show()
     End Sub
 
     Private Sub EditToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles EditToolStripMenuItem1.Click
@@ -1027,6 +1017,11 @@ Public Class FrmMain
         FrmOpenCategory.Text = "Rename Category"
         FrmOpenCategory.BtnOption.Text = "Rename"
         FrmOpenCategory.Show()
+    End Sub
+
+    Private Sub AddToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AddToolStripMenuItem.Click
+        FrmNewBio.BtnOption.Text = "Add"
+        FrmNewBio.Show()
     End Sub
 
 #End Region

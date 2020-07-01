@@ -27,10 +27,9 @@ Partial Class FrmMain
         Me.MnuMain = New System.Windows.Forms.MenuStrip()
         Me.BiographyToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.BiographyToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
-        Me.SelectToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.NewToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.EditToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.DeleteToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.AddToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.SettingsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.FactoryResetToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripSeparator5 = New System.Windows.Forms.ToolStripSeparator()
@@ -77,7 +76,7 @@ Partial Class FrmMain
         Me.FontDialog1 = New System.Windows.Forms.FontDialog()
         Me.lblSelectedBiography = New System.Windows.Forms.Label()
         Me.PnlSelectView = New System.Windows.Forms.Panel()
-        Me.LblView = New System.Windows.Forms.Label()
+        Me.LblBiography = New System.Windows.Forms.Label()
         Me.BtnSelectView = New System.Windows.Forms.Button()
         Me.PnlBiography = New System.Windows.Forms.Panel()
         Me.TextBox1 = New System.Windows.Forms.TextBox()
@@ -118,22 +117,10 @@ Partial Class FrmMain
         '
         'BiographyToolStripMenuItem1
         '
-        Me.BiographyToolStripMenuItem1.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SelectToolStripMenuItem, Me.NewToolStripMenuItem, Me.EditToolStripMenuItem1, Me.DeleteToolStripMenuItem1})
+        Me.BiographyToolStripMenuItem1.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AddToolStripMenuItem, Me.EditToolStripMenuItem1, Me.DeleteToolStripMenuItem1})
         Me.BiographyToolStripMenuItem1.Name = "BiographyToolStripMenuItem1"
         Me.BiographyToolStripMenuItem1.Size = New System.Drawing.Size(180, 26)
         Me.BiographyToolStripMenuItem1.Text = "Biography"
-        '
-        'SelectToolStripMenuItem
-        '
-        Me.SelectToolStripMenuItem.Name = "SelectToolStripMenuItem"
-        Me.SelectToolStripMenuItem.Size = New System.Drawing.Size(180, 26)
-        Me.SelectToolStripMenuItem.Text = "Select"
-        '
-        'NewToolStripMenuItem
-        '
-        Me.NewToolStripMenuItem.Name = "NewToolStripMenuItem"
-        Me.NewToolStripMenuItem.Size = New System.Drawing.Size(180, 26)
-        Me.NewToolStripMenuItem.Text = "New"
         '
         'EditToolStripMenuItem1
         '
@@ -146,6 +133,12 @@ Partial Class FrmMain
         Me.DeleteToolStripMenuItem1.Name = "DeleteToolStripMenuItem1"
         Me.DeleteToolStripMenuItem1.Size = New System.Drawing.Size(180, 26)
         Me.DeleteToolStripMenuItem1.Text = "Delete"
+        '
+        'AddToolStripMenuItem
+        '
+        Me.AddToolStripMenuItem.Name = "AddToolStripMenuItem"
+        Me.AddToolStripMenuItem.Size = New System.Drawing.Size(180, 26)
+        Me.AddToolStripMenuItem.Text = "Add"
         '
         'SettingsToolStripMenuItem
         '
@@ -214,7 +207,7 @@ Partial Class FrmMain
         '
         Me.LblCurrentBiography.Font = New System.Drawing.Font("Copperplate Gothic Bold", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LblCurrentBiography.ForeColor = System.Drawing.Color.Black
-        Me.LblCurrentBiography.Location = New System.Drawing.Point(97, 51)
+        Me.LblCurrentBiography.Location = New System.Drawing.Point(109, 51)
         Me.LblCurrentBiography.Name = "LblCurrentBiography"
         Me.LblCurrentBiography.Size = New System.Drawing.Size(381, 32)
         Me.LblCurrentBiography.TabIndex = 2
@@ -472,7 +465,7 @@ Partial Class FrmMain
         Me.PnlSelectView.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.PnlSelectView.BackColor = System.Drawing.Color.OldLace
-        Me.PnlSelectView.Controls.Add(Me.LblView)
+        Me.PnlSelectView.Controls.Add(Me.LblBiography)
         Me.PnlSelectView.Controls.Add(Me.BtnSelectView)
         Me.PnlSelectView.Controls.Add(Me.TxtFacts)
         Me.PnlSelectView.Location = New System.Drawing.Point(18, 97)
@@ -480,13 +473,13 @@ Partial Class FrmMain
         Me.PnlSelectView.Size = New System.Drawing.Size(550, 828)
         Me.PnlSelectView.TabIndex = 16
         '
-        'LblView
+        'LblBiography
         '
-        Me.LblView.Location = New System.Drawing.Point(18, 34)
-        Me.LblView.Name = "LblView"
-        Me.LblView.Size = New System.Drawing.Size(514, 20)
-        Me.LblView.TabIndex = 27
-        Me.LblView.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        Me.LblBiography.Location = New System.Drawing.Point(18, 34)
+        Me.LblBiography.Name = "LblBiography"
+        Me.LblBiography.Size = New System.Drawing.Size(514, 19)
+        Me.LblBiography.TabIndex = 27
+        Me.LblBiography.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'BtnSelectView
         '
@@ -680,11 +673,8 @@ Partial Class FrmMain
     Friend WithEvents Label5 As Label
     Friend WithEvents BtnSelectView As Button
     Friend WithEvents BiographyToolStripMenuItem1 As ToolStripMenuItem
-    Friend WithEvents SelectToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents NewToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents EditToolStripMenuItem1 As ToolStripMenuItem
     Friend WithEvents DeleteToolStripMenuItem1 As ToolStripMenuItem
-    Friend WithEvents LblView As Label
     Friend WithEvents MenuStrip1 As MenuStrip
     Friend WithEvents CatagoryToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents NewToolStripMenuItem2 As ToolStripMenuItem
@@ -693,4 +683,6 @@ Partial Class FrmMain
     Friend WithEvents SelectToolStripMenuItem1 As ToolStripMenuItem
     Friend WithEvents TextBox1 As TextBox
     Friend WithEvents RenameToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents LblBiography As Label
+    Friend WithEvents AddToolStripMenuItem As ToolStripMenuItem
 End Class

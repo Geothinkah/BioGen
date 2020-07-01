@@ -1,6 +1,6 @@
 ﻿Imports System.IO
 Module ModBioGen
-    Friend ShowViewForm As Boolean = False 'this is used in the FrmOpenBiology to show FrmSelectView or not
+    ' Friend ShowViewForm As Boolean = False 'this is used in the FrmOpenBiology to show FrmSelectView or not
 
 #Region "***** Category Variables *****"
     'catagory record = "(0) id, (1) name, (2) file name associated with this catagory

@@ -4,7 +4,6 @@ Public Class FrmNewBio
 
 #Region "***** Initialize *****"
     Private Sub FrmNewBio_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        FrmMain.LblView.Visible = False
         ReadSettings() ' need the next RecordID number
     End Sub
 
@@ -24,51 +23,10 @@ Public Class FrmNewBio
 
 #Region "***** Close *****"
 
-    'Private Sub BtnAdd_Click(sender As Object, e As EventArgs) Handles BtnAdd.Click
-
-    '    AddRecord()
-
-    '    'save the settings file
-    '    SaveSettings()
-
-    '    'ready main form
-    '    FrmMain.Enabled = True
-
-    '    'creating the textfile
-    '    TextFileName = BiographyRecord(0) & "_" & BiographyRecord(1).Replace(" ", "") & ".tsv" ' remove spaces from their name for use in the filename
-    '    FrmMain.BioGenDatabase(TextFileName) 'create the database for this biography
-
-    '    'display the database  
-    '    FrmMain.DisplayTextFile(TextFileName)
-
-    '    FrmMain.LblView.Visible = True
-    '    FrmMain.LblView.Text = BiographyRecord(1)
-    '    Close()
-    'End Sub
-
     Private Sub BtnExit_Click(sender As Object, e As EventArgs) Handles BtnExit.Click
-        FrmMain.LblView.Visible = True
         Close()
     End Sub
 
-    'Private Sub BtnSave_Click(sender As Object, e As EventArgs) Handles BtnSave.Click
-    '    If Trim(BioName) = "" Then
-    '        Beep()
-    '        MsgBox("Name is a required field")
-    '        TxtName.Select()
-    '        Return
-    '    End If
-
-    '    'Delete Files
-    '    Try
-    '        My.Computer.FileSystem.DeleteFile(DataPath & "\" & TextFileName)
-    '    Catch ex As Exception
-    '    End Try
-    '    Dim unused = DeleteRecord(DataPath, BiographyFile, CStr(BioID), 0)
-    '    AddRecord()
-    '    FrmOpenBiography.Show()
-    '    Close()
-    'End Sub
     Private Sub AddRecord()
         If Trim(TxtName.Text) IsNot "" Then
 
@@ -178,6 +136,10 @@ Public Class FrmNewBio
                     TxtName.Select()
                     Return
                 End If
+                'create the text file
+                FrmMain.BioGenDatabase(TextFileName)
+                'display the text file
+                FrmMain.DisplayTextFile(TextFileName)
                 SaveSettings()
                 Close()
 
@@ -196,10 +158,10 @@ Public Class FrmNewBio
                 End Try
                 Dim unused = DeleteRecord(DataPath, BiographyFile, CStr(BioID), 0)
                 AddRecord()
-
-                FrmOpenBiography.BtnOption.Text = "Select"
-
-                FrmOpenBiography.Show()
+                'create the textfile
+                FrmMain.BioGenDatabase(TextFileName)
+                'display the textfile
+                FrmMain.DisplayTextFile(TextFileName)
                 Close()
             Case Else
                 MsgBox("Unknow Option")

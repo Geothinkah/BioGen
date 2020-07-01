@@ -35,7 +35,7 @@ Partial Class FrmOpenBiography
         '
         Me.LstvOpenBiography.Activation = System.Windows.Forms.ItemActivation.OneClick
         Me.LstvOpenBiography.AutoArrange = False
-        Me.LstvOpenBiography.BackColor = System.Drawing.Color.OldLace
+        Me.LstvOpenBiography.BackColor = System.Drawing.Color.Bisque
         Me.LstvOpenBiography.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.LstvOpenBiography.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.txtvName, Me.txtvBirthDate, Me.txtvLiving})
         Me.LstvOpenBiography.FullRowSelect = True
@@ -101,7 +101,7 @@ Partial Class FrmOpenBiography
         Me.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
-        Me.Location = New System.Drawing.Point(25, 155)
+        Me.Location = New System.Drawing.Point(25, 180)
         Me.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.MaximizeBox = False
         Me.MinimizeBox = False

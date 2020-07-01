@@ -24,14 +24,12 @@ Partial Class FrmSelectView
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FrmSelectView))
         Me.BtnExit = New System.Windows.Forms.Button()
-        Me.CbxSelectBiographies = New System.Windows.Forms.ComboBox()
-        Me.Label1 = New System.Windows.Forms.Label()
-        Me.LblSelectedBiography = New System.Windows.Forms.Label()
         Me.BtnView = New System.Windows.Forms.Button()
         Me.CbxPresidents = New System.Windows.Forms.CheckBox()
         Me.CbxEvents = New System.Windows.Forms.CheckBox()
         Me.CbxBirthdays = New System.Windows.Forms.CheckBox()
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.BtnSelectBiography = New System.Windows.Forms.Button()
         Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -46,40 +44,12 @@ Partial Class FrmSelectView
         Me.BtnExit.Text = "Exit"
         Me.BtnExit.UseVisualStyleBackColor = False
         '
-        'CbxSelectBiographies
-        '
-        Me.CbxSelectBiographies.BackColor = System.Drawing.Color.Bisque
-        Me.CbxSelectBiographies.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.CbxSelectBiographies.FormattingEnabled = True
-        Me.CbxSelectBiographies.Items.AddRange(New Object() {"All", "Individual"})
-        Me.CbxSelectBiographies.Location = New System.Drawing.Point(120, 54)
-        Me.CbxSelectBiographies.Name = "CbxSelectBiographies"
-        Me.CbxSelectBiographies.Size = New System.Drawing.Size(102, 28)
-        Me.CbxSelectBiographies.TabIndex = 1
-        '
-        'Label1
-        '
-        Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(21, 57)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(93, 20)
-        Me.Label1.TabIndex = 2
-        Me.Label1.Text = "Biographies"
-        '
-        'LblSelectedBiography
-        '
-        Me.LblSelectedBiography.Location = New System.Drawing.Point(3, 19)
-        Me.LblSelectedBiography.Name = "LblSelectedBiography"
-        Me.LblSelectedBiography.Size = New System.Drawing.Size(270, 20)
-        Me.LblSelectedBiography.TabIndex = 3
-        Me.LblSelectedBiography.Text = "Choose All or Individual"
-        Me.LblSelectedBiography.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        '
         'BtnView
         '
+        Me.BtnView.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.BtnView.BackColor = System.Drawing.Color.Bisque
         Me.BtnView.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.BtnView.Location = New System.Drawing.Point(152, 166)
+        Me.BtnView.Location = New System.Drawing.Point(200, 188)
         Me.BtnView.Name = "BtnView"
         Me.BtnView.Size = New System.Drawing.Size(70, 31)
         Me.BtnView.TabIndex = 4
@@ -125,39 +95,46 @@ Partial Class FrmSelectView
         'Panel1
         '
         Me.Panel1.BackColor = System.Drawing.Color.OldLace
+        Me.Panel1.Controls.Add(Me.BtnSelectBiography)
         Me.Panel1.Controls.Add(Me.BtnView)
         Me.Panel1.Controls.Add(Me.CbxEvents)
-        Me.Panel1.Controls.Add(Me.CbxSelectBiographies)
         Me.Panel1.Controls.Add(Me.CbxBirthdays)
-        Me.Panel1.Controls.Add(Me.Label1)
         Me.Panel1.Controls.Add(Me.CbxPresidents)
-        Me.Panel1.Controls.Add(Me.LblSelectedBiography)
         Me.Panel1.Location = New System.Drawing.Point(12, 12)
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(273, 222)
         Me.Panel1.TabIndex = 22
+        '
+        'BtnSelectBiography
+        '
+        Me.BtnSelectBiography.BackColor = System.Drawing.Color.Bisque
+        Me.BtnSelectBiography.Location = New System.Drawing.Point(3, 3)
+        Me.BtnSelectBiography.Name = "BtnSelectBiography"
+        Me.BtnSelectBiography.Size = New System.Drawing.Size(267, 36)
+        Me.BtnSelectBiography.TabIndex = 22
+        Me.BtnSelectBiography.Text = "Select Biography"
+        Me.BtnSelectBiography.UseVisualStyleBackColor = False
         '
         'FrmSelectView
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.DeepSkyBlue
-        Me.ClientSize = New System.Drawing.Size(297, 247)
+        Me.ClientSize = New System.Drawing.Size(297, 250)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.BtnExit)
         Me.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
-        Me.Location = New System.Drawing.Point(150, 155)
+        Me.Location = New System.Drawing.Point(140, 180)
         Me.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.MaximizeBox = False
-        Me.MaximumSize = New System.Drawing.Size(297, 247)
+        Me.MaximumSize = New System.Drawing.Size(297, 250)
         Me.MinimizeBox = False
-        Me.MinimumSize = New System.Drawing.Size(297, 247)
+        Me.MinimumSize = New System.Drawing.Size(297, 250)
         Me.Name = "FrmSelectView"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.Manual
         Me.Text = "Select View"
-        Me.TopMost = True
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
         Me.ResumeLayout(False)
@@ -165,12 +142,10 @@ Partial Class FrmSelectView
     End Sub
 
     Friend WithEvents BtnExit As Button
-    Friend WithEvents CbxSelectBiographies As ComboBox
-    Friend WithEvents Label1 As Label
-    Friend WithEvents LblSelectedBiography As Label
     Friend WithEvents BtnView As Button
     Friend WithEvents CbxPresidents As CheckBox
     Friend WithEvents CbxEvents As CheckBox
     Friend WithEvents CbxBirthdays As CheckBox
     Friend WithEvents Panel1 As Panel
+    Friend WithEvents BtnSelectBiography As Button
 End Class

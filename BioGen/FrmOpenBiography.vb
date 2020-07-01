@@ -5,7 +5,8 @@ Public Class FrmOpenBiography
     Dim indx As Integer 'this holds the index of the item selected
 
     Private Sub FrmOpenBiography_Load(sender As Object, e As EventArgs) Handles Me.Load
-        FrmMain.LblView.Visible = False
+        FrmMain.TxtFacts.Text = Nothing 'clear the view area
+        BtnOption.Enabled = False 'disable the select button until they select something
         LoadBiographies()
     End Sub
 
@@ -38,6 +39,7 @@ Public Class FrmOpenBiography
 
     Private Sub LstvOpenBiography_SelectedIndexChanged(sender As Object, e As EventArgs) Handles LstvOpenBiography.SelectedIndexChanged
         Try
+
             indx = LstvOpenBiography.SelectedIndices(0)
             BiographyRecord = Split(BiographyArray(indx), delimiter) '** Module Array - fills the array with the records variables
             BiographyArrayIndex = indx
@@ -49,10 +51,16 @@ Public Class FrmOpenBiography
             BioDeathDate = CDate(BiographyRecord(4))
             BioNickName = BiographyRecord(5)
             TextFileName = BiographyRecord(0) & "_" & BiographyRecord(1).Replace(" ", "") & ".tsv" ' remove spaces from their name for use in the filename
+            'delete text file to keep the computer clean
+            Try
+                My.Computer.FileSystem.DeleteFile(DataPath & "\" & TextFileName)
+            Catch ex As Exception
+            End Try
+            BtnOption.Enabled = True
         Catch ex As Exception
         End Try
 
-        FrmMain.LblView.Visible = False
+        ' FrmMain.LblView.Visible = False
     End Sub
 
     Private Sub AssignVariables()
@@ -70,9 +78,15 @@ Public Class FrmOpenBiography
         BioDeathDate = CDate(BiographyRecord(4))
         BioNickName = BiographyRecord(5)
         TextFileName = BioID & "_" & BioName.Replace(" ", "") & ".tsv" ' remove spaces from their name for use in the filename
+
     End Sub
 
     Private Sub BtnExit_Click(sender As Object, e As EventArgs) Handles BtnExit.Click
+        If BioName = Nothing Then 'nothing was selected
+            Beep()
+            MsgBox("Please Select a Biography")
+            Return
+        End If
         Close()
     End Sub
 
@@ -87,15 +101,8 @@ Public Class FrmOpenBiography
 
                 'Assign Module level variables
                 AssignVariables()
-                If ShowViewForm Then
-                    FrmSelectView.LblSelectedBiography.Text = BioName
-                    FrmMain.LblView.Visible = False
-                Else
-                    FrmMain.BioGenDatabase(TextFileName)
-                    FrmMain.DisplayTextFile(TextFileName)
-                    FrmMain.LblView.Text = BioName
-                    FrmMain.LblView.Visible = True
-                End If
+                FrmSelectView.Show()
+                FrmMain.LblBiography.Text = BioName
                 Close()
 
             Case "Edit"
@@ -131,8 +138,8 @@ Public Class FrmOpenBiography
                 End If
                 FrmMain.lblSelectedBiography.Text = "No Biography Selected"
                 FrmMain.TxtFacts.Text = Nothing
-                FrmMain.LblView.Visible = True
-                FrmMain.LblView.Text = "No Biography Selected"
+                'FrmMain.LblView.Visible = True
+                'FrmMain.LblView.Text = "No Biography Selected"
                 Close()
             Case Else
 
@@ -140,6 +147,6 @@ Public Class FrmOpenBiography
     End Sub
 
     Private Sub FrmOpenBiography_Closed(sender As Object, e As EventArgs) Handles Me.Closed
-        FrmMain.LblView.Visible = True
+        'FrmMain.LblView.Visible = True
     End Sub
 End Class
