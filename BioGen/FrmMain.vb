@@ -258,13 +258,14 @@ Public Class FrmMain
 
 #End Region
 
-#Region "*** Reset all files (SetUpProgram) *****"
+#Region "----- Reset all files -----"
 
     Friend Sub SetUpProgram()
 
         'disable the form while the files are being created
         Enabled = False
 
+#Region "----- Delete Files -----"
         'Delete Files
         Try
             My.Computer.FileSystem.DeleteFile(DataPath & "\" & SettingsFile)
@@ -277,19 +278,141 @@ Public Class FrmMain
         End Try
 
         Try
-            My.Computer.FileSystem.DeleteFile(DataPath & "\" & PresidentsFile)
-        Catch ex As Exception
-        End Try
-        Try
-            My.Computer.FileSystem.DeleteFile(DataPath & "\" & EventsFile)
-        Catch ex As Exception
-        End Try
-
-        Try
             My.Computer.FileSystem.DeleteFile(DataPath & "\" & CategoryFile)
         Catch ex As Exception
         End Try
+#End Region
 
+#Region "----- Create The Presidents Category -----"
+        'Create Presidents File
+        'record = (0) description, (1) date, (2) end date, (3) range
+        WritePresEvents("President George Washington", "7/1/1789", "4/4/1797", "Yes")
+        WritePresEvents("President John Adams", "4/4/1797", "4/4/1801", "Yes")
+        WritePresEvents("President Thomas Jefferson", "4/4/1801", "4/4/1809", "Yes")
+        WritePresEvents("President James Madison", "4/4/1809", "4/4/1817", "Yes")
+        WritePresEvents("President James Monroe", "4/4/1817", "4/4/1825", "Yes")
+        WritePresEvents("President John Q. Adams", "4/4/1825", "4/4/1829", "Yes")
+        WritePresEvents("President Andrew Jackson", "4/4/1829", "4/4/1837", "Yes")
+        WritePresEvents("President Martin Van Buren", "4/4/1837", "3/4/1841", "Yes")
+        WritePresEvents("President William H. Harrison", "3/4/1841", "4/4/1841", "Yes")
+        WritePresEvents("President John Tyler", "4/6/1841", "3/4/1845", "Yes")
+        WritePresEvents("President James K. Polk", "3/4/1845", "3/4/1849", "Yes")
+        WritePresEvents("President Zachary Taylor", "3/5/1849", "7/9/1850", "Yes")
+        WritePresEvents("President Millard Fillmore", "7/10/1850", "3/4/1853", "Yes")
+        WritePresEvents("President Franklin Pierce", "3/4/1853", "3/4/1857", "Yes")
+        WritePresEvents("President James Buchanan", "3/4/1857", "4/4/1861", "Yes")
+        WritePresEvents("President Abrham Lincoln", "3/4/1861", "4/15/1865", "Yes")
+        WritePresEvents("President Andrew Johnson", "4/15/1865", "3/4/1869", "Yes")
+        WritePresEvents("President Ulysses S. Grant", "3/4/1869", "3/4/1877", "Yes")
+        WritePresEvents("President Rutherford B. Hayes", "3/4/1877", "3/4/1881", "Yes")
+        WritePresEvents("President James Garfield", "3/4/1881", "9/19/1881", "Yes")
+        WritePresEvents("President Chester A. Arthur", "9/20/1881", "3/4/1885", "Yes")
+        WritePresEvents("President Grover Cleveland", "3/4/1885", "3/4/1889", "Yes")
+        WritePresEvents("President Benjamin Harrison", "3/4/1889", "3/4/1893", "Yes")
+        WritePresEvents("President Grover Cleveland", "3/4/1893", "3/4/1897", "Yes")
+        WritePresEvents("President William McKinley", "3/4/1897", "9/14/1901", "Yes")
+        WritePresEvents("President Theodore Roosevelt", "9/14/1901", "4/4/1909", "Yes")
+        WritePresEvents("President William H. Taft", "3/4/1909", "3/4/1913", "Yes")
+        WritePresEvents("President Woodrow Wilson", "3/4/1913", "3/4/1921", "Yes")
+        WritePresEvents("President Warren Harding", "3/4/1921", "8/2/1923", "Yes")
+        WritePresEvents("President Calvin Coolidge", "8/3/1923", "3/4/1929", "Yes")
+        WritePresEvents("President Herbert Hoover", "3/4/1929", "3/4/1933", "Yes")
+        WritePresEvents("President Franklin D Roosevelt", "3/4/1933", "4/12/1945", "Yes")
+        WritePresEvents("President Harry S Truman", "4/12/1945", "1/20/1953", "Yes")
+        WritePresEvents("President Dwight Eisenhower", "1/20/1953", "1/20/1961", "Yes")
+        WritePresEvents("President John F. Kennedy", "1/20/1961", "11/22/1963", "Yes")
+        WritePresEvents("President Lyndon Johnson", "11/22/1963", "1/20/1969", "Yes")
+        WritePresEvents("President Richard Nixon", "1/20/1969", "8/9/1974", "Yes")
+        WritePresEvents("President Gerald Ford", "8/9/1974", "1/20/1977", "Yes")
+        WritePresEvents("President Jimmy Carter", "1/20/1977", "1/20/1981", "Yes")
+        WritePresEvents("President Ronald Reagan", "1/20/1981", "1/20/1989", "Yes")
+        WritePresEvents("President George H.W. Bush", "1/20/1989", "1/20/1993", "Yes")
+        WritePresEvents("President Bill Clinton", "1/20/1993", "1/20/2001", "Yes")
+        WritePresEvents("President George W. Bush", "1/20/2001", "1/20/2009", "Yes")
+        WritePresEvents("PRESIDENT Barack Obama", "1/20/2009", "1/20/2017", "Yes")
+        WritePresEvents("president donald j. trump", "1/20/2017", "1/20/2021", "Yes")
+        WritePresEvents("PRESIDENT Joe Biden", "1/20/2021", "1/20/2029", "Yes")
+        WritePresEvents("President Kennedy Assassinated", "11/22/1963", "11/22/1963", "No")
+        WritePresEvents("Robert Kennedy Assassinated", "6/6/1968", "6/6/1968", "No")
+        WritePresEvents("President Lincoln Assassinated", "4/15/1865", "4/15/1865", "No")
+
+#End Region
+
+#Region "----- Create The Miscellaneous Category -----"
+        'add the Miscellaneous category file with some records
+        'record = (0) description, (1) date, (2) end date, (3) range (Yes/No)
+        WriteMiscEvents("First Man on the Moon", "11/20/1969", "11/20/1969", "No")
+        WriteMiscEvents("Martin Luther King Jr Assassinated", "4/4/1968", "4/4/1968", "No")
+        WriteMiscEvents("Johnny Cash Died", "12/12/2003", "12/12/2003", "No")
+        WriteMiscEvents("Wright Brothers first flight!", "12/17/1903", "12/17/1903", "No")
+        WriteMiscEvents("Elvis Presley Died.", "8/16/1977", "8/16/1977", "No")
+        WriteMiscEvents("Final Sequencing of the Human Genome!", "4/14/2003", "4/14/2003", "No")
+        WriteMiscEvents("Katrina made Landfall in New Orleans", "8/29/2005", "8/29/2005", "No")
+        WriteMiscEvents("Black Tuesday Stock Market Crash", "10/29/1929", "10/29/1929", "No")
+        WriteMiscEvents("The Beatles First arrive in America!", "2/7/1964", "2/7/1964", "No")
+
+
+        'add the category Miscellanous record to the category file
+        Try
+            'True appends the record to the file. False replaces the file.
+
+            Dim warcatwriter As New StreamWriter(DataPath & "\" & CategoryFile, True)
+            Dim catrecord As String = Nothing
+            catrecord = Nothing
+            catrecord = "502" & vbTab & "Miscellaneous" & vbTab & "502_Miscellaneous.tsv"
+            warcatwriter.WriteLine(catrecord)
+            warcatwriter.Close()
+
+        Catch ex As Exception
+            Dim unused = MsgBox("Error trying to write a Wars' Category Record.")
+        End Try
+#End Region
+
+#Region "----- Create The Wars Category File -----"
+        'Create Wars File
+        'record = (0) description, (1) date, (2) end date, (3) range
+
+        WriteWarsEvents("Terrorist Attack on World Trade Center", "9/11/2001", "9/11/2001", "No")
+        WriteWarsEvents("Attack on Pearl Harbor", "12/2/1941", "12/2/1941", "No")
+        WriteWarsEvents("World War I began", "7/28/1914", "7/28/1914", "No")
+        WriteWarsEvents("World War I ends", "11/11/1918", "11/11/1918", "No")
+        WriteWarsEvents("World War II began", "11/1/1939", "11/1/1939", "No")
+        WriteWarsEvents("World War II ends", "9/2/1945", "9/2/1945", "No")
+        WriteWarsEvents("Vietnam Era Started for Veterans", "2/28/1961", "2/28/1961", "No")
+        WriteWarsEvents("Vietnam Era Ended for Veterans", "5/7/1975", "5/7/1975", "No")
+        WriteWarsEvents("American Revolutionary War began", "4/19/1775", "4/19/1775", "No")
+        WriteWarsEvents("American Revolutionary War ended", "9/3/1783", "9/3/1783", "No")
+        WriteWarsEvents("Korean War began", "6/25/1950", "6/25/1950", "No")
+        WriteWarsEvents("Korean War ended", "7/27/1953", "7/27/1953", "No")
+        WriteWarsEvents("Civil War Began", "4/12/1861", "4/12/1861", "No")
+        WriteWarsEvents("Civil War Ended", "4/9/1865", "4/9/1865", "No")
+        WriteWarsEvents("Atom Bomb droped on Hiroshima", "8/6/1945", "8/6/1945", "No")
+        WriteWarsEvents("Atom Bomb droped on Nagasaki", "8/9/1945", "8/9/1945", "No")
+        WriteWarsEvents("Gulf War starts", "8/2/1990", "8/2/1990", "No")
+        WriteWarsEvents("Gulf War ends", "2/28/1991", "2/28/1991", "No")
+        WriteWarsEvents("The U.S. War in Afghanistan started", "10/7/2001", "10/7/2001", "No")
+        WriteWarsEvents("The U.S. War in Iraq started", "3/20/2003", "3/20/2003", "No")
+        WriteWarsEvents("The U.S. War in Iraq ended", "12/18/2011", "12/18/2011", "No")
+        WriteWarsEvents("U.S. involved in 134 'wars' ~ PRX", "9/16/2014", "9/16/2014", "No")
+        WriteWarsEvents("The U.S. has been at war 225 out of 243 years since 1776 ~ The News", "1/9/2020", "1/9/2020", "No")
+
+        'add the category war record to the category file
+        Try
+            'True appends the record to the file. False replaces the file.
+
+            Dim warcatwriter As New StreamWriter(DataPath & "\" & CategoryFile, True)
+            Dim catrecord As String = Nothing
+            catrecord = Nothing
+            catrecord = "501" & vbTab & "Wars" & vbTab & "501_Wars.tsv"
+            warcatwriter.WriteLine(catrecord)
+            warcatwriter.Close()
+
+        Catch ex As Exception
+            Dim unused = MsgBox("Error trying to write a Wars' Category Record.")
+        End Try
+#End Region
+
+#Region "----- Create The Biography File -----"
         'Create Biography File
         'biography record = (0) id, (1) name, (2) birth date, (3) living Yes/No, (4) death date, (5) nickname
         RecordID += 1
@@ -336,7 +459,89 @@ Public Class FrmMain
         WriteBiographies(DataPath, BiographyFile, CStr(RecordID), "Christopher Henry Benner", "5/24/1757", "No", "9/8/1842", "Christopher")
         RecordID += 1
         WriteBiographies(DataPath, BiographyFile, CStr(RecordID), "Philip Earl Jenkins", "3/31/1936", "No", "12/28/1989", "Phil")
+#End Region
 
+#Region "XXXXX Old SETUP ROUTINE XXXXX"
+        Try
+            My.Computer.FileSystem.DeleteFile(DataPath & "\" & PresidentsFile)
+        Catch ex As Exception
+        End Try
+        Try
+            My.Computer.FileSystem.DeleteFile(DataPath & "\" & EventsFile)
+        Catch ex As Exception
+        End Try
+
+#Region "XXXXX Create The Presidents Category XXXXX"
+        'Create Presidents File
+        'presidents record = (0) number of their presidency, (2) name, (3) term begin date, (4) term end date
+        WritePresidents("1", "George Washington", "7/1/1789", "4/4/1797")
+        WritePresidents("2", "John Adams", "4/4/1797", "4/4/1801")
+        WritePresidents("3", "Thomas Jefferson", "4/4/1801", "4/4/1809")
+        WritePresidents("4", "James Madison", "4/4/1809", "4/4/1817")
+        WritePresidents("5", "James Monroe", "4/4/1817", "4/4/1825")
+        WritePresidents("6", "John Q. Adams", "4/4/1825", "4/4/1829")
+        WritePresidents("7", "Andrew Jackson", "4/4/1829", "4/4/1837")
+        WritePresidents("8", "Martin Van Buren", "4/4/1837", "3/4/1841")
+        WritePresidents("9", "William H. Harrison", "3/4/1841", "4/4/1841")
+        WritePresidents("10", "John Tyler", "4/6/1841", "3/4/1845")
+        WritePresidents("11", "James K. Polk", "3/4/1845", "3/4/1849")
+        WritePresidents("12", "Zachary Taylor", "3/5/1849", "7/9/1850")
+        WritePresidents("13", "Millard Fillmore", "7/10/1850", "3/4/1853")
+        WritePresidents("14", "Franklin Pierce", "3/4/1853", "3/4/1857")
+        WritePresidents("15", "James Buchanan", "3/4/1857", "4/4/1861")
+        WritePresidents("16", "Abrham Lincoln", "3/4/1861", "4/15/1865")
+        WritePresidents("17", "Andrew Johnson", "4/15/1865", "3/4/1869")
+        WritePresidents("18", "Ulysses S. Grant", "3/4/1869", "3/4/1877")
+        WritePresidents("19", "Rutherford B. Hayes", "3/4/1877", "3/4/1881")
+        WritePresidents("20", "James Garfield", "3/4/1881", "9/19/1881")
+        WritePresidents("21", "Chester A. Arthur", "9/20/1881", "3/4/1885")
+        WritePresidents("22", "Grover Cleveland", "3/4/1885", "3/4/1889")
+        WritePresidents("23", "Benjamin Harrison", "3/4/1889", "3/4/1893")
+        WritePresidents("24", "Grover Cleveland", "3/4/1893", "3/4/1897")
+        WritePresidents("25", "William McKinley", "3/4/1897", "9/14/1901")
+        WritePresidents("26", "Theodore Roosevelt", "9/14/1901", "4/4/1909")
+        WritePresidents("27", "William H. Taft", "3/4/1909", "3/4/1913")
+        WritePresidents("28", "Woodrow Wilson", "3/4/1913", "3/4/1921")
+        WritePresidents("29", "Warren Harding", "3/4/1921", "8/2/1923")
+        WritePresidents("30", "Calvin Coolidge", "8/3/1923", "3/4/1929")
+        WritePresidents("31", "Herbert Hoover", "3/4/1929", "3/4/1933")
+        WritePresidents("32", "Franklin D Roosevelt", "3/4/1933", "4/12/1945")
+        WritePresidents("33", "Harry S Truman", "4/12/1945", "1/20/1953")
+        WritePresidents("34", "Dwight Eisenhower", "1/20/1953", "1/20/1961")
+        WritePresidents("35", "John F. Kennedy", "1/20/1961", "11/22/1963")
+        WritePresidents("36", "Lyndon Johnson", "11/22/1963", "1/20/1969")
+        WritePresidents("37", "Richard Nixon", "1/20/1969", "8/9/1974")
+        WritePresidents("38", "Gerald Ford", "8/9/1974", "1/20/1977")
+        WritePresidents("39", "Jimmy Carter", "1/20/1977", "1/20/1981")
+        WritePresidents("40", "Ronald Reagan", "1/20/1981", "1/20/1989")
+        WritePresidents("41", "George H.W. Bush", "1/20/1989", "1/20/1993")
+        WritePresidents("42", "Bill Clinton", "1/20/1993", "1/20/2001")
+        WritePresidents("43", "George W. Bush", "1/20/2001", "1/20/2009")
+        WritePresidents("44", "Barack Obama", "1/20/2009", "1/20/2017")
+        WritePresidents("45", "Donald J. Trump", "1/20/2017", "1/20/2021")
+        WritePresidents("46", "Joe Biden", "1/20/2021", "1/20/2029")
+
+        SaveSettings()
+        'settings file = (0) record id - used for all added records
+
+        'add the presidents record to the category file
+        Try
+            'True appends the record to the file. False replaces the file.
+
+            Dim prescatwriter As New StreamWriter(DataPath & "\" & CategoryFile, True)
+            Dim catrecord As String = Nothing
+            catrecord = Nothing
+            catrecord = "500" & vbTab & "Presidents" & vbTab & "500_Presidents.tsv"
+            prescatwriter.WriteLine(catrecord)
+            prescatwriter.Close()
+
+        Catch ex As Exception
+            Dim unused = MsgBox("Error trying to write a President's Category Record.")
+        End Try
+
+#End Region
+
+#Region "XXXXX Create The Events File Category XXXXX"
         'Create Events File
         'events record = (0) type "Evnt", (1) date, (2) description
 
@@ -394,203 +599,13 @@ Public Class FrmMain
         WriteEvents("Evnt", "4/12/1861", "Civil War Began")
         RecordID += 1
         WriteEvents("Evnt", "4/9/1865", "Civil War Ended")
+#End Region
 
-        'Create Presidents File
-        'presidents record = (0) number of their presidency, (2) name, (3) term begin date, (4) term end date
-        WritePresidents("1", "George Washington", "7/1/1789", "4/4/1797")
-        WritePresidents("2", "John Adams", "4/4/1797", "4/4/1801")
-        WritePresidents("3", "Thomas Jefferson", "4/4/1801", "4/4/1809")
-        WritePresidents("4", "James Madison", "4/4/1809", "4/4/1817")
-        WritePresidents("5", "James Monroe", "4/4/1817", "4/4/1825")
-        WritePresidents("6", "John Q. Adams", "4/4/1825", "4/4/1829")
-        WritePresidents("7", "Andrew Jackson", "4/4/1829", "4/4/1837")
-        WritePresidents("8", "Martin Van Buren", "4/4/1837", "3/4/1841")
-        WritePresidents("9", "William H. Harrison", "3/4/1841", "4/4/1841")
-        WritePresidents("10", "John Tyler", "4/6/1841", "3/4/1845")
-        WritePresidents("11", "James K. Polk", "3/4/1845", "3/4/1849")
-        WritePresidents("12", "Zachary Taylor", "3/5/1849", "7/9/1850")
-        WritePresidents("13", "Millard Fillmore", "7/10/1850", "3/4/1853")
-        WritePresidents("14", "Franklin Pierce", "3/4/1853", "3/4/1857")
-        WritePresidents("15", "James Buchanan", "3/4/1857", "4/4/1861")
-        WritePresidents("16", "Abrham Lincoln", "3/4/1861", "4/15/1865")
-        WritePresidents("17", "Andrew Johnson", "4/15/1865", "3/4/1869")
-        WritePresidents("18", "Ulysses S. Grant", "3/4/1869", "3/4/1877")
-        WritePresidents("19", "Rutherford B. Hayes", "3/4/1877", "3/4/1881")
-        WritePresidents("20", "James Garfield", "3/4/1881", "9/19/1881")
-        WritePresidents("21", "Chester A. Arthur", "9/20/1881", "3/4/1885")
-        WritePresidents("22", "Grover Cleveland", "3/4/1885", "3/4/1889")
-        WritePresidents("23", "Benjamin Harrison", "3/4/1889", "3/4/1893")
-        WritePresidents("24", "Grover Cleveland", "3/4/1893", "3/4/1897")
-        WritePresidents("25", "William McKinley", "3/4/1897", "9/14/1901")
-        WritePresidents("26", "Theodore Roosevelt", "9/14/1901", "4/4/1909")
-        WritePresidents("27", "William H. Taft", "3/4/1909", "3/4/1913")
-        WritePresidents("28", "Woodrow Wilson", "3/4/1913", "3/4/1921")
-        WritePresidents("29", "Warren Harding", "3/4/1921", "8/2/1923")
-        WritePresidents("30", "Calvin Coolidge", "8/3/1923", "3/4/1929")
-        WritePresidents("31", "Herbert Hoover", "3/4/1929", "3/4/1933")
-        WritePresidents("32", "Franklin D Roosevelt", "3/4/1933", "4/12/1945")
-        WritePresidents("33", "Harry S Truman", "4/12/1945", "1/20/1953")
-        WritePresidents("34", "Dwight Eisenhower", "1/20/1953", "1/20/1961")
-        WritePresidents("35", "John F. Kennedy", "1/20/1961", "11/22/1963")
-        WritePresidents("36", "Lyndon Johnson", "11/22/1963", "1/20/1969")
-        WritePresidents("37", "Richard Nixon", "1/20/1969", "8/9/1974")
-        WritePresidents("38", "Gerald Ford", "8/9/1974", "1/20/1977")
-        WritePresidents("39", "Jimmy Carter", "1/20/1977", "1/20/1981")
-        WritePresidents("40", "Ronald Reagan", "1/20/1981", "1/20/1989")
-        WritePresidents("41", "George H.W. Bush", "1/20/1989", "1/20/1993")
-        WritePresidents("42", "Bill Clinton", "1/20/1993", "1/20/2001")
-        WritePresidents("43", "George W. Bush", "1/20/2001", "1/20/2009")
-        WritePresidents("44", "Barack Obama", "1/20/2009", "1/20/2017")
-        WritePresidents("45", "Donald J. Trump", "1/20/2017", "1/20/2021")
-        WritePresidents("46", "Joe Biden", "1/20/2021", "1/20/2029")
-
-        SaveSettings()
-        'settings file = (0) record id - used for all added records
-
-        'Create Presidents File
-        'record = (0) description, (1) date, (2) end date, (3) range
-        WritePresEvents("President George Washington", "7/1/1789", "4/4/1797", "Yes")
-        WritePresEvents("President John Adams", "4/4/1797", "4/4/1801", "Yes")
-        WritePresEvents("President Thomas Jefferson", "4/4/1801", "4/4/1809", "Yes")
-        WritePresEvents("President James Madison", "4/4/1809", "4/4/1817", "Yes")
-        WritePresEvents("President James Monroe", "4/4/1817", "4/4/1825", "Yes")
-        WritePresEvents("President John Q. Adams", "4/4/1825", "4/4/1829", "Yes")
-        WritePresEvents("President Andrew Jackson", "4/4/1829", "4/4/1837", "Yes")
-        WritePresEvents("President Martin Van Buren", "4/4/1837", "3/4/1841", "Yes")
-        WritePresEvents("President William H. Harrison", "3/4/1841", "4/4/1841", "Yes")
-        WritePresEvents("President John Tyler", "4/6/1841", "3/4/1845", "Yes")
-        WritePresEvents("President James K. Polk", "3/4/1845", "3/4/1849", "Yes")
-        WritePresEvents("President Zachary Taylor", "3/5/1849", "7/9/1850", "Yes")
-        WritePresEvents("President Millard Fillmore", "7/10/1850", "3/4/1853", "Yes")
-        WritePresEvents("President Franklin Pierce", "3/4/1853", "3/4/1857", "Yes")
-        WritePresEvents("President James Buchanan", "3/4/1857", "4/4/1861", "Yes")
-        WritePresEvents("President Abrham Lincoln", "3/4/1861", "4/15/1865", "Yes")
-        WritePresEvents("President Andrew Johnson", "4/15/1865", "3/4/1869", "Yes")
-        WritePresEvents("President Ulysses S. Grant", "3/4/1869", "3/4/1877", "Yes")
-        WritePresEvents("President Rutherford B. Hayes", "3/4/1877", "3/4/1881", "Yes")
-        WritePresEvents("President James Garfield", "3/4/1881", "9/19/1881", "Yes")
-        WritePresEvents("President Chester A. Arthur", "9/20/1881", "3/4/1885", "Yes")
-        WritePresEvents("President Grover Cleveland", "3/4/1885", "3/4/1889", "Yes")
-        WritePresEvents("President Benjamin Harrison", "3/4/1889", "3/4/1893", "Yes")
-        WritePresEvents("President Grover Cleveland", "3/4/1893", "3/4/1897", "Yes")
-        WritePresEvents("President William McKinley", "3/4/1897", "9/14/1901", "Yes")
-        WritePresEvents("President Theodore Roosevelt", "9/14/1901", "4/4/1909", "Yes")
-        WritePresEvents("President William H. Taft", "3/4/1909", "3/4/1913", "Yes")
-        WritePresEvents("President Woodrow Wilson", "3/4/1913", "3/4/1921", "Yes")
-        WritePresEvents("President Warren Harding", "3/4/1921", "8/2/1923", "Yes")
-        WritePresEvents("President Calvin Coolidge", "8/3/1923", "3/4/1929", "Yes")
-        WritePresEvents("President Herbert Hoover", "3/4/1929", "3/4/1933", "Yes")
-        WritePresEvents("President Franklin D Roosevelt", "3/4/1933", "4/12/1945", "Yes")
-        WritePresEvents("President Harry S Truman", "4/12/1945", "1/20/1953", "Yes")
-        WritePresEvents("President Dwight Eisenhower", "1/20/1953", "1/20/1961", "Yes")
-        WritePresEvents("President John F. Kennedy", "1/20/1961", "11/22/1963", "Yes")
-        WritePresEvents("President Lyndon Johnson", "11/22/1963", "1/20/1969", "Yes")
-        WritePresEvents("President Richard Nixon", "1/20/1969", "8/9/1974", "Yes")
-        WritePresEvents("President Gerald Ford", "8/9/1974", "1/20/1977", "Yes")
-        WritePresEvents("President Jimmy Carter", "1/20/1977", "1/20/1981", "Yes")
-        WritePresEvents("President Ronald Reagan", "1/20/1981", "1/20/1989", "Yes")
-        WritePresEvents("President George H.W. Bush", "1/20/1989", "1/20/1993", "Yes")
-        WritePresEvents("President Bill Clinton", "1/20/1993", "1/20/2001", "Yes")
-        WritePresEvents("President George W. Bush", "1/20/2001", "1/20/2009", "Yes")
-        WritePresEvents("PRESIDENT Barack Obama", "1/20/2009", "1/20/2017", "Yes")
-        WritePresEvents("president donald j. trump", "1/20/2017", "1/20/2021", "Yes")
-        WritePresEvents("PRESIDENT Joe Biden", "1/20/2021", "1/20/2029", "Yes")
-        WritePresEvents("President Kennedy Assassinated", "11/22/1963", "11/22/1963", "No")
-        WritePresEvents("Robert Kennedy Assassinated", "6/6/1968", "6/6/1968", "No")
-        WritePresEvents("President Lincoln Assassinated", "4/15/1865", "4/15/1865", "No")
-
-
-
-        'add the presidents record to the category file
-        Try
-            'True appends the record to the file. False replaces the file.
-
-            Dim prescatwriter As New StreamWriter(DataPath & "\" & CategoryFile, True)
-            Dim catrecord As String = Nothing
-            catrecord = Nothing
-            catrecord = "500" & vbTab & "Presidents" & vbTab & "500_Presidents.tsv"
-            prescatwriter.WriteLine(catrecord)
-            prescatwriter.Close()
-
-        Catch ex As Exception
-            Dim unused = MsgBox("Error trying to write a President's Category Record.")
-        End Try
-
-        'add the Miscellaneous category file with some records
-        'record = (0) description, (1) date, (2) end date, (3) range (Yes/No)
-        WriteMiscEvents("First Man on the Moon", "11/20/1969", "11/20/1969", "No")
-        WriteMiscEvents("Martin Luther King Jr Assassinated", "4/4/1968", "4/4/1968", "No")
-        WriteMiscEvents("Johnny Cash Died", "12/12/2003", "12/12/2003", "No")
-        WriteMiscEvents("Wright Brothers first flight!", "12/17/1903", "12/17/1903", "No")
-        WriteMiscEvents("Elvis Presley Died.", "8/16/1977", "8/16/1977", "No")
-        WriteMiscEvents("Final Sequencing of the Human Genome!", "4/14/2003", "4/14/2003", "No")
-        WriteMiscEvents("Katrina made Landfall in New Orleans", "8/29/2005", "8/29/2005", "No")
-        WriteMiscEvents("Black Tuesday Stock Market Crash", "10/29/1929", "10/29/1929", "No")
-        WriteMiscEvents("The Beatles First arrive in America!", "2/7/1964", "2/7/1964", "No")
-
-
-        'add the category Miscellanous record to the category file
-        Try
-            'True appends the record to the file. False replaces the file.
-
-            Dim warcatwriter As New StreamWriter(DataPath & "\" & CategoryFile, True)
-            Dim catrecord As String = Nothing
-            catrecord = Nothing
-            catrecord = "502" & vbTab & "Miscellaneous" & vbTab & "502_Miscellaneous.tsv"
-            warcatwriter.WriteLine(catrecord)
-            warcatwriter.Close()
-
-        Catch ex As Exception
-            Dim unused = MsgBox("Error trying to write a Wars' Category Record.")
-        End Try
-
-        'Create Wars File
-        'record = (0) description, (1) date, (2) end date, (3) range
-
-        WriteWarsEvents("Terrorist Attack on World Trade Center", "9/11/2001", "9/11/2001", "No")
-        WriteWarsEvents("Attack on Pearl Harbor", "12/2/1941", "12/2/1941", "No")
-        WriteWarsEvents("World War I began", "7/28/1914", "7/28/1914", "No")
-        WriteWarsEvents("World War I ends", "11/11/1918", "11/11/1918", "No")
-        WriteWarsEvents("World War II began", "11/1/1939", "11/1/1939", "No")
-        WriteWarsEvents("World War II ends", "9/2/1945", "9/2/1945", "No")
-        WriteWarsEvents("Vietnam Era Started for Veterans", "2/28/1961", "2/28/1961", "No")
-        WriteWarsEvents("Vietnam Era Ended for Veterans", "5/7/1975", "5/7/1975", "No")
-        WriteWarsEvents("American Revolutionary War began", "4/19/1775", "4/19/1775", "No")
-        WriteWarsEvents("American Revolutionary War ended", "9/3/1783", "9/3/1783", "No")
-        WriteWarsEvents("Korean War began", "6/25/1950", "6/25/1950", "No")
-        WriteWarsEvents("Korean War ended", "7/27/1953", "7/27/1953", "No")
-        WriteWarsEvents("Civil War Began", "4/12/1861", "4/12/1861", "No")
-        WriteWarsEvents("Civil War Ended", "4/9/1865", "4/9/1865", "No")
-        WriteWarsEvents("Atom Bomb droped on Hiroshima", "8/6/1945", "8/6/1945", "No")
-        WriteWarsEvents("Atom Bomb droped on Nagasaki", "8/9/1945", "8/9/1945", "No")
-        WriteWarsEvents("Gulf War starts", "8/2/1990", "8/2/1990", "No")
-        WriteWarsEvents("Gulf War ends", "2/28/1991", "2/28/1991", "No")
-        WriteWarsEvents("The U.S. War in Afghanistan started", "10/7/2001", "10/7/2001", "No")
-        WriteWarsEvents("The U.S. War in Iraq started", "3/20/2003", "3/20/2003", "No")
-        WriteWarsEvents("The U.S. War in Iraq ended", "12/18/2011", "12/18/2011", "No")
-        WriteWarsEvents("U.S. involved in 134 'wars' ~ PRX", "9/16/2014", "9/16/2014", "No")
-        WriteWarsEvents("The U.S. has been at war 225 out of 243 years since 1776 ~ The News", "1/9/2020", "1/9/2020", "No")
-
-        'add the category war record to the category file
-        Try
-            'True appends the record to the file. False replaces the file.
-
-            Dim warcatwriter As New StreamWriter(DataPath & "\" & CategoryFile, True)
-            Dim catrecord As String = Nothing
-            catrecord = Nothing
-            catrecord = "501" & vbTab & "Wars" & vbTab & "501_Wars.tsv"
-            warcatwriter.WriteLine(catrecord)
-            warcatwriter.Close()
-
-        Catch ex As Exception
-            Dim unused = MsgBox("Error trying to write a Wars' Category Record.")
-        End Try
-
-
+#End Region
         'all done creating the files - enable the form
         Enabled = True
     End Sub
-
+#Region "----- Sub Routines For Writing The Setup Files -----"
     Public Sub WriteWarsEvents(name As String, startterm As String, endterm As String, daterange As String)
 
         Try
@@ -675,7 +690,9 @@ Public Class FrmMain
 
         End Try
     End Sub
+#End Region
 
+#Region "XXXXX Old Subs For The Old Setup Routine XXXXX"
     ''' <summary>
     ''' presidents record = (0) number of their presidency, (2) name, (3) term begin date, (4) term end date
     ''' </summary>
@@ -722,7 +739,7 @@ Public Class FrmMain
         End Try
 
     End Sub
-
+#End Region
 
 #End Region
 
