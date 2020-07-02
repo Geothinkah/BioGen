@@ -86,6 +86,12 @@
     <Compile Include="FrmCatagory.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="FrmCategoryEvents.Designer.vb">
+      <DependentUpon>FrmCategoryEvents.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FrmCategoryEvents.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="FrmMain.vb">
       <SubType>Form</SubType>
     </Compile>
@@ -138,6 +144,9 @@
   <ItemGroup>
     <EmbeddedResource Include="FrmCatagory.resx">
       <DependentUpon>FrmCatagory.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmCategoryEvents.resx">
+      <DependentUpon>FrmCategoryEvents.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmMain.resx">
       <DependentUpon>FrmMain.vb</DependentUpon>

@@ -112,7 +112,7 @@ Partial Class FrmSelectView
         Me.BtnSelectBiography.Name = "BtnSelectBiography"
         Me.BtnSelectBiography.Size = New System.Drawing.Size(267, 36)
         Me.BtnSelectBiography.TabIndex = 22
-        Me.BtnSelectBiography.Text = "Select Biography"
+        Me.BtnSelectBiography.Text = "Change Biography"
         Me.BtnSelectBiography.UseVisualStyleBackColor = False
         '
         'FrmSelectView

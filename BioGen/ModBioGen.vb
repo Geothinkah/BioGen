@@ -2,16 +2,28 @@
 Module ModBioGen
     ' Friend ShowViewForm As Boolean = False 'this is used in the FrmOpenBiology to show FrmSelectView or not
 
-#Region "***** Category Variables *****"
+#Region "***** Category File *****"
+
+    Friend CategoryDisplayFile As String = "CategoryDisplayFile.tsv"
+    Friend CategoryFile As String = "Category.tsv"
+    Friend CategoryArray(100) As String
+    Friend CategoryRecord() As String 'holds the variables for the current category
+
     'catagory record = "(0) id, (1) name, (2) file name associated with this catagory
     Friend SelectedCategoryID As Integer
     Friend SelectedCategoryName As String
     Friend SelectedCategoryFile As String
-    Friend CategoryArray(100) As String
+
+    'category event record = (0) description, (1) date, (2) end date, (3) range
+    Friend CatEventDescription As String
+    Friend CatEventDate As Date
+    Friend CatEventEndDate As Date
+    Friend CatRange As String 'Yes/No
+
+
 
 #End Region
 #Region "***** Variables *****"
-    Friend CategoryFile As String = "Category.tsv"
 
 
     Friend AllDatabaseFile As String = "AllDatabaseFile.tsv"
@@ -100,7 +112,11 @@ Module ModBioGen
 
 
     Friend Sub SaveSettings()
-        File.WriteAllText(DataPath & "\" & SettingsFile, CStr(RecordID))
+        'settings record
+        '(0) RecordID - used to store the last biography record id used
+        Dim temprecord As String
+        temprecord = CStr(RecordID)
+        File.WriteAllText(DataPath & "\" & SettingsFile, temprecord)
     End Sub
 
 #End Region

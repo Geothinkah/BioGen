@@ -23,22 +23,10 @@ Partial Class FrmOpenCategory
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FrmOpenCategory))
-        Me.BtnExit = New System.Windows.Forms.Button()
         Me.LstvSelectCategory = New System.Windows.Forms.ListView()
         Me.ColName = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.BtnOption = New System.Windows.Forms.Button()
         Me.SuspendLayout()
-        '
-        'BtnExit
-        '
-        Me.BtnExit.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.BtnExit.BackColor = System.Drawing.Color.Bisque
-        Me.BtnExit.Location = New System.Drawing.Point(149, 227)
-        Me.BtnExit.Name = "BtnExit"
-        Me.BtnExit.Size = New System.Drawing.Size(68, 31)
-        Me.BtnExit.TabIndex = 0
-        Me.BtnExit.Text = "Exit"
-        Me.BtnExit.UseVisualStyleBackColor = False
         '
         'LstvSelectCategory
         '
@@ -61,7 +49,7 @@ Partial Class FrmOpenCategory
         '
         Me.BtnOption.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.BtnOption.BackColor = System.Drawing.Color.Bisque
-        Me.BtnOption.Location = New System.Drawing.Point(12, 227)
+        Me.BtnOption.Location = New System.Drawing.Point(122, 227)
         Me.BtnOption.Name = "BtnOption"
         Me.BtnOption.Size = New System.Drawing.Size(95, 31)
         Me.BtnOption.TabIndex = 2
@@ -76,7 +64,6 @@ Partial Class FrmOpenCategory
         Me.ClientSize = New System.Drawing.Size(229, 267)
         Me.Controls.Add(Me.BtnOption)
         Me.Controls.Add(Me.LstvSelectCategory)
-        Me.Controls.Add(Me.BtnExit)
         Me.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
@@ -93,8 +80,6 @@ Partial Class FrmOpenCategory
         Me.ResumeLayout(False)
 
     End Sub
-
-    Friend WithEvents BtnExit As Button
     Friend WithEvents LstvSelectCategory As ListView
     Friend WithEvents ColName As ColumnHeader
     Friend WithEvents BtnOption As Button

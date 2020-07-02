@@ -50,9 +50,13 @@ Public Class FrmCatagory
                         categorywriter.WriteLine(categoryrecord)
                         categorywriter.Close()
                         SaveSettings()
-                        SelectedCategoryFile = catfilename
+
+                        'set category variables
                         SelectedCategoryID = id
                         SelectedCategoryName = catname
+                        SelectedCategoryFile = catfilename
+
+                        'set label text
                         FrmMain.LblCategory.Text = SelectedCategoryName
                         FrmMain.LblCategory.Visible = True
                         Close()

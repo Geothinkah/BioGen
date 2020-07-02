@@ -132,6 +132,7 @@ Partial Class FrmNewBio
         'BtnExit
         '
         Me.BtnExit.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.BtnExit.BackColor = System.Drawing.Color.Bisque
         Me.BtnExit.FlatStyle = System.Windows.Forms.FlatStyle.Popup
         Me.BtnExit.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.BtnExit.Location = New System.Drawing.Point(377, 137)
@@ -140,7 +141,7 @@ Partial Class FrmNewBio
         Me.BtnExit.Size = New System.Drawing.Size(84, 31)
         Me.BtnExit.TabIndex = 9
         Me.BtnExit.Text = "Exit"
-        Me.BtnExit.UseVisualStyleBackColor = True
+        Me.BtnExit.UseVisualStyleBackColor = False
         '
         'Label1
         '
@@ -188,6 +189,7 @@ Partial Class FrmNewBio
         'BtnOption
         '
         Me.BtnOption.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.BtnOption.BackColor = System.Drawing.Color.Bisque
         Me.BtnOption.FlatStyle = System.Windows.Forms.FlatStyle.Popup
         Me.BtnOption.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.BtnOption.Location = New System.Drawing.Point(274, 137)
@@ -196,7 +198,7 @@ Partial Class FrmNewBio
         Me.BtnOption.Size = New System.Drawing.Size(84, 31)
         Me.BtnOption.TabIndex = 12
         Me.BtnOption.Text = "Option"
-        Me.BtnOption.UseVisualStyleBackColor = True
+        Me.BtnOption.UseVisualStyleBackColor = False
         '
         'FrmNewBio
         '
@@ -208,7 +210,7 @@ Partial Class FrmNewBio
         Me.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
-        Me.Location = New System.Drawing.Point(30, 155)
+        Me.Location = New System.Drawing.Point(30, 180)
         Me.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Name = "FrmNewBio"
         Me.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide

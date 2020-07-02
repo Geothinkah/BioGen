@@ -87,6 +87,7 @@ Public Class FrmOpenBiography
             MsgBox("Please Select a Biography")
             Return
         End If
+        FrmMain.BtnSelectView.Enabled = True
         Close()
     End Sub
 
@@ -103,6 +104,7 @@ Public Class FrmOpenBiography
                 AssignVariables()
                 FrmSelectView.Show()
                 FrmMain.LblBiography.Text = BioName
+                FrmMain.BtnSelectView.Enabled = True
                 Close()
 
             Case "Edit"
