@@ -518,6 +518,7 @@ Partial Class FrmMain
         Me.TxtEvents.Location = New System.Drawing.Point(19, 55)
         Me.TxtEvents.Multiline = True
         Me.TxtEvents.Name = "TxtEvents"
+        Me.TxtEvents.ReadOnly = True
         Me.TxtEvents.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
         Me.TxtEvents.Size = New System.Drawing.Size(486, 755)
         Me.TxtEvents.TabIndex = 21
@@ -552,25 +553,25 @@ Partial Class FrmMain
         'SelectToolStripMenuItem1
         '
         Me.SelectToolStripMenuItem1.Name = "SelectToolStripMenuItem1"
-        Me.SelectToolStripMenuItem1.Size = New System.Drawing.Size(137, 26)
+        Me.SelectToolStripMenuItem1.Size = New System.Drawing.Size(180, 26)
         Me.SelectToolStripMenuItem1.Text = "Select"
         '
         'AddToolStripMenuItem2
         '
         Me.AddToolStripMenuItem2.Name = "AddToolStripMenuItem2"
-        Me.AddToolStripMenuItem2.Size = New System.Drawing.Size(137, 26)
+        Me.AddToolStripMenuItem2.Size = New System.Drawing.Size(180, 26)
         Me.AddToolStripMenuItem2.Text = "Add"
         '
         'RenameToolStripMenuItem
         '
         Me.RenameToolStripMenuItem.Name = "RenameToolStripMenuItem"
-        Me.RenameToolStripMenuItem.Size = New System.Drawing.Size(137, 26)
+        Me.RenameToolStripMenuItem.Size = New System.Drawing.Size(180, 26)
         Me.RenameToolStripMenuItem.Text = "Rename"
         '
         'DeleteToolStripMenuItem2
         '
         Me.DeleteToolStripMenuItem2.Name = "DeleteToolStripMenuItem2"
-        Me.DeleteToolStripMenuItem2.Size = New System.Drawing.Size(137, 26)
+        Me.DeleteToolStripMenuItem2.Size = New System.Drawing.Size(180, 26)
         Me.DeleteToolStripMenuItem2.Text = "Delete"
         '
         'EventsToolStripMenuItem

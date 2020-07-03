@@ -843,27 +843,38 @@ Public Class FrmMain
                         Dim indx As Integer = 0 'index number to use for the tempbiographyarray
                         Do While categoryReader.Peek <> -1 'see if there is another record to process
                             CategoryArray(indx) = categoryReader.ReadLine()
-                            ' MsgBox("CategoryArray(indx) " & CategoryArray(indx))
                             'see if it's wanted in the display
                             If CategoryView(indx) Then
-                                ' MsgBox("CategoryView(indx) " & CategoryView(indx))
 
                                 'catagory record = "(0) id, (1) name, (2) file name associated with this catagory
                                 Dim temprecord() As String = Split(CategoryArray(indx), delimiter) '** Module Array ** holds the fields of the currently selected record
                                 'process the events file here
                                 Try
                                     Using eventsReader As New StreamReader(DataPath & "\" & temprecord(2))
-                                        'MsgBox(temprecord(2))
                                         'category event record = (0) description, (1) date, (2) end date, (3) range
                                         Do While eventsReader.Peek <> -1
                                             Dim viewrecord As String = eventsReader.ReadLine()
-                                            'MsgBox(viewrecord)
                                             temprecord = Split(viewrecord, vbTab)
-                                            'sortdate = CStr(newDate.Ticks) ' convert to ticks for sorting purposes
-                                            record = temprecord(0) & vbTab & CStr(CDate(temprecord(1)).Ticks & vbTab &
+                                            If individual Then
+                                                If BioBirthDate <= CDate(temprecord(1)) Then
+                                                    If BioLiving = "Yes" Then
+                                                        record = temprecord(0) & vbTab & CStr(CDate(temprecord(1)).Ticks & vbTab &
                                                 temprecord(2) & vbTab & temprecord(3))
-                                            'MsgBox("record: " & record)
-                                            filewriter.WriteLine(record)
+                                                        'MsgBox("record: " & record)
+                                                        filewriter.WriteLine(record)
+                                                    Else
+                                                        If BioDeathDate >= CDate(temprecord(2)) Then
+                                                            record = temprecord(0) & vbTab & CStr(CDate(temprecord(1)).Ticks & vbTab &
+                                                                                                  temprecord(2) & vbTab & temprecord(3))
+                                                            filewriter.WriteLine(record)
+                                                        End If
+                                                    End If
+                                                End If
+                                            Else
+                                                record = temprecord(0) & vbTab & CStr(CDate(temprecord(1)).Ticks & vbTab &
+                                            temprecord(2) & vbTab & temprecord(3))
+                                                filewriter.WriteLine(record)
+                                            End If
                                         Loop
                                         eventsReader.Close()
                                     End Using
@@ -902,6 +913,7 @@ Public Class FrmMain
         'read the textfile and process each record
         Try
             Dim outputtext As New System.Text.StringBuilder 'build the string to be put in the text box. this will include the entire textfile
+            outputtext.Append(vbCrLf)
             Dim textfilereader As New IO.StreamReader(DataPath & "\" & textfile)
 
             'process the textfile
@@ -1000,6 +1012,7 @@ Public Class FrmMain
 
     Private Sub SelectToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles SelectToolStripMenuItem1.Click
         FrmOpenCategory.BtnOption.Text = "Select"
+        lblSelectedBiography.Select()
         FrmOpenCategory.Show()
     End Sub
 

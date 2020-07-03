@@ -63,23 +63,4 @@ Public Class FrmSelectView
         'MsgBox(ClbCategories.SelectedItem)
     End Sub
 
-    Private Sub BtnAllCats_Click(sender As Object, e As EventArgs) Handles BtnAllCats.Click
-        For i = 0 To ClbCategories.Items.Count - 1
-            ClbCategories.SetItemChecked(i, True)
-            CategoryView(i) = True
-        Next
-        CbxBirthDate.Checked = True
-        CbxBirthdays.Checked = True
-        CbxDeaths.Checked = True
-    End Sub
-
-    Private Sub BtnClear_Click(sender As Object, e As EventArgs) Handles BtnClear.Click
-        For i = 0 To ClbCategories.Items.Count - 1
-            ClbCategories.SetItemChecked(i, False)
-            CategoryView(i) = True
-        Next
-        CbxBirthDate.Checked = False
-        CbxBirthdays.Checked = False
-        CbxDeaths.Checked = False
-    End Sub
 End Class

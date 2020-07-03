@@ -31,8 +31,6 @@ Partial Class FrmSelectView
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.CbxDeaths = New System.Windows.Forms.CheckBox()
         Me.CbxBirthDate = New System.Windows.Forms.CheckBox()
-        Me.BtnClear = New System.Windows.Forms.Button()
-        Me.BtnAllCats = New System.Windows.Forms.Button()
         Me.ClbCategories = New System.Windows.Forms.CheckedListBox()
         Me.BtnSelectBiography = New System.Windows.Forms.Button()
         Me.Panel1.SuspendLayout()
@@ -55,7 +53,7 @@ Partial Class FrmSelectView
         Me.BtnView.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.BtnView.BackColor = System.Drawing.Color.Bisque
         Me.BtnView.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.BtnView.Location = New System.Drawing.Point(282, 330)
+        Me.BtnView.Location = New System.Drawing.Point(204, 337)
         Me.BtnView.Name = "BtnView"
         Me.BtnView.Size = New System.Drawing.Size(64, 31)
         Me.BtnView.TabIndex = 4
@@ -79,14 +77,12 @@ Partial Class FrmSelectView
         Me.Panel1.BackColor = System.Drawing.Color.OldLace
         Me.Panel1.Controls.Add(Me.Label1)
         Me.Panel1.Controls.Add(Me.Panel2)
-        Me.Panel1.Controls.Add(Me.BtnClear)
-        Me.Panel1.Controls.Add(Me.BtnAllCats)
         Me.Panel1.Controls.Add(Me.ClbCategories)
         Me.Panel1.Controls.Add(Me.BtnSelectBiography)
         Me.Panel1.Controls.Add(Me.BtnView)
         Me.Panel1.Location = New System.Drawing.Point(12, 12)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(362, 380)
+        Me.Panel1.Size = New System.Drawing.Size(292, 380)
         Me.Panel1.TabIndex = 22
         '
         'Label1
@@ -134,28 +130,6 @@ Partial Class FrmSelectView
         Me.CbxBirthDate.Text = "Birth Dates"
         Me.CbxBirthDate.UseVisualStyleBackColor = False
         '
-        'BtnClear
-        '
-        Me.BtnClear.BackColor = System.Drawing.Color.Bisque
-        Me.BtnClear.Enabled = False
-        Me.BtnClear.Location = New System.Drawing.Point(282, 85)
-        Me.BtnClear.Name = "BtnClear"
-        Me.BtnClear.Size = New System.Drawing.Size(64, 30)
-        Me.BtnClear.TabIndex = 27
-        Me.BtnClear.Text = "Clear"
-        Me.BtnClear.UseVisualStyleBackColor = False
-        '
-        'BtnAllCats
-        '
-        Me.BtnAllCats.BackColor = System.Drawing.Color.Bisque
-        Me.BtnAllCats.Enabled = False
-        Me.BtnAllCats.Location = New System.Drawing.Point(282, 45)
-        Me.BtnAllCats.Name = "BtnAllCats"
-        Me.BtnAllCats.Size = New System.Drawing.Size(64, 30)
-        Me.BtnAllCats.TabIndex = 26
-        Me.BtnAllCats.Text = "All"
-        Me.BtnAllCats.UseVisualStyleBackColor = False
-        '
         'ClbCategories
         '
         Me.ClbCategories.AllowDrop = True
@@ -165,16 +139,18 @@ Partial Class FrmSelectView
         Me.ClbCategories.FormattingEnabled = True
         Me.ClbCategories.Location = New System.Drawing.Point(21, 191)
         Me.ClbCategories.Name = "ClbCategories"
-        Me.ClbCategories.Size = New System.Drawing.Size(248, 170)
+        Me.ClbCategories.Size = New System.Drawing.Size(248, 128)
         Me.ClbCategories.TabIndex = 25
         Me.ClbCategories.ThreeDCheckBoxes = True
         '
         'BtnSelectBiography
         '
+        Me.BtnSelectBiography.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.BtnSelectBiography.BackColor = System.Drawing.Color.Bisque
-        Me.BtnSelectBiography.Location = New System.Drawing.Point(3, 3)
+        Me.BtnSelectBiography.Location = New System.Drawing.Point(3, 6)
         Me.BtnSelectBiography.Name = "BtnSelectBiography"
-        Me.BtnSelectBiography.Size = New System.Drawing.Size(354, 36)
+        Me.BtnSelectBiography.Size = New System.Drawing.Size(286, 36)
         Me.BtnSelectBiography.TabIndex = 22
         Me.BtnSelectBiography.Text = "Change Biography"
         Me.BtnSelectBiography.UseVisualStyleBackColor = False
@@ -184,18 +160,16 @@ Partial Class FrmSelectView
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.DeepSkyBlue
-        Me.ClientSize = New System.Drawing.Size(387, 404)
+        Me.ClientSize = New System.Drawing.Size(317, 404)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.BtnExit)
         Me.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
-        Me.Location = New System.Drawing.Point(100, 180)
+        Me.Location = New System.Drawing.Point(125, 180)
         Me.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.MaximizeBox = False
-        Me.MaximumSize = New System.Drawing.Size(387, 404)
         Me.MinimizeBox = False
-        Me.MinimumSize = New System.Drawing.Size(387, 404)
         Me.Name = "FrmSelectView"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.Manual
         Me.Text = "Select View"
@@ -214,8 +188,6 @@ Partial Class FrmSelectView
     Friend WithEvents CbxDeaths As CheckBox
     Friend WithEvents CbxBirthDate As CheckBox
     Friend WithEvents ClbCategories As CheckedListBox
-    Friend WithEvents BtnAllCats As Button
-    Friend WithEvents BtnClear As Button
     Friend WithEvents Panel2 As Panel
     Friend WithEvents Label1 As Label
 End Class

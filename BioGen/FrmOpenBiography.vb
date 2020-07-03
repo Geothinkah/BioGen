@@ -130,20 +130,16 @@ Public Class FrmOpenBiography
                 End If
                 FrmMain.lblSelectedBiography.Text = "No Biography Selected"
                 FrmMain.TxtFacts.Text = Nothing
-                'FrmMain.LblView.Visible = True
-                'FrmMain.LblView.Text = "No Biography Selected"
                 Close()
             Case Else
 
         End Select
     End Sub
 
-    Private Sub FrmOpenBiography_Closed(sender As Object, e As EventArgs) Handles Me.Closed
-        'FrmMain.LblView.Visible = True
-    End Sub
-
     Private Sub BtnAll_Click(sender As Object, e As EventArgs) Handles BtnAll.Click
+        FrmMain.LblBiography.Text = "All Biographies"
         TextFileName = AllDatabaseFile
+        FrmSelectView.Show()
         Close()
     End Sub
 End Class
