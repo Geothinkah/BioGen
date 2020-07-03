@@ -211,9 +211,9 @@ Partial Class FrmMain
         '
         Me.LblCurrentBiography.Font = New System.Drawing.Font("Copperplate Gothic Bold", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LblCurrentBiography.ForeColor = System.Drawing.Color.Black
-        Me.LblCurrentBiography.Location = New System.Drawing.Point(109, 51)
+        Me.LblCurrentBiography.Location = New System.Drawing.Point(40, 51)
         Me.LblCurrentBiography.Name = "LblCurrentBiography"
-        Me.LblCurrentBiography.Size = New System.Drawing.Size(381, 32)
+        Me.LblCurrentBiography.Size = New System.Drawing.Size(510, 32)
         Me.LblCurrentBiography.TabIndex = 2
         Me.LblCurrentBiography.Text = "View Area"
         Me.LblCurrentBiography.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -457,9 +457,9 @@ Partial Class FrmMain
         Me.lblSelectedBiography.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.lblSelectedBiography.BackColor = System.Drawing.Color.DeepSkyBlue
         Me.lblSelectedBiography.Font = New System.Drawing.Font("Copperplate Gothic Bold", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblSelectedBiography.Location = New System.Drawing.Point(1499, 53)
+        Me.lblSelectedBiography.Location = New System.Drawing.Point(1446, 53)
         Me.lblSelectedBiography.Name = "lblSelectedBiography"
-        Me.lblSelectedBiography.Size = New System.Drawing.Size(292, 29)
+        Me.lblSelectedBiography.Size = New System.Drawing.Size(372, 29)
         Me.lblSelectedBiography.TabIndex = 13
         Me.lblSelectedBiography.Text = "Catagory Area"
         Me.lblSelectedBiography.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -601,13 +601,13 @@ Partial Class FrmMain
         '
         'Label5
         '
-        Me.Label5.AutoSize = True
         Me.Label5.Font = New System.Drawing.Font("Copperplate Gothic Bold", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label5.Location = New System.Drawing.Point(878, 58)
+        Me.Label5.Location = New System.Drawing.Point(601, 51)
         Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(152, 18)
+        Me.Label5.Size = New System.Drawing.Size(756, 32)
         Me.Label5.TabIndex = 18
         Me.Label5.Text = "Biography Area"
+        Me.Label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'FrmMain
         '

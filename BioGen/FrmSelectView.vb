@@ -40,6 +40,7 @@ Public Class FrmSelectView
                 Dim indx As Integer = 0 'index number to use for the tempbiographyarray
                 Do While categoryReader.Peek <> -1 'see if there is another record to process
                     CategoryArray(indx) = categoryReader.ReadLine()
+                    CategoryView(indx) = False
                     Dim temprecord() As String = Split(CategoryArray(indx), delimiter) '** Module Array ** holds the fields of the currently selected record
                     ClbCategories.Items.Add(temprecord(1)) 'display name
                     'LstvSelectCategory.Items(indx).SubItems.Add(temprecord(1)) 'display Living (Yes/No)
@@ -54,12 +55,18 @@ Public Class FrmSelectView
     End Sub
 
     Private Sub ClbCategories_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ClbCategories.SelectedIndexChanged
+        'set CategoryView(indx) to true or false for displaying purposes
+        Dim indx As Integer
+        indx = ClbCategories.SelectedIndex
+        CategoryView(indx) = ClbCategories.GetItemChecked(indx)
+        'MsgBox(indx & " " & CategoryView(indx))
         'MsgBox(ClbCategories.SelectedItem)
     End Sub
 
     Private Sub BtnAllCats_Click(sender As Object, e As EventArgs) Handles BtnAllCats.Click
         For i = 0 To ClbCategories.Items.Count - 1
             ClbCategories.SetItemChecked(i, True)
+            CategoryView(i) = True
         Next
         CbxBirthDate.Checked = True
         CbxBirthdays.Checked = True
@@ -69,6 +76,7 @@ Public Class FrmSelectView
     Private Sub BtnClear_Click(sender As Object, e As EventArgs) Handles BtnClear.Click
         For i = 0 To ClbCategories.Items.Count - 1
             ClbCategories.SetItemChecked(i, False)
+            CategoryView(i) = True
         Next
         CbxBirthDate.Checked = False
         CbxBirthdays.Checked = False

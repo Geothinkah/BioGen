@@ -27,14 +27,14 @@ Partial Class FrmSelectView
         Me.BtnView = New System.Windows.Forms.Button()
         Me.CbxBirthdays = New System.Windows.Forms.CheckBox()
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.Panel2 = New System.Windows.Forms.Panel()
+        Me.CbxDeaths = New System.Windows.Forms.CheckBox()
+        Me.CbxBirthDate = New System.Windows.Forms.CheckBox()
         Me.BtnClear = New System.Windows.Forms.Button()
         Me.BtnAllCats = New System.Windows.Forms.Button()
         Me.ClbCategories = New System.Windows.Forms.CheckedListBox()
-        Me.CbxBirthDate = New System.Windows.Forms.CheckBox()
-        Me.CbxDeaths = New System.Windows.Forms.CheckBox()
         Me.BtnSelectBiography = New System.Windows.Forms.Button()
-        Me.Panel2 = New System.Windows.Forms.Panel()
-        Me.Label1 = New System.Windows.Forms.Label()
         Me.Panel1.SuspendLayout()
         Me.Panel2.SuspendLayout()
         Me.SuspendLayout()
@@ -89,9 +89,55 @@ Partial Class FrmSelectView
         Me.Panel1.Size = New System.Drawing.Size(362, 380)
         Me.Panel1.TabIndex = 22
         '
+        'Label1
+        '
+        Me.Label1.Location = New System.Drawing.Point(20, 167)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(248, 24)
+        Me.Label1.TabIndex = 29
+        Me.Label1.Text = "Category Choices"
+        Me.Label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
+        'Panel2
+        '
+        Me.Panel2.BackColor = System.Drawing.Color.OldLace
+        Me.Panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Panel2.Controls.Add(Me.CbxDeaths)
+        Me.Panel2.Controls.Add(Me.CbxBirthdays)
+        Me.Panel2.Controls.Add(Me.CbxBirthDate)
+        Me.Panel2.Location = New System.Drawing.Point(22, 45)
+        Me.Panel2.Name = "Panel2"
+        Me.Panel2.Size = New System.Drawing.Size(247, 97)
+        Me.Panel2.TabIndex = 28
+        '
+        'CbxDeaths
+        '
+        Me.CbxDeaths.AutoSize = True
+        Me.CbxDeaths.BackColor = System.Drawing.Color.OldLace
+        Me.CbxDeaths.FlatStyle = System.Windows.Forms.FlatStyle.Popup
+        Me.CbxDeaths.Location = New System.Drawing.Point(3, 62)
+        Me.CbxDeaths.Name = "CbxDeaths"
+        Me.CbxDeaths.Size = New System.Drawing.Size(78, 24)
+        Me.CbxDeaths.TabIndex = 23
+        Me.CbxDeaths.Text = "Deaths"
+        Me.CbxDeaths.UseVisualStyleBackColor = False
+        '
+        'CbxBirthDate
+        '
+        Me.CbxBirthDate.AutoSize = True
+        Me.CbxBirthDate.BackColor = System.Drawing.Color.OldLace
+        Me.CbxBirthDate.FlatStyle = System.Windows.Forms.FlatStyle.Popup
+        Me.CbxBirthDate.Location = New System.Drawing.Point(3, 2)
+        Me.CbxBirthDate.Name = "CbxBirthDate"
+        Me.CbxBirthDate.Size = New System.Drawing.Size(106, 24)
+        Me.CbxBirthDate.TabIndex = 24
+        Me.CbxBirthDate.Text = "Birth Dates"
+        Me.CbxBirthDate.UseVisualStyleBackColor = False
+        '
         'BtnClear
         '
         Me.BtnClear.BackColor = System.Drawing.Color.Bisque
+        Me.BtnClear.Enabled = False
         Me.BtnClear.Location = New System.Drawing.Point(282, 85)
         Me.BtnClear.Name = "BtnClear"
         Me.BtnClear.Size = New System.Drawing.Size(64, 30)
@@ -102,6 +148,7 @@ Partial Class FrmSelectView
         'BtnAllCats
         '
         Me.BtnAllCats.BackColor = System.Drawing.Color.Bisque
+        Me.BtnAllCats.Enabled = False
         Me.BtnAllCats.Location = New System.Drawing.Point(282, 45)
         Me.BtnAllCats.Name = "BtnAllCats"
         Me.BtnAllCats.Size = New System.Drawing.Size(64, 30)
@@ -122,30 +169,6 @@ Partial Class FrmSelectView
         Me.ClbCategories.TabIndex = 25
         Me.ClbCategories.ThreeDCheckBoxes = True
         '
-        'CbxBirthDate
-        '
-        Me.CbxBirthDate.AutoSize = True
-        Me.CbxBirthDate.BackColor = System.Drawing.Color.OldLace
-        Me.CbxBirthDate.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.CbxBirthDate.Location = New System.Drawing.Point(3, 2)
-        Me.CbxBirthDate.Name = "CbxBirthDate"
-        Me.CbxBirthDate.Size = New System.Drawing.Size(106, 24)
-        Me.CbxBirthDate.TabIndex = 24
-        Me.CbxBirthDate.Text = "Birth Dates"
-        Me.CbxBirthDate.UseVisualStyleBackColor = False
-        '
-        'CbxDeaths
-        '
-        Me.CbxDeaths.AutoSize = True
-        Me.CbxDeaths.BackColor = System.Drawing.Color.OldLace
-        Me.CbxDeaths.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.CbxDeaths.Location = New System.Drawing.Point(3, 62)
-        Me.CbxDeaths.Name = "CbxDeaths"
-        Me.CbxDeaths.Size = New System.Drawing.Size(78, 24)
-        Me.CbxDeaths.TabIndex = 23
-        Me.CbxDeaths.Text = "Deaths"
-        Me.CbxDeaths.UseVisualStyleBackColor = False
-        '
         'BtnSelectBiography
         '
         Me.BtnSelectBiography.BackColor = System.Drawing.Color.Bisque
@@ -155,27 +178,6 @@ Partial Class FrmSelectView
         Me.BtnSelectBiography.TabIndex = 22
         Me.BtnSelectBiography.Text = "Change Biography"
         Me.BtnSelectBiography.UseVisualStyleBackColor = False
-        '
-        'Panel2
-        '
-        Me.Panel2.BackColor = System.Drawing.Color.OldLace
-        Me.Panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.Panel2.Controls.Add(Me.CbxDeaths)
-        Me.Panel2.Controls.Add(Me.CbxBirthdays)
-        Me.Panel2.Controls.Add(Me.CbxBirthDate)
-        Me.Panel2.Location = New System.Drawing.Point(22, 45)
-        Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(247, 97)
-        Me.Panel2.TabIndex = 28
-        '
-        'Label1
-        '
-        Me.Label1.Location = New System.Drawing.Point(20, 167)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(248, 24)
-        Me.Label1.TabIndex = 29
-        Me.Label1.Text = "Category Choices"
-        Me.Label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
         'FrmSelectView
         '

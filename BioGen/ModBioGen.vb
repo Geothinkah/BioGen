@@ -7,6 +7,7 @@ Module ModBioGen
     Friend CategoryDisplayFile As String = "CategoryDisplayFile.tsv"
     Friend CategoryFile As String = "Category.tsv"
     Friend CategoryArray(100) As String
+    Friend CategoryView(100) As Boolean
     Friend CategoryRecord() As String 'holds the variables for the current category
 
     'catagory record = "(0) id, (1) name, (2) file name associated with this catagory

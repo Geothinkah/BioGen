@@ -281,6 +281,22 @@ Public Class FrmMain
             My.Computer.FileSystem.DeleteFile(DataPath & "\" & CategoryFile)
         Catch ex As Exception
         End Try
+
+        Try
+            My.Computer.FileSystem.DeleteFile(DataPath & "\" & "500_Presidents.tsv")
+        Catch ex As Exception
+        End Try
+
+        Try
+            My.Computer.FileSystem.DeleteFile(DataPath & "\" & "502_Miscellaneous.tsv")
+        Catch ex As Exception
+        End Try
+
+        Try
+            My.Computer.FileSystem.DeleteFile(DataPath & "\" & "501_Wars.tsv")
+        Catch ex As Exception
+        End Try
+
 #End Region
 
 #Region "----- Create The Presidents Category -----"
@@ -330,7 +346,7 @@ Public Class FrmMain
         WritePresEvents("President Bill Clinton", "1/20/1993", "1/20/2001", "Yes")
         WritePresEvents("President George W. Bush", "1/20/2001", "1/20/2009", "Yes")
         WritePresEvents("PRESIDENT Barack Obama", "1/20/2009", "1/20/2017", "Yes")
-        WritePresEvents("* egotist donald j. trump", "1/20/2017", "1/20/2021", "Yes")
+        WritePresEvents("*         donald j. trump", "1/20/2017", "1/20/2021", "Yes")
         WritePresEvents("PRESIDENT Joe Biden", "1/20/2021", "1/20/2029", "Yes")
         WritePresEvents("President Kennedy Assassinated", "11/22/1963", "11/22/1963", "No")
         WritePresEvents("Robert Kennedy Assassinated", "6/6/1968", "6/6/1968", "No")
@@ -782,49 +798,95 @@ Public Class FrmMain
                             End If
                         End If
                         If FrmSelectView.CbxBirthdays.Checked Then
-                                'Write the BIRTHDAY records to the database
-                                '(0) "Bday" for birthday record
-                                '(1) sort date = Calculated birthday date
-                                '(2) name = BiographyRecord(1) / BioName
-                                '(3) birth date = BiographyRecord(2) / BioBirthDate (needed to calculate age at birthday)
+                            'Write the BIRTHDAY records to the database
+                            '(0) "Bday" for birthday record
+                            '(1) sort date = Calculated birthday date
+                            '(2) name = BiographyRecord(1) / BioName
+                            '(3) birth date = BiographyRecord(2) / BioBirthDate (needed to calculate age at birthday)
 
-                                'If (individual And BiographyRecord(6) = "Yes") Or Not individual Then 'if catbirthdays - BiographyRecord(6) = "Yes" or all inclusive do
-                                'Create the birthday records
-                                Dim monthsValue As Integer = 12 'used to increase the birthdate by one year
-                                Dim newDate As Date = CDate(BiographyRecord(2)) '= DateAdd(DateInterval.Month, monthsValue, dateValue)
-                                If BiographyRecord(3) = "Yes" Then 'this person is still living
-                                    Do While newDate < Now
-                                        newDate = DateAdd(DateInterval.Month, monthsValue, newDate) 'calculate next birthday
-                                        If newDate < Now Then
-                                            sortdate = CStr(newDate.Ticks) ' convert to ticks for sorting purposes
+                            'If (individual And BiographyRecord(6) = "Yes") Or Not individual Then 'if catbirthdays - BiographyRecord(6) = "Yes" or all inclusive do
+                            'Create the birthday records
+                            Dim monthsValue As Integer = 12 'used to increase the birthdate by one year
+                            Dim newDate As Date = CDate(BiographyRecord(2)) '= DateAdd(DateInterval.Month, monthsValue, dateValue)
+                            If BiographyRecord(3) = "Yes" Then 'this person is still living
+                                Do While newDate < Now
+                                    newDate = DateAdd(DateInterval.Month, monthsValue, newDate) 'calculate next birthday
+                                    If newDate < Now Then
+                                        sortdate = CStr(newDate.Ticks) ' convert to ticks for sorting purposes
 
-                                            'Type, birthday, name, living?, birthdate
-                                            record = "Bday" & delimiter & sortdate & delimiter & BiographyRecord(1) & delimiter & BiographyRecord(2)
-                                            filewriter.WriteLine(record)
-                                        End If
-                                    Loop
-                                Else    'this person has passed away
-                                    Do While newDate < CDate(BiographyRecord(4))
-                                        newDate = DateAdd(DateInterval.Month, monthsValue, newDate) 'calculate next birthday
-                                        If newDate < CDate(BiographyRecord(4)) Then 'calculate only while they were alive
-                                            sortdate = CStr(newDate.Ticks) ' convert to ticks for sorting purposes
+                                        'Type, birthday, name, living?, birthdate
+                                        record = "Bday" & delimiter & sortdate & delimiter & BiographyRecord(1) & delimiter & BiographyRecord(2)
+                                        filewriter.WriteLine(record)
+                                    End If
+                                Loop
+                            Else    'this person has passed away
+                                Do While newDate < CDate(BiographyRecord(4))
+                                    newDate = DateAdd(DateInterval.Month, monthsValue, newDate) 'calculate next birthday
+                                    If newDate < CDate(BiographyRecord(4)) Then 'calculate only while they were alive
+                                        sortdate = CStr(newDate.Ticks) ' convert to ticks for sorting purposes
 
-                                            'Type, birthday, name, living?, birthdate
-                                            'record = "Bday" & delimiter & sortdate & delimiter & BiographyRecord(1) & delimiter & BiographyRecord(2)
-                                            record = "Bday" & delimiter & sortdate & delimiter & BiographyRecord(1) & delimiter & BiographyRecord(2)
-                                            filewriter.WriteLine(record)
-                                        End If
-                                    Loop
-                                End If
+                                        'Type, birthday, name, living?, birthdate
+                                        'record = "Bday" & delimiter & sortdate & delimiter & BiographyRecord(1) & delimiter & BiographyRecord(2)
+                                        record = "Bday" & delimiter & sortdate & delimiter & BiographyRecord(1) & delimiter & BiographyRecord(2)
+                                        filewriter.WriteLine(record)
+                                    End If
+                                Loop
                             End If
                         End If
+                    End If
                 Loop
                 biographyReader.Close()
+
+                'Process Categories
+                Try
+                    Using categoryReader As New StreamReader(DataPath & "\" & CategoryFile)
+                        Dim indx As Integer = 0 'index number to use for the tempbiographyarray
+                        Do While categoryReader.Peek <> -1 'see if there is another record to process
+                            CategoryArray(indx) = categoryReader.ReadLine()
+                            ' MsgBox("CategoryArray(indx) " & CategoryArray(indx))
+                            'see if it's wanted in the display
+                            If CategoryView(indx) Then
+                                ' MsgBox("CategoryView(indx) " & CategoryView(indx))
+
+                                'catagory record = "(0) id, (1) name, (2) file name associated with this catagory
+                                Dim temprecord() As String = Split(CategoryArray(indx), delimiter) '** Module Array ** holds the fields of the currently selected record
+                                'process the events file here
+                                Try
+                                    Using eventsReader As New StreamReader(DataPath & "\" & temprecord(2))
+                                        'MsgBox(temprecord(2))
+                                        'category event record = (0) description, (1) date, (2) end date, (3) range
+                                        Do While eventsReader.Peek <> -1
+                                            Dim viewrecord As String = eventsReader.ReadLine()
+                                            'MsgBox(viewrecord)
+                                            temprecord = Split(viewrecord, vbTab)
+                                            'sortdate = CStr(newDate.Ticks) ' convert to ticks for sorting purposes
+                                            record = temprecord(0) & vbTab & CStr(CDate(temprecord(1)).Ticks & vbTab &
+                                                temprecord(2) & vbTab & temprecord(3))
+                                            'MsgBox("record: " & record)
+                                            filewriter.WriteLine(record)
+                                        Loop
+                                        eventsReader.Close()
+                                    End Using
+                                Catch ex As Exception
+
+                                End Try
+                            End If
+                            indx += 1   'Increase the index for use on the next record
+                        Loop
+                        categoryReader.Close()
+                    End Using
+
+                Catch ex As Exception
+                    Dim unused = MsgBox("Error reading the " & CategoryFile & " file")
+                End Try
+
                 filewriter.Close()
             End Using
 
         Catch ex As Exception
         End Try
+
+
 
         'sort the database
         SortTsv(DataPath & "\" & TextFileName, New Integer() {2, 3})
@@ -869,27 +931,38 @@ Public Class FrmMain
                         End If
 
                     Case "Dead" 'death record
-
-                        'death record = (0) type, (1) death date in ticks, (2) name, (3) birth date
-                        Dim death = New DateTime(Convert.ToInt64(recordarray(1)))
-                        outputtext.Append("   " & recordarray(2) & " PASSED on " & CnvDate(CStr(death)))
-                        If CDate(CnvDate(recordarray(3))).Month >= death.Month Then
-                            If CDate(CnvDate(recordarray(3))).Month = death.Month Then
-                                If CDate(recordarray(3)).Day < death.Day Then
-                                    outputtext.Append(" at " & Words_1_999(CInt(DateDiff(DateInterval.Year, CDate(recordarray(3)), death))))
+                        If FrmSelectView.CbxDeaths.Checked Then
+                            'death record = (0) type, (1) death date in ticks, (2) name, (3) birth date
+                            Dim death = New DateTime(Convert.ToInt64(recordarray(1)))
+                            outputtext.Append("   " & recordarray(2) & " PASSED on " & CnvDate(CStr(death)))
+                            If CDate(CnvDate(recordarray(3))).Month >= death.Month Then
+                                If CDate(CnvDate(recordarray(3))).Month = death.Month Then
+                                    If CDate(recordarray(3)).Day < death.Day Then
+                                        outputtext.Append(" at " & Words_1_999(CInt(DateDiff(DateInterval.Year, CDate(recordarray(3)), death))))
+                                    Else
+                                        outputtext.Append(" at " & (Words_1_999(CInt(DateDiff(DateInterval.Year, CDate(recordarray(3)), death)) - 1)))
+                                    End If
                                 Else
-                                    outputtext.Append(" at " & (Words_1_999(CInt(DateDiff(DateInterval.Year, CDate(recordarray(3)), death)) - 1)))
+                                    outputtext.Append(" at " & Words_1_999(CInt(DateDiff(DateInterval.Year, CDate(recordarray(3)), death))))
                                 End If
                             Else
                                 outputtext.Append(" at " & Words_1_999(CInt(DateDiff(DateInterval.Year, CDate(recordarray(3)), death))))
                             End If
-                        Else
-                            outputtext.Append(" at " & Words_1_999(CInt(DateDiff(DateInterval.Year, CDate(recordarray(3)), death))))
+                            outputtext.Append(vbCrLf & vbCrLf)
                         End If
-                        outputtext.Append(vbCrLf & vbCrLf)
-
                     Case Else
-                        outputtext.Append(recordstring)
+                        'record = (0) description, (1) date - sortdate, (2) end date, (3) range Yes/No
+                        outputtext.Append("   " & recordarray(0))
+                        If recordarray(3) = "Yes" Then
+                            outputtext.Append("   (")
+                        Else
+                            outputtext.Append("    ")
+                        End If
+                        Dim eventdate As New DateTime(Convert.ToInt64(recordarray(1)))
+                        outputtext.Append(CStr(eventdate))
+                        If recordarray(3) = "Yes" Then
+                            outputtext.Append(" - " & recordarray(2) & ")")
+                        End If
                         outputtext.Append(vbCrLf & vbCrLf)
                 End Select
             Loop
