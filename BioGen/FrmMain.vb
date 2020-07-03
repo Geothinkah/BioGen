@@ -847,6 +847,7 @@ Public Class FrmMain
                 Dim recordstring = textfilereader.ReadLine() 'read the next record
                 Dim recordarray() As String = Split(recordstring, vbTab) 'create the record fields
                 Select Case recordarray(0) 'type of record
+
                     Case "Biog" 'birth record
                         If FrmSelectView.CbxBirthDate.Checked Then
                             'birth record = (0) type (1) birthdate in ticks, (2) name
@@ -890,7 +891,7 @@ Public Class FrmMain
                     Case Else
                         outputtext.Append(recordstring)
                         outputtext.Append(vbCrLf & vbCrLf)
-
+                End Select
             Loop
             TxtFacts.Text = Nothing
             TxtFacts.Text = outputtext.ToString
