@@ -168,6 +168,7 @@ Partial Class FrmCategoryEvents
         Me.Name = "FrmCategoryEvents"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.Manual
         Me.Text = "Events"
+        Me.TopMost = True
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
         Me.Panel2.ResumeLayout(False)

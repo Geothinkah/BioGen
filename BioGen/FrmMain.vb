@@ -330,12 +330,26 @@ Public Class FrmMain
         WritePresEvents("President Bill Clinton", "1/20/1993", "1/20/2001", "Yes")
         WritePresEvents("President George W. Bush", "1/20/2001", "1/20/2009", "Yes")
         WritePresEvents("PRESIDENT Barack Obama", "1/20/2009", "1/20/2017", "Yes")
-        WritePresEvents("president donald j. trump", "1/20/2017", "1/20/2021", "Yes")
+        WritePresEvents("* egotist donald j. trump", "1/20/2017", "1/20/2021", "Yes")
         WritePresEvents("PRESIDENT Joe Biden", "1/20/2021", "1/20/2029", "Yes")
         WritePresEvents("President Kennedy Assassinated", "11/22/1963", "11/22/1963", "No")
         WritePresEvents("Robert Kennedy Assassinated", "6/6/1968", "6/6/1968", "No")
         WritePresEvents("President Lincoln Assassinated", "4/15/1865", "4/15/1865", "No")
 
+        'add the category Miscellanous record to the category file
+        Try
+            'True appends the record to the file. False replaces the file.
+
+            Dim prescatwriter As New StreamWriter(DataPath & "\" & CategoryFile, True)
+            Dim presrecord As String = Nothing
+            presrecord = Nothing
+            presrecord = "500" & vbTab & "Presidents" & vbTab & "500_Presidents.tsv"
+            prescatwriter.WriteLine(presrecord)
+            prescatwriter.Close()
+
+        Catch ex As Exception
+            Dim unused = MsgBox("Error trying to write a Wars' Category Record.")
+        End Try
 #End Region
 
 #Region "----- Create The Miscellaneous Category -----"
@@ -461,147 +475,6 @@ Public Class FrmMain
         WriteBiographies(DataPath, BiographyFile, CStr(RecordID), "Philip Earl Jenkins", "3/31/1936", "No", "12/28/1989", "Phil")
 #End Region
 
-#Region "XXXXX Old SETUP ROUTINE XXXXX"
-        Try
-            My.Computer.FileSystem.DeleteFile(DataPath & "\" & PresidentsFile)
-        Catch ex As Exception
-        End Try
-        Try
-            My.Computer.FileSystem.DeleteFile(DataPath & "\" & EventsFile)
-        Catch ex As Exception
-        End Try
-
-#Region "XXXXX Create The Presidents Category XXXXX"
-        'Create Presidents File
-        'presidents record = (0) number of their presidency, (2) name, (3) term begin date, (4) term end date
-        WritePresidents("1", "George Washington", "7/1/1789", "4/4/1797")
-        WritePresidents("2", "John Adams", "4/4/1797", "4/4/1801")
-        WritePresidents("3", "Thomas Jefferson", "4/4/1801", "4/4/1809")
-        WritePresidents("4", "James Madison", "4/4/1809", "4/4/1817")
-        WritePresidents("5", "James Monroe", "4/4/1817", "4/4/1825")
-        WritePresidents("6", "John Q. Adams", "4/4/1825", "4/4/1829")
-        WritePresidents("7", "Andrew Jackson", "4/4/1829", "4/4/1837")
-        WritePresidents("8", "Martin Van Buren", "4/4/1837", "3/4/1841")
-        WritePresidents("9", "William H. Harrison", "3/4/1841", "4/4/1841")
-        WritePresidents("10", "John Tyler", "4/6/1841", "3/4/1845")
-        WritePresidents("11", "James K. Polk", "3/4/1845", "3/4/1849")
-        WritePresidents("12", "Zachary Taylor", "3/5/1849", "7/9/1850")
-        WritePresidents("13", "Millard Fillmore", "7/10/1850", "3/4/1853")
-        WritePresidents("14", "Franklin Pierce", "3/4/1853", "3/4/1857")
-        WritePresidents("15", "James Buchanan", "3/4/1857", "4/4/1861")
-        WritePresidents("16", "Abrham Lincoln", "3/4/1861", "4/15/1865")
-        WritePresidents("17", "Andrew Johnson", "4/15/1865", "3/4/1869")
-        WritePresidents("18", "Ulysses S. Grant", "3/4/1869", "3/4/1877")
-        WritePresidents("19", "Rutherford B. Hayes", "3/4/1877", "3/4/1881")
-        WritePresidents("20", "James Garfield", "3/4/1881", "9/19/1881")
-        WritePresidents("21", "Chester A. Arthur", "9/20/1881", "3/4/1885")
-        WritePresidents("22", "Grover Cleveland", "3/4/1885", "3/4/1889")
-        WritePresidents("23", "Benjamin Harrison", "3/4/1889", "3/4/1893")
-        WritePresidents("24", "Grover Cleveland", "3/4/1893", "3/4/1897")
-        WritePresidents("25", "William McKinley", "3/4/1897", "9/14/1901")
-        WritePresidents("26", "Theodore Roosevelt", "9/14/1901", "4/4/1909")
-        WritePresidents("27", "William H. Taft", "3/4/1909", "3/4/1913")
-        WritePresidents("28", "Woodrow Wilson", "3/4/1913", "3/4/1921")
-        WritePresidents("29", "Warren Harding", "3/4/1921", "8/2/1923")
-        WritePresidents("30", "Calvin Coolidge", "8/3/1923", "3/4/1929")
-        WritePresidents("31", "Herbert Hoover", "3/4/1929", "3/4/1933")
-        WritePresidents("32", "Franklin D Roosevelt", "3/4/1933", "4/12/1945")
-        WritePresidents("33", "Harry S Truman", "4/12/1945", "1/20/1953")
-        WritePresidents("34", "Dwight Eisenhower", "1/20/1953", "1/20/1961")
-        WritePresidents("35", "John F. Kennedy", "1/20/1961", "11/22/1963")
-        WritePresidents("36", "Lyndon Johnson", "11/22/1963", "1/20/1969")
-        WritePresidents("37", "Richard Nixon", "1/20/1969", "8/9/1974")
-        WritePresidents("38", "Gerald Ford", "8/9/1974", "1/20/1977")
-        WritePresidents("39", "Jimmy Carter", "1/20/1977", "1/20/1981")
-        WritePresidents("40", "Ronald Reagan", "1/20/1981", "1/20/1989")
-        WritePresidents("41", "George H.W. Bush", "1/20/1989", "1/20/1993")
-        WritePresidents("42", "Bill Clinton", "1/20/1993", "1/20/2001")
-        WritePresidents("43", "George W. Bush", "1/20/2001", "1/20/2009")
-        WritePresidents("44", "Barack Obama", "1/20/2009", "1/20/2017")
-        WritePresidents("45", "Donald J. Trump", "1/20/2017", "1/20/2021")
-        WritePresidents("46", "Joe Biden", "1/20/2021", "1/20/2029")
-
-        SaveSettings()
-        'settings file = (0) record id - used for all added records
-
-        'add the presidents record to the category file
-        Try
-            'True appends the record to the file. False replaces the file.
-
-            Dim prescatwriter As New StreamWriter(DataPath & "\" & CategoryFile, True)
-            Dim catrecord As String = Nothing
-            catrecord = Nothing
-            catrecord = "500" & vbTab & "Presidents" & vbTab & "500_Presidents.tsv"
-            prescatwriter.WriteLine(catrecord)
-            prescatwriter.Close()
-
-        Catch ex As Exception
-            Dim unused = MsgBox("Error trying to write a President's Category Record.")
-        End Try
-
-#End Region
-
-#Region "XXXXX Create The Events File Category XXXXX"
-        'Create Events File
-        'events record = (0) type "Evnt", (1) date, (2) description
-
-        RecordID += 1
-        WriteEvents("Evnt", "11/22/1963", "President Kennedy Assassinated")
-        RecordID += 1
-        WriteEvents("Evnt", "11/20/1969", "First Man on the Moon")
-        RecordID += 1
-        WriteEvents("Evnt", "9/11/2001", "Terrorist Attack on World Trade Center")
-        RecordID += 1
-        WriteEvents("Evnt", "12/2/1941", "Attack on Pearl Harbor")
-        RecordID += 1
-        WriteEvents("Evnt", "6/6/1968", "Robert Kennedy Assassinated")
-        RecordID += 1
-        WriteEvents("Evnt", "4/15/1865", "President Lincoln Assassinated")
-        RecordID += 1
-        WriteEvents("Evnt", "4/4/1968", "Martin Luther King Jr Assassinated")
-        RecordID += 1
-        WriteEvents("Evnt", "12/12/2003", "Johnny Cash Died")
-        RecordID += 1
-        WriteEvents("Evnt", "12/17/1903", "Wright Brothers first flight!")
-        RecordID += 1
-        WriteEvents("Evnt", "8/16/1977", "Elvis Presley Died.")
-        RecordID += 1
-        WriteEvents("Evnt", "4/14/2003", "Final Sequencing of the Human Genome!")
-        RecordID += 1
-        WriteEvents("Evnt", "8/29/2005", "Katrina made Landfall in New Orleans")
-        RecordID += 1
-        WriteEvents("Evnt", "10/29/1929", "Black Tuesday - Stock Market Crash")
-        RecordID += 1
-        WriteEvents("Evnt", "7/28/1914", "World War I began.")
-        RecordID += 1
-        WriteEvents("Evnt", "11/11/1918", "World War I ends.")
-        RecordID += 1
-        WriteEvents("Evnt", "11/1/1939", "World War II began.")
-        RecordID += 1
-        WriteEvents("Evnt", "9/2/1945", "World War II ends.")
-        RecordID += 1
-        WriteEvents("Evnt", "2/28/1961", "Vietnam Era Started for Veterans.")
-        RecordID += 1
-        WriteEvents("Evnt", "5/7/1975", "Vietnam Era Ended for Veterans.")
-        RecordID += 1
-        WriteEvents("Evnt", "2/7/1964", "The Beatles First arrive in America!")
-        RecordID += 1
-        WriteEvents("Evnt", "7/1/1979", "Nana died sometime in 1979")
-        RecordID += 1
-        WriteEvents("Evnt", "4/19/1775", "American Revolutionary War began")
-        RecordID += 1
-        WriteEvents("Evnt", "9/3/1783", "American Revolutionary War ended")
-        RecordID += 1
-        WriteEvents("Evnt", "6/25/1950", "Korean War began")
-        RecordID += 1
-        WriteEvents("Evnt", "7/27/1953", "Korean War ended")
-        RecordID += 1
-        WriteEvents("Evnt", "4/12/1861", "Civil War Began")
-        RecordID += 1
-        WriteEvents("Evnt", "4/9/1865", "Civil War Ended")
-#End Region
-
-#End Region
         'all done creating the files - enable the form
         Enabled = True
     End Sub
@@ -689,55 +562,6 @@ Public Class FrmMain
             Dim unused = MsgBox("Failed in the WriteToFile " & filename)
 
         End Try
-    End Sub
-#End Region
-
-#Region "XXXXX Old Subs For The Old Setup Routine XXXXX"
-    ''' <summary>
-    ''' presidents record = (0) number of their presidency, (2) name, (3) term begin date, (4) term end date
-    ''' </summary>
-    ''' <param name="nbr"></param>
-    ''' <param name="name"></param>
-    ''' <param name="startterm"></param>
-    ''' <param name="endterm"></param>
-    Public Sub WritePresidents(nbr As String, name As String, startterm As String, endterm As String)
-        Try
-            'True appends the record to the file. False replaces the file.
-            Dim presidentwriter As New StreamWriter(DataPath & "\" & PresidentsFile, True)
-            Dim record As String = Nothing
-            RecordID += 1
-            record = Nothing
-            record = RecordID & vbTab & nbr & vbTab & name & vbTab & startterm & vbTab & endterm
-            presidentwriter.WriteLine(record)
-            presidentwriter.Close()
-
-        Catch ex As Exception
-            Dim unused = MsgBox("Error trying to write a President's record.")
-
-        End Try
-
-    End Sub
-
-    ''' <summary>
-    ''' events record = (0) type "Evnt", (1) date, (2) description
-    ''' </summary>
-    ''' <param name="type"></param>
-    ''' <param name="evntdate"></param>
-    ''' <param name="description"></param>
-    Public Sub WriteEvents(type As String, evntdate As String, description As String)
-
-        Try
-            'True appends the record to the file. False replaces the file.
-            Dim eventswriter As New StreamWriter(DataPath & "\" & EventsFile, True)
-            Dim record As String = Nothing
-            record = type & vbTab & evntdate & vbTab & description
-            eventswriter.WriteLine(record)
-            eventswriter.Close()
-        Catch ex As Exception
-            Beep()
-            Dim unused = MsgBox("Error trying to write an Events record.")
-        End Try
-
     End Sub
 #End Region
 
@@ -900,7 +724,6 @@ Public Class FrmMain
 #Region "***** Generate the Databases *****"
     Friend Sub BioGenDatabase(ByVal filename As String)
 
-
         'set type = True for the AllDatabaseFile and False for individual files
         Dim individual As Boolean 'set to True for individual biography database and False for the all inclusive database
         If filename = AllDatabaseFile Then
@@ -910,31 +733,6 @@ Public Class FrmMain
             TextFileName = filename
             individual = True 'build database for this biography only
         End If
-
-        '----- Miscellaneous biography stuff -----
-        'BiographyFile - name of the tsv file
-        'BiographyArray - Holds all the biography string records
-        'SelectedBiography - Holds the string of the selected biography record
-        'BiographyArrayIndex - 'Holds the currently selected BiographyArray index
-        'BiographyRecord() - Holds the currently selected record variables
-
-        '----- Description of the Biography Record Fields -----
-        '0 - BioID - generated by the program. Increases the RecordID variable before each record is created. RecordID is stored in the settings file
-        '1 - BioName - the name of the person
-        '2 - BioBirthDate - the birthdate of the person
-        '3 - BioSex - the sex of the person (Male/Female/Other)
-        '4 - BioLiving - is this person still alive (Yes/No)
-        '5 - BioDeathDate - the person's death date. Defaults to 12/5/2005 if they are still living (my father's death date)
-        '6 - CatBirthdays - include birthdays in this person's biography (Yes/No)
-        '7 - CatPresidents - include presidents in this person's biography (Yes/No)
-        '8 - BioNickName - the persons nickname. Defaults to their first name if they don't have one
-
-        ''SET THE TextFileName VARIABLE
-        'If individual Then
-        '    TextFileName = BiographyRecord(0) & "_" & BiographyRecord(1).Replace(" ", "") & ".tsv" ' remove spaces from their name for use in the filename
-        'Else
-        '    TextFileName = AllDatabaseFile
-        'End If
 
         'IF TextFileName EXISTS ALREADY, DELETE IT AND START FRESH
         Try
@@ -970,56 +768,56 @@ Public Class FrmMain
                         'birth record = type' vbtab birthdate in ticks' vbtab name
                         record = "Biog" & vbTab & sortdate & vbTab & BiographyRecord(1)
                         filewriter.WriteLine(record)
-
-                        'Write the death record to the database
-                        '(0) "Dead" for death record
-                        '(1) sort date = BiographyRecord(5) / BioDeathDate
-                        '(2) name = BiographyRecord(1) / BioName
-                        '(3) birth date = BiographyRecord(2) / BioBirthDate (needed to calculate age at death)
-                        sortdate = CStr(CDate(BiographyRecord(4)).Ticks) ' convert to ticks for sorting purposes
-                        If BiographyRecord(3) = "No" Then ' Create a death record
-                            'record = type, death date, name, birth date
-                            record = "Dead" & delimiter & sortdate & delimiter & BiographyRecord(1) & delimiter & BiographyRecord(2)
-                            filewriter.WriteLine(record)
+                        If FrmSelectView.CbxDeaths.Checked Then
+                            'Write the death record to the database
+                            '(0) "Dead" for death record
+                            '(1) sort date = BiographyRecord(5) / BioDeathDate
+                            '(2) name = BiographyRecord(1) / BioName
+                            '(3) birth date = BiographyRecord(2) / BioBirthDate (needed to calculate age at death)
+                            sortdate = CStr(CDate(BiographyRecord(4)).Ticks) ' convert to ticks for sorting purposes
+                            If BiographyRecord(3) = "No" Then ' Create a death record
+                                'record = type, death date, name, birth date
+                                record = "Dead" & delimiter & sortdate & delimiter & BiographyRecord(1) & delimiter & BiographyRecord(2)
+                                filewriter.WriteLine(record)
+                            End If
                         End If
+                        If FrmSelectView.CbxBirthdays.Checked Then
+                                'Write the BIRTHDAY records to the database
+                                '(0) "Bday" for birthday record
+                                '(1) sort date = Calculated birthday date
+                                '(2) name = BiographyRecord(1) / BioName
+                                '(3) birth date = BiographyRecord(2) / BioBirthDate (needed to calculate age at birthday)
 
-                        'Write the BIRTHDAY records to the database
-                        '(0) "Bday" for birthday record
-                        '(1) sort date = Calculated birthday date
-                        '(2) name = BiographyRecord(1) / BioName
-                        '(3) birth date = BiographyRecord(2) / BioBirthDate (needed to calculate age at birthday)
+                                'If (individual And BiographyRecord(6) = "Yes") Or Not individual Then 'if catbirthdays - BiographyRecord(6) = "Yes" or all inclusive do
+                                'Create the birthday records
+                                Dim monthsValue As Integer = 12 'used to increase the birthdate by one year
+                                Dim newDate As Date = CDate(BiographyRecord(2)) '= DateAdd(DateInterval.Month, monthsValue, dateValue)
+                                If BiographyRecord(3) = "Yes" Then 'this person is still living
+                                    Do While newDate < Now
+                                        newDate = DateAdd(DateInterval.Month, monthsValue, newDate) 'calculate next birthday
+                                        If newDate < Now Then
+                                            sortdate = CStr(newDate.Ticks) ' convert to ticks for sorting purposes
 
-                        'If (individual And BiographyRecord(6) = "Yes") Or Not individual Then 'if catbirthdays - BiographyRecord(6) = "Yes" or all inclusive do
-                        'Create the birthday records
-                        Dim monthsValue As Integer = 12 'used to increase the birthdate by one year
-                        Dim newDate As Date = CDate(BiographyRecord(2)) '= DateAdd(DateInterval.Month, monthsValue, dateValue)
-                        If BiographyRecord(3) = "Yes" Then 'this person is still living
-                            Do While newDate < Now
-                                newDate = DateAdd(DateInterval.Month, monthsValue, newDate) 'calculate next birthday
-                                If newDate < Now Then
-                                    sortdate = CStr(newDate.Ticks) ' convert to ticks for sorting purposes
+                                            'Type, birthday, name, living?, birthdate
+                                            record = "Bday" & delimiter & sortdate & delimiter & BiographyRecord(1) & delimiter & BiographyRecord(2)
+                                            filewriter.WriteLine(record)
+                                        End If
+                                    Loop
+                                Else    'this person has passed away
+                                    Do While newDate < CDate(BiographyRecord(4))
+                                        newDate = DateAdd(DateInterval.Month, monthsValue, newDate) 'calculate next birthday
+                                        If newDate < CDate(BiographyRecord(4)) Then 'calculate only while they were alive
+                                            sortdate = CStr(newDate.Ticks) ' convert to ticks for sorting purposes
 
-                                    'Type, birthday, name, living?, birthdate
-                                    record = "Bday" & delimiter & sortdate & delimiter & BiographyRecord(1) & delimiter & BiographyRecord(2)
-                                    filewriter.WriteLine(record)
+                                            'Type, birthday, name, living?, birthdate
+                                            'record = "Bday" & delimiter & sortdate & delimiter & BiographyRecord(1) & delimiter & BiographyRecord(2)
+                                            record = "Bday" & delimiter & sortdate & delimiter & BiographyRecord(1) & delimiter & BiographyRecord(2)
+                                            filewriter.WriteLine(record)
+                                        End If
+                                    Loop
                                 End If
-                            Loop
-                        Else    'this person has passed away
-                            Do While newDate < CDate(BiographyRecord(4))
-                                newDate = DateAdd(DateInterval.Month, monthsValue, newDate) 'calculate next birthday
-                                If newDate < CDate(BiographyRecord(4)) Then 'calculate only while they were alive
-                                    sortdate = CStr(newDate.Ticks) ' convert to ticks for sorting purposes
-
-                                    'Type, birthday, name, living?, birthdate
-                                    'record = "Bday" & delimiter & sortdate & delimiter & BiographyRecord(1) & delimiter & BiographyRecord(2)
-                                    record = "Bday" & delimiter & sortdate & delimiter & BiographyRecord(1) & delimiter & BiographyRecord(2)
-                                    filewriter.WriteLine(record)
-                                End If
-                            Loop
+                            End If
                         End If
-                        'Else
-                        'End If
-                    End If
                 Loop
                 biographyReader.Close()
                 filewriter.Close()
@@ -1028,87 +826,10 @@ Public Class FrmMain
         Catch ex As Exception
         End Try
 
-        'create the presidents file if the individual wants it or if it's all inclusive
-        ' If (individual And CatPresidents = "Yes") Or Not individual Then
-        Dim presrecord As String 'tab deliminated record
-        Try
-            Dim presidentReader As New System.IO.StreamReader(DataPath & "\" & PresidentsFile)
-            Dim filewriter As New StreamWriter(DataPath & "\" & TextFileName, True) 'True appends the record to the file. False replaces the file.
-            Dim sortdate As String
-            Dim record As String
-            Do While presidentReader.Peek <> -1
-                presrecord = presidentReader.ReadLine()
-                Dim currentRecord() As String = Split(presrecord, delimiter) 'create fields
-
-                'assign president's variables
-                PresName = currentRecord(2)
-                PresBeginTerm = CDate(currentRecord(3))
-                sortdate = CStr(PresBeginTerm.Ticks) ' convert to ticks for sorting purposes
-                'presidents textfile record
-                '(0) type "Pres"
-                '(1) start of presidency PresBeginTerm / Presidents(3)
-                '(2) President's name
-                '(3) end term
-                record = "Pres" & delimiter & sortdate & delimiter & PresName & vbTab & currentRecord(3)
-                filewriter.WriteLine(record)
-            Loop
-            presidentReader.Close()
-            filewriter.Close()
-        Catch ex As Exception
-            Dim unused = MsgBox("Error reading the " & PresidentsFile & " file")
-        End Try
-
-        ' End If
-
-
-        'Process The events
-        Dim eventrecord As String 'tab deliminated record
-        Try
-            Dim eventReader As New System.IO.StreamReader(DataPath & "\" & EventsFile)
-            Dim filewriter As New StreamWriter(DataPath & "\" & TextFileName, True) 'True appends the record to the file. False replaces the file.
-
-            Do While eventReader.Peek <> -1
-
-                eventrecord = eventReader.ReadLine()
-                Dim sortdate As String
-                Dim currentRecord() As String = Split(eventrecord, delimiter) 'create fields
-                sortdate = CStr(CDate(currentRecord(1)).Ticks) ' convert to ticks for sorting purposes
-                'Description of the Events Record
-                'Event(0)       Type - "Evnt"  for event record vrs other types like "Biog" for a biography record or "Pres" for a President record
-                'Event(1)       Date - Date in ticks of the event (for sorting)
-                'Event(2)       Description - Text of the event
-                'Event(3)       The record id unique to this record
-                'Event(4)       The biography record id (BioID) or "1955" to mean that it belongs in all the biographies
-                'Event(5)       The biography name (BioName) or "Universal" for all biographies
-
-                eventrecord = "Evnt" & delimiter & CDate(currentRecord(1)).Ticks.ToString & delimiter & currentRecord(2)
-                filewriter.WriteLine(eventrecord)
-            Loop
-
-            eventReader.Close()
-            filewriter.Close()
-        Catch ex As Exception
-            Dim unused = MsgBox("Error reading the " & EventsFile & " file")
-        End Try
-
         'sort the database
         SortTsv(DataPath & "\" & TextFileName, New Integer() {2, 3})
 
     End Sub
-
-#End Region
-
-#Region "**** Catagories *****"
-
-    'Private Sub Button1_Click_1(sender As Object, e As EventArgs) Handles Button1.Click
-    '    Dim folderInfo As New IO.DirectoryInfo(DataPath) 'Or whatever dir path
-    '    Dim arrFilesInFolder() As IO.FileInfo
-    '    Dim fileInFolder As IO.FileInfo
-    '    arrFilesInFolder = folderInfo.GetFiles("*.*")
-    '    For Each fileInFolder In arrFilesInFolder
-    '        CheckedListBox1.Items.Add(fileInFolder.Name)
-    '    Next
-    'End Sub
 
 #End Region
 
@@ -1127,13 +848,13 @@ Public Class FrmMain
                 Dim recordarray() As String = Split(recordstring, vbTab) 'create the record fields
                 Select Case recordarray(0) 'type of record
                     Case "Biog" 'birth record
-
-                        'birth record = (0) type (1) birthdate in ticks, (2) name
-                        Dim birthdate = New Date(Convert.ToInt64(recordarray(1)))
-                        outputtext.Append("   " & recordarray(2) & " BORN on ")
-                        outputtext.Append(CnvDate(CStr(birthdate)))
-                        outputtext.Append(vbCrLf & vbCrLf)
-
+                        If FrmSelectView.CbxBirthDate.Checked Then
+                            'birth record = (0) type (1) birthdate in ticks, (2) name
+                            Dim birthdate = New Date(Convert.ToInt64(recordarray(1)))
+                            outputtext.Append("   " & recordarray(2) & " BORN on ")
+                            outputtext.Append(CnvDate(CStr(birthdate)))
+                            outputtext.Append(vbCrLf & vbCrLf)
+                        End If
                     Case "Bday" 'birthday record
                         If FrmSelectView.CbxBirthdays.Checked Then
 
@@ -1166,27 +887,10 @@ Public Class FrmMain
                         End If
                         outputtext.Append(vbCrLf & vbCrLf)
 
-                    Case "Pres" 'president record
-
-                        'presidents record (0) type, (1) date term began (2) name
-                        If FrmSelectView.CbxPresidents.Checked Then
-                            outputtext.Append("   PRESIDENT " & recordarray(2) & " took the oath on ")
-                            Dim termdate = New DateTime(Convert.ToInt64(recordarray(1)))
-                            outputtext.Append(" - " & CnvDate(CStr(termdate)))
-                            outputtext.Append(vbCrLf & vbCrLf)
-                        End If
-                    Case "Evnt" 'event record
-
-                        'event record = (0) type, (1) date of event in ticks (2) description of event
-                        If FrmSelectView.CbxEvents.Checked Then
-                            Dim eventdate As New DateTime(Convert.ToInt64(recordarray(1)))
-                            outputtext.Append("   " & recordarray(2).ToUpper & " on ")
-                            outputtext.Append(CnvDate(eventdate.ToShortDateString))
-                            outputtext.Append(vbCrLf & vbCrLf)
-                        End If
                     Case Else
-                        MsgBox("Unknown type of record. Can't display. Record: " & recordstring)
-                End Select
+                        outputtext.Append(recordstring)
+                        outputtext.Append(vbCrLf & vbCrLf)
+
             Loop
             TxtFacts.Text = Nothing
             TxtFacts.Text = outputtext.ToString
@@ -1196,6 +900,9 @@ Public Class FrmMain
             MsgBox("Somethin went wrong in the DisplayTextFile(textfile) routine")
         End Try
     End Sub
+#End Region
+
+#Region "*** Buttons and Menu Items ??? *****"
 
     Private Sub BtnSelectView_Click(sender As Object, e As EventArgs) Handles BtnSelectView.Click
         'If BioName = Nothing Then
@@ -1269,5 +976,20 @@ Public Class FrmMain
 
 
 #End Region
+
+#Region "**** Catagories *****"
+
+    'Private Sub Button1_Click_1(sender As Object, e As EventArgs) Handles Button1.Click
+    '    Dim folderInfo As New IO.DirectoryInfo(DataPath) 'Or whatever dir path
+    '    Dim arrFilesInFolder() As IO.FileInfo
+    '    Dim fileInFolder As IO.FileInfo
+    '    arrFilesInFolder = folderInfo.GetFiles("*.*")
+    '    For Each fileInFolder In arrFilesInFolder
+    '        CheckedListBox1.Items.Add(fileInFolder.Name)
+    '    Next
+    'End Sub
+
+#End Region
+
 
 End Class

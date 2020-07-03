@@ -27,8 +27,8 @@ Partial Class FrmOpenBiography
         Me.txtvName = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.txtvBirthDate = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.txtvLiving = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-        Me.BtnExit = New System.Windows.Forms.Button()
         Me.BtnOption = New System.Windows.Forms.Button()
+        Me.BtnAll = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'LstvOpenBiography
@@ -67,27 +67,27 @@ Partial Class FrmOpenBiography
         Me.txtvLiving.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         Me.txtvLiving.Width = 100
         '
-        'BtnExit
-        '
-        Me.BtnExit.BackColor = System.Drawing.Color.Bisque
-        Me.BtnExit.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.BtnExit.Location = New System.Drawing.Point(442, 404)
-        Me.BtnExit.Name = "BtnExit"
-        Me.BtnExit.Size = New System.Drawing.Size(75, 29)
-        Me.BtnExit.TabIndex = 7
-        Me.BtnExit.Text = "Exit"
-        Me.BtnExit.UseVisualStyleBackColor = False
-        '
         'BtnOption
         '
         Me.BtnOption.BackColor = System.Drawing.Color.Bisque
         Me.BtnOption.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.BtnOption.Location = New System.Drawing.Point(361, 404)
+        Me.BtnOption.Location = New System.Drawing.Point(443, 404)
         Me.BtnOption.Name = "BtnOption"
         Me.BtnOption.Size = New System.Drawing.Size(75, 29)
         Me.BtnOption.TabIndex = 9
         Me.BtnOption.Text = "Option"
         Me.BtnOption.UseVisualStyleBackColor = False
+        '
+        'BtnAll
+        '
+        Me.BtnAll.BackColor = System.Drawing.Color.Bisque
+        Me.BtnAll.FlatStyle = System.Windows.Forms.FlatStyle.Popup
+        Me.BtnAll.Location = New System.Drawing.Point(12, 403)
+        Me.BtnAll.Name = "BtnAll"
+        Me.BtnAll.Size = New System.Drawing.Size(75, 29)
+        Me.BtnAll.TabIndex = 10
+        Me.BtnAll.Text = "All"
+        Me.BtnAll.UseVisualStyleBackColor = False
         '
         'FrmOpenBiography
         '
@@ -95,11 +95,11 @@ Partial Class FrmOpenBiography
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.DeepSkyBlue
         Me.ClientSize = New System.Drawing.Size(534, 444)
+        Me.Controls.Add(Me.BtnAll)
         Me.Controls.Add(Me.BtnOption)
-        Me.Controls.Add(Me.BtnExit)
         Me.Controls.Add(Me.LstvOpenBiography)
         Me.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Location = New System.Drawing.Point(25, 180)
         Me.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
@@ -117,6 +117,6 @@ Partial Class FrmOpenBiography
     Friend WithEvents txtvName As ColumnHeader
     Friend WithEvents txtvBirthDate As ColumnHeader
     Friend WithEvents txtvLiving As ColumnHeader
-    Friend WithEvents BtnExit As Button
     Friend WithEvents BtnOption As Button
+    Friend WithEvents BtnAll As Button
 End Class

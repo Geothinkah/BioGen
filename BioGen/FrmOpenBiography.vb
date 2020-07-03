@@ -81,16 +81,6 @@ Public Class FrmOpenBiography
 
     End Sub
 
-    Private Sub BtnExit_Click(sender As Object, e As EventArgs) Handles BtnExit.Click
-        If BioName = Nothing Then 'nothing was selected
-            Beep()
-            MsgBox("Please Select a Biography")
-            Return
-        End If
-        FrmMain.BtnSelectView.Enabled = True
-        Close()
-    End Sub
-
     Private Sub BtnOption_Click(sender As Object, e As EventArgs) Handles BtnOption.Click
         Select Case BtnOption.Text
             Case "Select"
@@ -150,5 +140,10 @@ Public Class FrmOpenBiography
 
     Private Sub FrmOpenBiography_Closed(sender As Object, e As EventArgs) Handles Me.Closed
         'FrmMain.LblView.Visible = True
+    End Sub
+
+    Private Sub BtnAll_Click(sender As Object, e As EventArgs) Handles BtnAll.Click
+        TextFileName = AllDatabaseFile
+        Close()
     End Sub
 End Class
