@@ -33,6 +33,7 @@ Partial Class FrmSelectView
         Me.CbxBirthDate = New System.Windows.Forms.CheckBox()
         Me.ClbCategories = New System.Windows.Forms.CheckedListBox()
         Me.BtnSelectBiography = New System.Windows.Forms.Button()
+        Me.CkbAllBios = New System.Windows.Forms.CheckBox()
         Me.Panel1.SuspendLayout()
         Me.Panel2.SuspendLayout()
         Me.SuspendLayout()
@@ -98,12 +99,13 @@ Partial Class FrmSelectView
         '
         Me.Panel2.BackColor = System.Drawing.Color.OldLace
         Me.Panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Panel2.Controls.Add(Me.CkbAllBios)
         Me.Panel2.Controls.Add(Me.CbxDeaths)
         Me.Panel2.Controls.Add(Me.CbxBirthdays)
         Me.Panel2.Controls.Add(Me.CbxBirthDate)
         Me.Panel2.Location = New System.Drawing.Point(22, 45)
         Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(247, 97)
+        Me.Panel2.Size = New System.Drawing.Size(247, 119)
         Me.Panel2.TabIndex = 28
         '
         'CbxDeaths
@@ -155,6 +157,16 @@ Partial Class FrmSelectView
         Me.BtnSelectBiography.Text = "Change Biography"
         Me.BtnSelectBiography.UseVisualStyleBackColor = False
         '
+        'CkbAllBios
+        '
+        Me.CkbAllBios.AutoSize = True
+        Me.CkbAllBios.Location = New System.Drawing.Point(3, 90)
+        Me.CkbAllBios.Name = "CkbAllBios"
+        Me.CkbAllBios.Size = New System.Drawing.Size(189, 24)
+        Me.CkbAllBios.TabIndex = 23
+        Me.CkbAllBios.Text = "Include All Biographies"
+        Me.CkbAllBios.UseVisualStyleBackColor = True
+        '
         'FrmSelectView
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
@@ -190,4 +202,5 @@ Partial Class FrmSelectView
     Friend WithEvents ClbCategories As CheckedListBox
     Friend WithEvents Panel2 As Panel
     Friend WithEvents Label1 As Label
+    Friend WithEvents CkbAllBios As CheckBox
 End Class

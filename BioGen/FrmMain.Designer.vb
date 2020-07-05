@@ -41,34 +41,18 @@ Partial Class FrmMain
         Me.TimerMain = New System.Windows.Forms.Timer(Me.components)
         Me.LblTimer = New System.Windows.Forms.Label()
         Me.LblCurrentBiography = New System.Windows.Forms.Label()
-        Me.RtxBiography = New System.Windows.Forms.RichTextBox()
-        Me.ContextMenuStrip1 = New System.Windows.Forms.ContextMenuStrip(Me.components)
-        Me.CopyToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
-        Me.CutToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
-        Me.PasteToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
-        Me.SelectAllToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.TxtFacts = New System.Windows.Forms.TextBox()
         Me.PnlEditor = New System.Windows.Forms.Panel()
+        Me.RtxBiography = New System.Windows.Forms.RichTextBox()
         Me.MnuEditor = New System.Windows.Forms.MenuStrip()
         Me.FileToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.NewToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.OpenToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.SaveToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.SaveAsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.EditToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.UndoToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.RedoToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator()
-        Me.CopyToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.CutToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.PasteToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ToolStripSeparator3 = New System.Windows.Forms.ToolStripSeparator()
-        Me.DeleteToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.SelectAllToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ToolStripSeparator4 = New System.Windows.Forms.ToolStripSeparator()
-        Me.TimeDateToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.FormatToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.FontToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.InsertToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.DateTimeToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.BtnSearch = New System.Windows.Forms.Button()
         Me.TxbSearch = New System.Windows.Forms.TextBox()
         Me.SaveFileDialog1 = New System.Windows.Forms.SaveFileDialog()
@@ -82,18 +66,17 @@ Partial Class FrmMain
         Me.TxtEvents = New System.Windows.Forms.TextBox()
         Me.LblCategory = New System.Windows.Forms.Label()
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
-        Me.CatagoryToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.SelectToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
-        Me.AddToolStripMenuItem2 = New System.Windows.Forms.ToolStripMenuItem()
-        Me.RenameToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.DeleteToolStripMenuItem2 = New System.Windows.Forms.ToolStripMenuItem()
-        Me.EventsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.CategoryToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AddToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
-        Me.EditToolStripMenuItem2 = New System.Windows.Forms.ToolStripMenuItem()
-        Me.DeleteToolStripMenuItem3 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.RenameToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.DeleteToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.SelectToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.EventToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.AddToolStripMenuItem2 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.EditToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.DeleteToolStripMenuItem2 = New System.Windows.Forms.ToolStripMenuItem()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.MnuMain.SuspendLayout()
-        Me.ContextMenuStrip1.SuspendLayout()
         Me.PnlEditor.SuspendLayout()
         Me.MnuEditor.SuspendLayout()
         Me.PnlSelectView.SuspendLayout()
@@ -123,7 +106,7 @@ Partial Class FrmMain
         '
         Me.BiographyToolStripMenuItem1.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AddToolStripMenuItem, Me.EditToolStripMenuItem1, Me.DeleteToolStripMenuItem1})
         Me.BiographyToolStripMenuItem1.Name = "BiographyToolStripMenuItem1"
-        Me.BiographyToolStripMenuItem1.Size = New System.Drawing.Size(151, 26)
+        Me.BiographyToolStripMenuItem1.Size = New System.Drawing.Size(180, 26)
         Me.BiographyToolStripMenuItem1.Text = "Biography"
         '
         'AddToolStripMenuItem
@@ -148,30 +131,30 @@ Partial Class FrmMain
         '
         Me.SettingsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FactoryResetToolStripMenuItem})
         Me.SettingsToolStripMenuItem.Name = "SettingsToolStripMenuItem"
-        Me.SettingsToolStripMenuItem.Size = New System.Drawing.Size(151, 26)
+        Me.SettingsToolStripMenuItem.Size = New System.Drawing.Size(180, 26)
         Me.SettingsToolStripMenuItem.Text = "Settings"
         '
         'FactoryResetToolStripMenuItem
         '
         Me.FactoryResetToolStripMenuItem.Name = "FactoryResetToolStripMenuItem"
-        Me.FactoryResetToolStripMenuItem.Size = New System.Drawing.Size(175, 26)
+        Me.FactoryResetToolStripMenuItem.Size = New System.Drawing.Size(180, 26)
         Me.FactoryResetToolStripMenuItem.Text = "Reset All Files"
         '
         'ToolStripSeparator5
         '
         Me.ToolStripSeparator5.Name = "ToolStripSeparator5"
-        Me.ToolStripSeparator5.Size = New System.Drawing.Size(148, 6)
+        Me.ToolStripSeparator5.Size = New System.Drawing.Size(177, 6)
         '
         'ExitToolStripMenuItem
         '
         Me.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem"
-        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(151, 26)
+        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(180, 26)
         Me.ExitToolStripMenuItem.Text = "Exit"
         '
         'ToolStripSeparator1
         '
         Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
-        Me.ToolStripSeparator1.Size = New System.Drawing.Size(148, 6)
+        Me.ToolStripSeparator1.Size = New System.Drawing.Size(177, 6)
         '
         'ResearchToolStripMenuItem
         '
@@ -218,51 +201,6 @@ Partial Class FrmMain
         Me.LblCurrentBiography.Text = "View Area"
         Me.LblCurrentBiography.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
-        'RtxBiography
-        '
-        Me.RtxBiography.AcceptsTab = True
-        Me.RtxBiography.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
-        Me.RtxBiography.BackColor = System.Drawing.Color.FromArgb(CType(CType(55, Byte), Integer), CType(CType(55, Byte), Integer), CType(CType(55, Byte), Integer))
-        Me.RtxBiography.ContextMenuStrip = Me.ContextMenuStrip1
-        Me.RtxBiography.ForeColor = System.Drawing.Color.White
-        Me.RtxBiography.Location = New System.Drawing.Point(16, 56)
-        Me.RtxBiography.Name = "RtxBiography"
-        Me.RtxBiography.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical
-        Me.RtxBiography.Size = New System.Drawing.Size(756, 755)
-        Me.RtxBiography.TabIndex = 7
-        Me.RtxBiography.Text = ""
-        '
-        'ContextMenuStrip1
-        '
-        Me.ContextMenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.CopyToolStripMenuItem1, Me.CutToolStripMenuItem1, Me.PasteToolStripMenuItem1, Me.SelectAllToolStripMenuItem1})
-        Me.ContextMenuStrip1.Name = "ContextMenuStrip1"
-        Me.ContextMenuStrip1.Size = New System.Drawing.Size(123, 92)
-        '
-        'CopyToolStripMenuItem1
-        '
-        Me.CopyToolStripMenuItem1.Name = "CopyToolStripMenuItem1"
-        Me.CopyToolStripMenuItem1.Size = New System.Drawing.Size(122, 22)
-        Me.CopyToolStripMenuItem1.Text = "Copy"
-        '
-        'CutToolStripMenuItem1
-        '
-        Me.CutToolStripMenuItem1.Name = "CutToolStripMenuItem1"
-        Me.CutToolStripMenuItem1.Size = New System.Drawing.Size(122, 22)
-        Me.CutToolStripMenuItem1.Text = "Cut"
-        '
-        'PasteToolStripMenuItem1
-        '
-        Me.PasteToolStripMenuItem1.Name = "PasteToolStripMenuItem1"
-        Me.PasteToolStripMenuItem1.Size = New System.Drawing.Size(122, 22)
-        Me.PasteToolStripMenuItem1.Text = "Paste"
-        '
-        'SelectAllToolStripMenuItem1
-        '
-        Me.SelectAllToolStripMenuItem1.Name = "SelectAllToolStripMenuItem1"
-        Me.SelectAllToolStripMenuItem1.Size = New System.Drawing.Size(122, 22)
-        Me.SelectAllToolStripMenuItem1.Text = "Select All"
-        '
         'TxtFacts
         '
         Me.TxtFacts.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
@@ -284,18 +222,33 @@ Partial Class FrmMain
             Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.PnlEditor.BackColor = System.Drawing.Color.OldLace
         Me.PnlEditor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.PnlEditor.Controls.Add(Me.MnuEditor)
         Me.PnlEditor.Controls.Add(Me.RtxBiography)
+        Me.PnlEditor.Controls.Add(Me.MnuEditor)
         Me.PnlEditor.Location = New System.Drawing.Point(584, 97)
         Me.PnlEditor.Name = "PnlEditor"
         Me.PnlEditor.Size = New System.Drawing.Size(789, 828)
         Me.PnlEditor.TabIndex = 9
         '
+        'RtxBiography
+        '
+        Me.RtxBiography.AcceptsTab = True
+        Me.RtxBiography.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.RtxBiography.BackColor = System.Drawing.Color.WhiteSmoke
+        Me.RtxBiography.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.RtxBiography.ForeColor = System.Drawing.Color.Black
+        Me.RtxBiography.Location = New System.Drawing.Point(29, 56)
+        Me.RtxBiography.Name = "RtxBiography"
+        Me.RtxBiography.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical
+        Me.RtxBiography.Size = New System.Drawing.Size(743, 755)
+        Me.RtxBiography.TabIndex = 1
+        Me.RtxBiography.Text = ""
+        '
         'MnuEditor
         '
         Me.MnuEditor.BackColor = System.Drawing.Color.Bisque
         Me.MnuEditor.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.MnuEditor.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FileToolStripMenuItem, Me.EditToolStripMenuItem, Me.FormatToolStripMenuItem})
+        Me.MnuEditor.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FileToolStripMenuItem, Me.FormatToolStripMenuItem, Me.InsertToolStripMenuItem})
         Me.MnuEditor.Location = New System.Drawing.Point(0, 0)
         Me.MnuEditor.Name = "MnuEditor"
         Me.MnuEditor.Size = New System.Drawing.Size(787, 29)
@@ -304,18 +257,10 @@ Partial Class FrmMain
         '
         'FileToolStripMenuItem
         '
-        Me.FileToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.NewToolStripMenuItem1, Me.OpenToolStripMenuItem1, Me.SaveToolStripMenuItem, Me.SaveAsToolStripMenuItem})
+        Me.FileToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.OpenToolStripMenuItem1, Me.SaveToolStripMenuItem, Me.SaveAsToolStripMenuItem})
         Me.FileToolStripMenuItem.Name = "FileToolStripMenuItem"
         Me.FileToolStripMenuItem.Size = New System.Drawing.Size(46, 25)
         Me.FileToolStripMenuItem.Text = "File"
-        '
-        'NewToolStripMenuItem1
-        '
-        Me.NewToolStripMenuItem1.Enabled = False
-        Me.NewToolStripMenuItem1.Name = "NewToolStripMenuItem1"
-        Me.NewToolStripMenuItem1.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.N), System.Windows.Forms.Keys)
-        Me.NewToolStripMenuItem1.Size = New System.Drawing.Size(176, 26)
-        Me.NewToolStripMenuItem1.Text = "New"
         '
         'OpenToolStripMenuItem1
         '
@@ -337,84 +282,6 @@ Partial Class FrmMain
         Me.SaveAsToolStripMenuItem.Size = New System.Drawing.Size(176, 26)
         Me.SaveAsToolStripMenuItem.Text = "Save as"
         '
-        'EditToolStripMenuItem
-        '
-        Me.EditToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.UndoToolStripMenuItem, Me.RedoToolStripMenuItem, Me.ToolStripSeparator2, Me.CopyToolStripMenuItem, Me.CutToolStripMenuItem, Me.PasteToolStripMenuItem, Me.ToolStripSeparator3, Me.DeleteToolStripMenuItem, Me.SelectAllToolStripMenuItem, Me.ToolStripSeparator4, Me.TimeDateToolStripMenuItem})
-        Me.EditToolStripMenuItem.Name = "EditToolStripMenuItem"
-        Me.EditToolStripMenuItem.Size = New System.Drawing.Size(48, 25)
-        Me.EditToolStripMenuItem.Text = "Edit"
-        '
-        'UndoToolStripMenuItem
-        '
-        Me.UndoToolStripMenuItem.Name = "UndoToolStripMenuItem"
-        Me.UndoToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.Z), System.Windows.Forms.Keys)
-        Me.UndoToolStripMenuItem.Size = New System.Drawing.Size(207, 26)
-        Me.UndoToolStripMenuItem.Text = "Undo"
-        '
-        'RedoToolStripMenuItem
-        '
-        Me.RedoToolStripMenuItem.Name = "RedoToolStripMenuItem"
-        Me.RedoToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.Y), System.Windows.Forms.Keys)
-        Me.RedoToolStripMenuItem.Size = New System.Drawing.Size(207, 26)
-        Me.RedoToolStripMenuItem.Text = "Redo"
-        '
-        'ToolStripSeparator2
-        '
-        Me.ToolStripSeparator2.Name = "ToolStripSeparator2"
-        Me.ToolStripSeparator2.Size = New System.Drawing.Size(204, 6)
-        '
-        'CopyToolStripMenuItem
-        '
-        Me.CopyToolStripMenuItem.Name = "CopyToolStripMenuItem"
-        Me.CopyToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.C), System.Windows.Forms.Keys)
-        Me.CopyToolStripMenuItem.Size = New System.Drawing.Size(207, 26)
-        Me.CopyToolStripMenuItem.Text = "Copy"
-        '
-        'CutToolStripMenuItem
-        '
-        Me.CutToolStripMenuItem.Name = "CutToolStripMenuItem"
-        Me.CutToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.X), System.Windows.Forms.Keys)
-        Me.CutToolStripMenuItem.Size = New System.Drawing.Size(207, 26)
-        Me.CutToolStripMenuItem.Text = "Cut"
-        '
-        'PasteToolStripMenuItem
-        '
-        Me.PasteToolStripMenuItem.Name = "PasteToolStripMenuItem"
-        Me.PasteToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.V), System.Windows.Forms.Keys)
-        Me.PasteToolStripMenuItem.Size = New System.Drawing.Size(207, 26)
-        Me.PasteToolStripMenuItem.Text = "Paste"
-        '
-        'ToolStripSeparator3
-        '
-        Me.ToolStripSeparator3.Name = "ToolStripSeparator3"
-        Me.ToolStripSeparator3.Size = New System.Drawing.Size(204, 6)
-        '
-        'DeleteToolStripMenuItem
-        '
-        Me.DeleteToolStripMenuItem.Name = "DeleteToolStripMenuItem"
-        Me.DeleteToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.Delete), System.Windows.Forms.Keys)
-        Me.DeleteToolStripMenuItem.Size = New System.Drawing.Size(207, 26)
-        Me.DeleteToolStripMenuItem.Text = "Delete"
-        '
-        'SelectAllToolStripMenuItem
-        '
-        Me.SelectAllToolStripMenuItem.Name = "SelectAllToolStripMenuItem"
-        Me.SelectAllToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.A), System.Windows.Forms.Keys)
-        Me.SelectAllToolStripMenuItem.Size = New System.Drawing.Size(207, 26)
-        Me.SelectAllToolStripMenuItem.Text = "Select All"
-        '
-        'ToolStripSeparator4
-        '
-        Me.ToolStripSeparator4.Name = "ToolStripSeparator4"
-        Me.ToolStripSeparator4.Size = New System.Drawing.Size(204, 6)
-        '
-        'TimeDateToolStripMenuItem
-        '
-        Me.TimeDateToolStripMenuItem.Name = "TimeDateToolStripMenuItem"
-        Me.TimeDateToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F5
-        Me.TimeDateToolStripMenuItem.Size = New System.Drawing.Size(207, 26)
-        Me.TimeDateToolStripMenuItem.Text = "Time and Date"
-        '
         'FormatToolStripMenuItem
         '
         Me.FormatToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FontToolStripMenuItem})
@@ -427,6 +294,19 @@ Partial Class FrmMain
         Me.FontToolStripMenuItem.Name = "FontToolStripMenuItem"
         Me.FontToolStripMenuItem.Size = New System.Drawing.Size(111, 26)
         Me.FontToolStripMenuItem.Text = "Font"
+        '
+        'InsertToolStripMenuItem
+        '
+        Me.InsertToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.DateTimeToolStripMenuItem})
+        Me.InsertToolStripMenuItem.Name = "InsertToolStripMenuItem"
+        Me.InsertToolStripMenuItem.Size = New System.Drawing.Size(61, 25)
+        Me.InsertToolStripMenuItem.Text = "Insert"
+        '
+        'DateTimeToolStripMenuItem
+        '
+        Me.DateTimeToolStripMenuItem.Name = "DateTimeToolStripMenuItem"
+        Me.DateTimeToolStripMenuItem.Size = New System.Drawing.Size(154, 26)
+        Me.DateTimeToolStripMenuItem.Text = "Date & Time"
         '
         'BtnSearch
         '
@@ -536,25 +416,50 @@ Partial Class FrmMain
         '
         Me.MenuStrip1.BackColor = System.Drawing.Color.Bisque
         Me.MenuStrip1.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.CatagoryToolStripMenuItem, Me.EventsToolStripMenuItem})
+        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.CategoryToolStripMenuItem, Me.EventToolStripMenuItem})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
         Me.MenuStrip1.Size = New System.Drawing.Size(517, 29)
-        Me.MenuStrip1.TabIndex = 18
-        Me.MenuStrip1.Text = "Catagory"
+        Me.MenuStrip1.TabIndex = 22
+        Me.MenuStrip1.Text = "MenuStrip1"
         '
-        'CatagoryToolStripMenuItem
+        'CategoryToolStripMenuItem
         '
-        Me.CatagoryToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SelectToolStripMenuItem1, Me.AddToolStripMenuItem2, Me.RenameToolStripMenuItem, Me.DeleteToolStripMenuItem2})
-        Me.CatagoryToolStripMenuItem.Name = "CatagoryToolStripMenuItem"
-        Me.CatagoryToolStripMenuItem.Size = New System.Drawing.Size(85, 25)
-        Me.CatagoryToolStripMenuItem.Text = "Catagory"
+        Me.CategoryToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SelectToolStripMenuItem, Me.AddToolStripMenuItem1, Me.RenameToolStripMenuItem, Me.DeleteToolStripMenuItem})
+        Me.CategoryToolStripMenuItem.Name = "CategoryToolStripMenuItem"
+        Me.CategoryToolStripMenuItem.Size = New System.Drawing.Size(85, 25)
+        Me.CategoryToolStripMenuItem.Text = "Category"
         '
-        'SelectToolStripMenuItem1
+        'AddToolStripMenuItem1
         '
-        Me.SelectToolStripMenuItem1.Name = "SelectToolStripMenuItem1"
-        Me.SelectToolStripMenuItem1.Size = New System.Drawing.Size(180, 26)
-        Me.SelectToolStripMenuItem1.Text = "Select"
+        Me.AddToolStripMenuItem1.Name = "AddToolStripMenuItem1"
+        Me.AddToolStripMenuItem1.Size = New System.Drawing.Size(180, 26)
+        Me.AddToolStripMenuItem1.Text = "Add"
+        '
+        'RenameToolStripMenuItem
+        '
+        Me.RenameToolStripMenuItem.Name = "RenameToolStripMenuItem"
+        Me.RenameToolStripMenuItem.Size = New System.Drawing.Size(180, 26)
+        Me.RenameToolStripMenuItem.Text = "Edit"
+        '
+        'DeleteToolStripMenuItem
+        '
+        Me.DeleteToolStripMenuItem.Name = "DeleteToolStripMenuItem"
+        Me.DeleteToolStripMenuItem.Size = New System.Drawing.Size(180, 26)
+        Me.DeleteToolStripMenuItem.Text = "Delete"
+        '
+        'SelectToolStripMenuItem
+        '
+        Me.SelectToolStripMenuItem.Name = "SelectToolStripMenuItem"
+        Me.SelectToolStripMenuItem.Size = New System.Drawing.Size(180, 26)
+        Me.SelectToolStripMenuItem.Text = "Select"
+        '
+        'EventToolStripMenuItem
+        '
+        Me.EventToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AddToolStripMenuItem2, Me.EditToolStripMenuItem, Me.DeleteToolStripMenuItem2})
+        Me.EventToolStripMenuItem.Name = "EventToolStripMenuItem"
+        Me.EventToolStripMenuItem.Size = New System.Drawing.Size(60, 25)
+        Me.EventToolStripMenuItem.Text = "Event"
         '
         'AddToolStripMenuItem2
         '
@@ -562,11 +467,11 @@ Partial Class FrmMain
         Me.AddToolStripMenuItem2.Size = New System.Drawing.Size(180, 26)
         Me.AddToolStripMenuItem2.Text = "Add"
         '
-        'RenameToolStripMenuItem
+        'EditToolStripMenuItem
         '
-        Me.RenameToolStripMenuItem.Name = "RenameToolStripMenuItem"
-        Me.RenameToolStripMenuItem.Size = New System.Drawing.Size(180, 26)
-        Me.RenameToolStripMenuItem.Text = "Rename"
+        Me.EditToolStripMenuItem.Name = "EditToolStripMenuItem"
+        Me.EditToolStripMenuItem.Size = New System.Drawing.Size(180, 26)
+        Me.EditToolStripMenuItem.Text = "Edit"
         '
         'DeleteToolStripMenuItem2
         '
@@ -574,36 +479,10 @@ Partial Class FrmMain
         Me.DeleteToolStripMenuItem2.Size = New System.Drawing.Size(180, 26)
         Me.DeleteToolStripMenuItem2.Text = "Delete"
         '
-        'EventsToolStripMenuItem
-        '
-        Me.EventsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AddToolStripMenuItem1, Me.EditToolStripMenuItem2, Me.DeleteToolStripMenuItem3})
-        Me.EventsToolStripMenuItem.Enabled = False
-        Me.EventsToolStripMenuItem.Name = "EventsToolStripMenuItem"
-        Me.EventsToolStripMenuItem.Size = New System.Drawing.Size(67, 25)
-        Me.EventsToolStripMenuItem.Text = "Events"
-        '
-        'AddToolStripMenuItem1
-        '
-        Me.AddToolStripMenuItem1.Name = "AddToolStripMenuItem1"
-        Me.AddToolStripMenuItem1.Size = New System.Drawing.Size(124, 26)
-        Me.AddToolStripMenuItem1.Text = "Add"
-        '
-        'EditToolStripMenuItem2
-        '
-        Me.EditToolStripMenuItem2.Name = "EditToolStripMenuItem2"
-        Me.EditToolStripMenuItem2.Size = New System.Drawing.Size(124, 26)
-        Me.EditToolStripMenuItem2.Text = "Edit"
-        '
-        'DeleteToolStripMenuItem3
-        '
-        Me.DeleteToolStripMenuItem3.Name = "DeleteToolStripMenuItem3"
-        Me.DeleteToolStripMenuItem3.Size = New System.Drawing.Size(124, 26)
-        Me.DeleteToolStripMenuItem3.Text = "Delete"
-        '
         'Label5
         '
         Me.Label5.Font = New System.Drawing.Font("Copperplate Gothic Bold", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label5.Location = New System.Drawing.Point(601, 51)
+        Me.Label5.Location = New System.Drawing.Point(582, 50)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(756, 32)
         Me.Label5.TabIndex = 18
@@ -637,7 +516,6 @@ Partial Class FrmMain
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         Me.MnuMain.ResumeLayout(False)
         Me.MnuMain.PerformLayout()
-        Me.ContextMenuStrip1.ResumeLayout(False)
         Me.PnlEditor.ResumeLayout(False)
         Me.PnlEditor.PerformLayout()
         Me.MnuEditor.ResumeLayout(False)
@@ -661,39 +539,20 @@ Partial Class FrmMain
     Friend WithEvents ExitToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents SettingsToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents FactoryResetToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents RtxBiography As RichTextBox
     Friend WithEvents TxtFacts As TextBox
     Friend WithEvents PnlEditor As Panel
     Friend WithEvents MnuEditor As MenuStrip
     Friend WithEvents FileToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents BtnSearch As Button
     Friend WithEvents TxbSearch As TextBox
-    Friend WithEvents NewToolStripMenuItem1 As ToolStripMenuItem
     Friend WithEvents OpenToolStripMenuItem1 As ToolStripMenuItem
     Friend WithEvents SaveToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents SaveAsToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents EditToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents UndoToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents RedoToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents ToolStripSeparator2 As ToolStripSeparator
-    Friend WithEvents CopyToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents CutToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents PasteToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents ToolStripSeparator3 As ToolStripSeparator
-    Friend WithEvents DeleteToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents SelectAllToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents ToolStripSeparator4 As ToolStripSeparator
-    Friend WithEvents TimeDateToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents FormatToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents FontToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents SaveFileDialog1 As SaveFileDialog
     Friend WithEvents OpenFileDialog1 As OpenFileDialog
     Friend WithEvents FontDialog1 As FontDialog
-    Friend WithEvents ContextMenuStrip1 As ContextMenuStrip
-    Friend WithEvents CopyToolStripMenuItem1 As ToolStripMenuItem
-    Friend WithEvents CutToolStripMenuItem1 As ToolStripMenuItem
-    Friend WithEvents PasteToolStripMenuItem1 As ToolStripMenuItem
-    Friend WithEvents SelectAllToolStripMenuItem1 As ToolStripMenuItem
     Friend WithEvents lblSelectedBiography As Label
     Friend WithEvents ToolStripSeparator1 As ToolStripSeparator
     Friend WithEvents ToolStripSeparator5 As ToolStripSeparator
@@ -707,18 +566,21 @@ Partial Class FrmMain
     Friend WithEvents BiographyToolStripMenuItem1 As ToolStripMenuItem
     Friend WithEvents EditToolStripMenuItem1 As ToolStripMenuItem
     Friend WithEvents DeleteToolStripMenuItem1 As ToolStripMenuItem
-    Friend WithEvents MenuStrip1 As MenuStrip
-    Friend WithEvents CatagoryToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents DeleteToolStripMenuItem2 As ToolStripMenuItem
     Friend WithEvents LblCategory As Label
-    Friend WithEvents SelectToolStripMenuItem1 As ToolStripMenuItem
     Friend WithEvents TxtEvents As TextBox
-    Friend WithEvents RenameToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents LblBiography As Label
     Friend WithEvents AddToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents EventsToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents InsertToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents DateTimeToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents RtxBiography As RichTextBox
+    Friend WithEvents MenuStrip1 As MenuStrip
+    Friend WithEvents CategoryToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents EventToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents AddToolStripMenuItem1 As ToolStripMenuItem
-    Friend WithEvents EditToolStripMenuItem2 As ToolStripMenuItem
-    Friend WithEvents DeleteToolStripMenuItem3 As ToolStripMenuItem
+    Friend WithEvents RenameToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents DeleteToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents SelectToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents AddToolStripMenuItem2 As ToolStripMenuItem
+    Friend WithEvents EditToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents DeleteToolStripMenuItem2 As ToolStripMenuItem
 End Class

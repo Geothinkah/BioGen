@@ -92,9 +92,11 @@ Public Class FrmOpenBiography
 
                 'Assign Module level variables
                 AssignVariables()
+                FrmSelectView.Enabled = True
                 FrmSelectView.Show()
                 FrmMain.LblBiography.Text = BioName
                 FrmMain.BtnSelectView.Enabled = True
+
                 Close()
 
             Case "Edit"
@@ -139,6 +141,7 @@ Public Class FrmOpenBiography
     Private Sub BtnAll_Click(sender As Object, e As EventArgs) Handles BtnAll.Click
         FrmMain.LblBiography.Text = "All Biographies"
         TextFileName = AllDatabaseFile
+        FrmSelectView.Enabled = True
         FrmSelectView.Show()
         Close()
     End Sub

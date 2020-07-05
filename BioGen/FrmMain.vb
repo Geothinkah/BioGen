@@ -244,7 +244,7 @@ Public Class FrmMain
         FrmOpenBiography.Show()
     End Sub
 
-    Private Sub FactoryResetToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles FactoryResetToolStripMenuItem.Click
+    Private Sub ResetAllFiles_Click(sender As Object, e As EventArgs) Handles FactoryResetToolStripMenuItem.Click
         Dim intResponse As Integer
         Beep()
         intResponse = MsgBox("Are you sure you want to Reset All Files?" & vbCrLf & "You won't lose your text documents but" & vbCrLf & "you will lose all your data files.",
@@ -492,7 +492,12 @@ Public Class FrmMain
         WriteBiographies(DataPath, BiographyFile, CStr(RecordID), "Philip Earl Jenkins", "3/31/1936", "No", "12/28/1989", "Phil")
         RecordID += 1
         WriteBiographies(DataPath, BiographyFile, CStr(RecordID), "Peter Jason Jenkins", "2/23/1971", "Yes", "12/5/2005", "Pete")
+        RecordID += 1
+        WriteBiographies(DataPath, BiographyFile, CStr(RecordID), "Earle R Angell", "7/18/1926", "No", "5/26/1998", "Earle")
+
+
         SaveSettings()
+
 #End Region
 
         'all done creating the files - enable the form
@@ -603,10 +608,10 @@ Public Class FrmMain
 #End Region
 
 #Region "***** Editing Features for the document editor *****"
-    Private Sub NewToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles NewToolStripMenuItem1.Click
-        Dim nextForm As New FrmMain
-        nextForm.ShowDialog()
-    End Sub
+    'Private Sub NewToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles NewToolStripMenuItem1.Click
+    '    Dim nextForm As New FrmMain
+    '    nextForm.ShowDialog()
+    'End Sub
 
     Private Sub OpenToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles OpenToolStripMenuItem1.Click
         Dim myStream As Stream = Nothing
@@ -671,43 +676,43 @@ Public Class FrmMain
         Close()
     End Sub
 
-    Private Sub UndoToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles UndoToolStripMenuItem.Click
-        RtxBiography.Undo()
-    End Sub
+    'Private Sub UndoToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles UndoToolStripMenuItem.Click
+    '    RtxBiography.Undo()
+    'End Sub
 
-    Private Sub RedoToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles RedoToolStripMenuItem.Click
-        RtxBiography.Redo()
-    End Sub
+    'Private Sub RedoToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles RedoToolStripMenuItem.Click
+    '    RtxBiography.Redo()
+    'End Sub
 
-    Private Sub CopyToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CopyToolStripMenuItem.Click
-        If RtxBiography.SelectionLength > 0 Then
-            RtxBiography.Copy()
-        End If
-    End Sub
+    'Private Sub CopyToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CopyToolStripMenuItem.Click
+    '    If RtxBiography.SelectionLength > 0 Then
+    '        RtxBiography.Copy()
+    '    End If
+    'End Sub
 
-    Private Sub CutToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CutToolStripMenuItem.Click
-        If RtxBiography.SelectionLength > 0 Then
-            RtxBiography.Cut()
-        End If
-    End Sub
+    'Private Sub CutToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CutToolStripMenuItem.Click
+    '    If RtxBiography.SelectionLength > 0 Then
+    '        RtxBiography.Cut()
+    '    End If
+    'End Sub
 
-    Private Sub PasteToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles PasteToolStripMenuItem.Click
-        RtxBiography.Paste()
-    End Sub
+    'Private Sub PasteToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles PasteToolStripMenuItem.Click
+    '    RtxBiography.Paste()
+    'End Sub
 
-    Private Sub DeleteToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles DeleteToolStripMenuItem.Click
-        If RtxBiography.SelectionLength > 0 Then
-            RtxBiography.Text = ""
-        End If
-    End Sub
+    'Private Sub DeleteToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles DeleteToolStripMenuItem.Click
+    '    If RtxBiography.SelectionLength > 0 Then
+    '        RtxBiography.Text = ""
+    '    End If
+    'End Sub
 
-    Private Sub SelectAllToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SelectAllToolStripMenuItem.Click
-        RtxBiography.SelectAll()
-    End Sub
+    'Private Sub SelectAllToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SelectAllToolStripMenuItem.Click
+    '    RtxBiography.SelectAll()
+    'End Sub
 
-    Private Sub TimeDateToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles TimeDateToolStripMenuItem.Click
-        RtxBiography.SelectedText = System.DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss")
-    End Sub
+    'Private Sub TimeDateToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles TimeDateToolStripMenuItem.Click
+    '    RtxBiography.SelectedText = System.DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss")
+    'End Sub
 
     Private Sub FontToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles FontToolStripMenuItem.Click
         FontDialog1.Font = RtxBiography.Font
@@ -715,29 +720,26 @@ Public Class FrmMain
         RtxBiography.Font = FontDialog1.Font
     End Sub
 
-    Private Sub ContextMenuStrip1_Opening(sender As Object, e As System.ComponentModel.CancelEventArgs)
 
-    End Sub
+    'Private Sub CopyToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles CopyToolStripMenuItem1.Click
+    '    If RtxBiography.SelectionLength > 0 Then
+    '        RtxBiography.Copy()
+    '    End If
+    'End Sub
 
-    Private Sub CopyToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles CopyToolStripMenuItem1.Click
-        If RtxBiography.SelectionLength > 0 Then
-            RtxBiography.Copy()
-        End If
-    End Sub
+    'Private Sub CutToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles CutToolStripMenuItem1.Click
+    '    If RtxBiography.SelectionLength > 0 Then
+    '        RtxBiography.Cut()
+    '    End If
+    'End Sub
 
-    Private Sub CutToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles CutToolStripMenuItem1.Click
-        If RtxBiography.SelectionLength > 0 Then
-            RtxBiography.Cut()
-        End If
-    End Sub
+    'Private Sub PasteToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles PasteToolStripMenuItem1.Click
+    '    RtxBiography.Paste()
+    'End Sub
 
-    Private Sub PasteToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles PasteToolStripMenuItem1.Click
-        RtxBiography.Paste()
-    End Sub
-
-    Private Sub SelectAllToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles SelectAllToolStripMenuItem1.Click
-        RtxBiography.SelectAll()
-    End Sub
+    'Private Sub SelectAllToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles SelectAllToolStripMenuItem1.Click
+    '    RtxBiography.SelectAll()
+    'End Sub
 
 #End Region
 
@@ -767,15 +769,18 @@ Public Class FrmMain
                 Dim record As String = Nothing ' used to writhe the record to the database file
                 Dim filewriter As New StreamWriter(DataPath & "\" & TextFileName, True) 'True appends the record to the file. False replaces the file.
                 Dim sortdate As String = Nothing 'sort on their birthday calculated - not their birth date
-
+                Dim selectedbiobirthdate As Date
                 'Process each biography record
                 Do While biographyReader.Peek <> -1 'see if there is another record to process
 
                     'Create the Record Array
                     BiographyRecord = Split(biographyReader.ReadLine(), delimiter) '** Module Array ** holds the fields of the currently selected record
-
+                    If (individual And (CInt(BiographyRecord(0)) = BioID)) Then
+                        selectedbiobirthdate = CDate(BiographyRecord(2))
+                    End If
                     'if individual only do for them otherwise do for all records
-                    If (individual And (CInt(BiographyRecord(0)) = BioID)) Or Not individual Then
+                    If (individual And (CInt(BiographyRecord(0)) = BioID)) Or (Not individual) Then
+                        'If (individual And (CInt(BiographyRecord(0)) = BioID)) Or (Not individual) Or (individual And FrmSelectView.CkbAllBios.Checked And (selectedbiobirthdate <= CDate(BiographyRecord(2)))) Then
 
                         'Write the birth record
                         '(0) "Biog" for biography record
@@ -995,36 +1000,72 @@ Public Class FrmMain
 #Region "*** Buttons and Menu Items ??? *****"
 
     Private Sub BtnSelectView_Click(sender As Object, e As EventArgs) Handles BtnSelectView.Click
-        'If BioName = Nothing Then
-        '    BioName = "All Biographies"
-        'End If
-        ' FrmSelectView.LblSelectedBiography.Text = BioName
-        'ShowViewForm = True 'used in FrmOpenBiology to not run the create textfile, show view form instead
-
+        Enabled = false
         FrmSelectView.Show()
     End Sub
+    Private Sub AddBiography_Click(sender As Object, e As EventArgs) Handles AddToolStripMenuItem1.Click
+        FrmNewBio.BtnOption.Text = "Add"
+        FrmNewBio.Show()
+    End Sub
 
-    Private Sub EditToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles EditToolStripMenuItem1.Click
+    Private Sub EditBiography_Click(sender As Object, e As EventArgs) Handles EditToolStripMenuItem1.Click
         FrmOpenBiography.BtnOption.Text = "Edit"
         FrmOpenBiography.Show()
     End Sub
 
-    Private Sub DeleteToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles DeleteToolStripMenuItem1.Click
+    Private Sub DeleteBiography_Click(sender As Object, e As EventArgs) Handles DeleteToolStripMenuItem1.Click
         FrmOpenBiography.BtnOption.Text = "Delete"
         FrmOpenBiography.Show()
     End Sub
 
-    Private Sub SelectToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles SelectToolStripMenuItem1.Click
-        FrmOpenCategory.BtnOption.Text = "Select"
-        lblSelectedBiography.Select()
-        FrmOpenCategory.Show()
+    'Private Sub SelectToolStripMenuItem1_Click(sender As Object, e As EventArgs)
+    '    FrmOpenCategory.BtnOption.Text = "Select"
+    '    lblSelectedBiography.Select()
+    '    FrmOpenCategory.Show()
+    'End Sub
+
+    'Private Sub DeleteToolStripMenuItem2_Click(sender As Object, e As EventArgs)
+    '    FrmOpenCategory.Text = "Delete Category"
+    '    FrmOpenCategory.BtnOption.Text = "Delete"
+    '    FrmOpenCategory.Show()
+    'End Sub
+
+    'Private Sub RenameToolStripMenuItem_Click(sender As Object, e As EventArgs)
+    '    FrmOpenCategory.Text = "Rename Category"
+    '    FrmOpenCategory.BtnOption.Text = "Rename"
+    '    FrmOpenCategory.Show()
+    'End Sub
+
+    'Private Sub AddToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AddToolStripMenuItem.Click
+    '    FrmNewBio.BtnOption.Text = "Add"
+    '    FrmNewBio.Show()
+    'End Sub
+
+    Private Sub CategoryAdd_Click(sender As Object, e As EventArgs)
+        FrmCatagory.BtnOption.Text = "Save"
+        FrmCatagory.Show()
+
     End Sub
 
-    Private Sub DeleteToolStripMenuItem2_Click(sender As Object, e As EventArgs) Handles DeleteToolStripMenuItem2.Click
-        FrmOpenCategory.Text = "Delete Category"
-        FrmOpenCategory.BtnOption.Text = "Delete"
-        FrmOpenCategory.Show()
+    'Private Sub AddEvent_Click(sender As Object, e As EventArgs)
+    '    FrmCategoryEvents.BtnOption.Text = "Add"
+    '    FrmCategoryEvents.Show()
+    'End Sub
+
+    'Private Sub EditEvent_Click(sender As Object, e As EventArgs)
+    '    FrmOpenEvents.BtnOption.Text = "Edit"
+    '    FrmOpenEvents.Show()
+    'End Sub
+
+    'Private Sub DeleteEvent_Click(sender As Object, e As EventArgs)
+    '    FrmOpenEvents.BtnOption.Text = "Delete"
+    '    FrmOpenEvents.Show()
+    'End Sub
+
+    Private Sub DateTimeToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles DateTimeToolStripMenuItem.Click
+        RtxBiography.SelectedText = System.DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss")
     End Sub
+
 
     Private Sub RenameToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles RenameToolStripMenuItem.Click
         FrmOpenCategory.Text = "Rename Category"
@@ -1032,33 +1073,32 @@ Public Class FrmMain
         FrmOpenCategory.Show()
     End Sub
 
-    Private Sub AddToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AddToolStripMenuItem.Click
-        FrmNewBio.BtnOption.Text = "Add"
-        FrmNewBio.Show()
+    Private Sub DeleteToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles DeleteToolStripMenuItem.Click
+        FrmOpenCategory.Text = "Delete Category"
+        FrmOpenCategory.BtnOption.Text = "Delete"
+        FrmOpenCategory.Show()
     End Sub
 
-    Private Sub CategoryAdd_Click(sender As Object, e As EventArgs) Handles AddToolStripMenuItem2.Click
-        FrmCatagory.BtnOption.Text = "Save"
-        FrmCatagory.Show()
-
+    Private Sub SelectToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SelectToolStripMenuItem.Click
+        FrmOpenCategory.BtnOption.Text = "Select"
+        lblSelectedBiography.Select()
+        FrmOpenCategory.Show()
     End Sub
 
-    Private Sub AddEvent_Click(sender As Object, e As EventArgs) Handles AddToolStripMenuItem1.Click
+    Private Sub AddToolStripMenuItem2_Click(sender As Object, e As EventArgs) Handles AddToolStripMenuItem2.Click
         FrmCategoryEvents.BtnOption.Text = "Add"
         FrmCategoryEvents.Show()
     End Sub
 
-    Private Sub EditEvent_Click(sender As Object, e As EventArgs) Handles EditToolStripMenuItem2.Click
+    Private Sub EditToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles EditToolStripMenuItem.Click
         FrmOpenEvents.BtnOption.Text = "Edit"
         FrmOpenEvents.Show()
     End Sub
 
-    Private Sub DeleteEvent_Click(sender As Object, e As EventArgs) Handles DeleteToolStripMenuItem3.Click
+    Private Sub DeleteToolStripMenuItem2_Click(sender As Object, e As EventArgs) Handles DeleteToolStripMenuItem2.Click
         FrmOpenEvents.BtnOption.Text = "Delete"
         FrmOpenEvents.Show()
     End Sub
-
-
 
 #End Region
 

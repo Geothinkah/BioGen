@@ -39,7 +39,7 @@ Public Class FrmOpenCategory
             SelectedCategoryID = CInt(tempcategoryrecord(0))
             SelectedCategoryName = tempcategoryrecord(1)
             SelectedCategoryFile = tempcategoryrecord(2)
-            FrmMain.EventsToolStripMenuItem.Enabled = True
+            'FrmMain.EventsToolStripMenuItem.Enabled = True
         Catch ex As Exception
 
         End Try

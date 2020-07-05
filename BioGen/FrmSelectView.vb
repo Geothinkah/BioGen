@@ -11,6 +11,7 @@ Public Class FrmSelectView
         FrmMain.DisplayTextFile(TextFileName) 'display the text file
         FrmMain.LblBiography.Text = BioName 'display the selected biography
         FrmMain.BtnSelectView.Enabled = True
+        FrmMain.Enabled = True
         Hide() 'hide this form for further use
     End Sub
 
@@ -27,7 +28,7 @@ Public Class FrmSelectView
     End Sub
 
     Private Sub BtnSelectBiography_Click(sender As Object, e As EventArgs) Handles BtnSelectBiography.Click
-        Hide()
+        Enabled = False
         FrmOpenBiography.BtnOption.Text = "Select"
         FrmOpenBiography.Show()
     End Sub
