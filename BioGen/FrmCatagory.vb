@@ -6,9 +6,9 @@ Public Class FrmCatagory
     End Sub
 
     Private Sub BtnOption_Click(sender As Object, e As EventArgs) Handles BtnOption.Click
+        'ReadSettings()
         Select Case BtnOption.Text
             Case "Save"
-                ReadSettings()
                 Try
                     'declare the record variables
                     Dim categoryrecord As String = Nothing
@@ -118,8 +118,8 @@ Public Class FrmCatagory
                 End If
             Case Else
 
-
         End Select
+        ' SaveSettings()
 
 
     End Sub

@@ -31,7 +31,7 @@ Partial Class FrmCategoryEvents
         Me.RbtnNo = New System.Windows.Forms.RadioButton()
         Me.RbtnYes = New System.Windows.Forms.RadioButton()
         Me.Label3 = New System.Windows.Forms.Label()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
+        Me.TxtEventDesc = New System.Windows.Forms.TextBox()
         Me.DtpEndDate = New System.Windows.Forms.DateTimePicker()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Panel1.SuspendLayout()
@@ -42,7 +42,7 @@ Partial Class FrmCategoryEvents
         '
         Me.BtnOption.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.BtnOption.BackColor = System.Drawing.Color.Bisque
-        Me.BtnOption.Location = New System.Drawing.Point(349, 204)
+        Me.BtnOption.Location = New System.Drawing.Point(349, 120)
         Me.BtnOption.Name = "BtnOption"
         Me.BtnOption.Size = New System.Drawing.Size(83, 26)
         Me.BtnOption.TabIndex = 1
@@ -71,7 +71,7 @@ Partial Class FrmCategoryEvents
         Me.Panel1.BackColor = System.Drawing.Color.OldLace
         Me.Panel1.Controls.Add(Me.Panel2)
         Me.Panel1.Controls.Add(Me.Label3)
-        Me.Panel1.Controls.Add(Me.TextBox1)
+        Me.Panel1.Controls.Add(Me.TxtEventDesc)
         Me.Panel1.Controls.Add(Me.DtpEndDate)
         Me.Panel1.Controls.Add(Me.Label2)
         Me.Panel1.Controls.Add(Me.BtnOption)
@@ -79,7 +79,7 @@ Partial Class FrmCategoryEvents
         Me.Panel1.Controls.Add(Me.Label1)
         Me.Panel1.Location = New System.Drawing.Point(12, 12)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(445, 238)
+        Me.Panel1.Size = New System.Drawing.Size(445, 154)
         Me.Panel1.TabIndex = 4
         '
         'Panel2
@@ -122,15 +122,14 @@ Partial Class FrmCategoryEvents
         Me.Label3.TabIndex = 8
         Me.Label3.Text = "Description"
         '
-        'TextBox1
+        'TxtEventDesc
         '
-        Me.TextBox1.BackColor = System.Drawing.Color.FromArgb(CType(CType(55, Byte), Integer), CType(CType(55, Byte), Integer), CType(CType(55, Byte), Integer))
-        Me.TextBox1.ForeColor = System.Drawing.Color.White
-        Me.TextBox1.Location = New System.Drawing.Point(16, 79)
-        Me.TextBox1.Multiline = True
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(413, 110)
-        Me.TextBox1.TabIndex = 7
+        Me.TxtEventDesc.BackColor = System.Drawing.Color.FromArgb(CType(CType(55, Byte), Integer), CType(CType(55, Byte), Integer), CType(CType(55, Byte), Integer))
+        Me.TxtEventDesc.ForeColor = System.Drawing.Color.White
+        Me.TxtEventDesc.Location = New System.Drawing.Point(16, 79)
+        Me.TxtEventDesc.Name = "TxtEventDesc"
+        Me.TxtEventDesc.Size = New System.Drawing.Size(413, 26)
+        Me.TxtEventDesc.TabIndex = 7
         '
         'DtpEndDate
         '
@@ -156,7 +155,7 @@ Partial Class FrmCategoryEvents
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.DeepSkyBlue
-        Me.ClientSize = New System.Drawing.Size(469, 262)
+        Me.ClientSize = New System.Drawing.Size(469, 182)
         Me.Controls.Add(Me.Panel1)
         Me.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
@@ -180,7 +179,7 @@ Partial Class FrmCategoryEvents
     Friend WithEvents DtpCateBeginDate As DateTimePicker
     Friend WithEvents Label1 As Label
     Friend WithEvents Panel1 As Panel
-    Friend WithEvents TextBox1 As TextBox
+    Friend WithEvents TxtEventDesc As TextBox
     Friend WithEvents DtpEndDate As DateTimePicker
     Friend WithEvents Label2 As Label
     Friend WithEvents Label3 As Label

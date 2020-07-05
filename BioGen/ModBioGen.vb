@@ -16,10 +16,12 @@ Module ModBioGen
     Friend SelectedCategoryFile As String
 
     'category event record = (0) description, (1) date, (2) end date, (3) range
+    'category file variables (0) CatEventDescription, (1) CatEventDate, (2) CatEventEndDate, (3) CatRange
     Friend CatEventDescription As String
     Friend CatEventDate As Date
     Friend CatEventEndDate As Date
     Friend CatRange As String 'Yes/No
+    'Friend CatEventFile As String
 
 
 

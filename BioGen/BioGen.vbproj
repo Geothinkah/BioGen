@@ -117,6 +117,12 @@
     <Compile Include="FrmOpenCategory.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="FrmOpenEvents.Designer.vb">
+      <DependentUpon>FrmOpenEvents.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FrmOpenEvents.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="FrmSelectView.Designer.vb">
       <DependentUpon>FrmSelectView.vb</DependentUpon>
     </Compile>
@@ -159,6 +165,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmOpenCategory.resx">
       <DependentUpon>FrmOpenCategory.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmOpenEvents.resx">
+      <DependentUpon>FrmOpenEvents.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmSelectView.resx">
       <DependentUpon>FrmSelectView.vb</DependentUpon>

@@ -443,6 +443,7 @@ Public Class FrmMain
 #End Region
 
 #Region "----- Create The Biography File -----"
+        ReadSettings()
         'Create Biography File
         'biography record = (0) id, (1) name, (2) birth date, (3) living Yes/No, (4) death date, (5) nickname
         RecordID += 1
@@ -489,6 +490,9 @@ Public Class FrmMain
         WriteBiographies(DataPath, BiographyFile, CStr(RecordID), "Christopher Henry Benner", "5/24/1757", "No", "9/8/1842", "Christopher")
         RecordID += 1
         WriteBiographies(DataPath, BiographyFile, CStr(RecordID), "Philip Earl Jenkins", "3/31/1936", "No", "12/28/1989", "Phil")
+        RecordID += 1
+        WriteBiographies(DataPath, BiographyFile, CStr(RecordID), "Peter Jason Jenkins", "2/23/1971", "Yes", "12/5/2005", "Pete")
+        SaveSettings()
 #End Region
 
         'all done creating the files - enable the form
@@ -1033,12 +1037,6 @@ Public Class FrmMain
         FrmNewBio.Show()
     End Sub
 
-    Private Sub FrmMain_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        'BtnSelectView.Enabled = False
-        'FrmOpenBiography.BtnOption.Text = "Select"
-        'FrmSelectView.Show()
-    End Sub
-
     Private Sub CategoryAdd_Click(sender As Object, e As EventArgs) Handles AddToolStripMenuItem2.Click
         FrmCatagory.BtnOption.Text = "Save"
         FrmCatagory.Show()
@@ -1051,13 +1049,13 @@ Public Class FrmMain
     End Sub
 
     Private Sub EditEvent_Click(sender As Object, e As EventArgs) Handles EditToolStripMenuItem2.Click
-        FrmCategoryEvents.BtnOption.Text = "Edit"
-        FrmCategoryEvents.Show()
+        FrmOpenEvents.BtnOption.Text = "Edit"
+        FrmOpenEvents.Show()
     End Sub
 
     Private Sub DeleteEvent_Click(sender As Object, e As EventArgs) Handles DeleteToolStripMenuItem3.Click
-        FrmCategoryEvents.BtnOption.Text = "Delete"
-        FrmCategoryEvents.Show()
+        FrmOpenEvents.BtnOption.Text = "Delete"
+        FrmOpenEvents.Show()
     End Sub
 
 

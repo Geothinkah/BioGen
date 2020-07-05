@@ -120,13 +120,13 @@ Public Class FrmOpenCategory
                 Loop
                 categoryReader.Close()
                 filewriter.Close()
+
+                'sort the database
+                FrmMain.SortTsv(DataPath & "\" & CategoryDisplayFile, New Integer() {2, 1})
             End Using
 
         Catch ex As Exception
         End Try
-
-        'sort the database
-        FrmMain.SortTsv(DataPath & "\" & CategoryDisplayFile, New Integer() {2, 1})
 
     End Sub
 

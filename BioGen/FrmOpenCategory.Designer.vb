@@ -33,7 +33,7 @@ Partial Class FrmOpenCategory
         Me.LstvSelectCategory.BackColor = System.Drawing.Color.OldLace
         Me.LstvSelectCategory.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ColName})
         Me.LstvSelectCategory.HideSelection = False
-        Me.LstvSelectCategory.Location = New System.Drawing.Point(12, 12)
+        Me.LstvSelectCategory.Location = New System.Drawing.Point(3, 7)
         Me.LstvSelectCategory.Name = "LstvSelectCategory"
         Me.LstvSelectCategory.Size = New System.Drawing.Size(207, 209)
         Me.LstvSelectCategory.TabIndex = 1
@@ -49,7 +49,7 @@ Partial Class FrmOpenCategory
         '
         Me.BtnOption.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.BtnOption.BackColor = System.Drawing.Color.Bisque
-        Me.BtnOption.Location = New System.Drawing.Point(122, 227)
+        Me.BtnOption.Location = New System.Drawing.Point(106, 188)
         Me.BtnOption.Name = "BtnOption"
         Me.BtnOption.Size = New System.Drawing.Size(95, 31)
         Me.BtnOption.TabIndex = 2
@@ -61,11 +61,11 @@ Partial Class FrmOpenCategory
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.DeepSkyBlue
-        Me.ClientSize = New System.Drawing.Size(229, 267)
+        Me.ClientSize = New System.Drawing.Size(213, 228)
         Me.Controls.Add(Me.BtnOption)
         Me.Controls.Add(Me.LstvSelectCategory)
         Me.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Location = New System.Drawing.Point(1395, 155)
         Me.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
