@@ -5,6 +5,7 @@
 ' Change Log: 
 '   6/17/2020 - Created merged database file
 '   6/26/2020 - Added view checkboxes (presidents/birthdays/events)
+'   7/4/2020 - Implimented Events
 ' -----------------------------------------
 
 Imports System.IO
@@ -67,7 +68,7 @@ Public Class FrmMain
     End Sub
 #End Region
 
-#Region "----- Biography Area Menu Items -----"
+#Region "----- Document File Menu Items -----"
 
     Private Sub Open_Document_Click(sender As Object, e As EventArgs) Handles OpenToolStripMenuItem1.Click
         Dim myStream As Stream = Nothing
@@ -131,6 +132,67 @@ Public Class FrmMain
         FontDialog1.Font = RtxBiography.Font
         FontDialog1.ShowDialog()
         RtxBiography.Font = FontDialog1.Font
+    End Sub
+
+#End Region
+
+#Region "----- Document Edit Menu -----"
+    Private Sub TimeDateToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles TimeDateToolStripMenuItem.Click
+        RtxBiography.SelectedText = System.DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss")
+    End Sub
+
+    Private Sub UndoToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles UndoToolStripMenuItem.Click
+        RtxBiography.Undo()
+    End Sub
+
+    Private Sub RedoToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles RedoToolStripMenuItem.Click
+        RtxBiography.Redo()
+    End Sub
+
+    Private Sub CopyToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CopyToolStripMenuItem.Click
+        If RtxBiography.SelectionLength > 0 Then
+            RtxBiography.Copy()
+        End If
+    End Sub
+
+    Private Sub CutToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CutToolStripMenuItem.Click
+        If RtxBiography.SelectionLength > 0 Then
+            RtxBiography.Cut()
+        End If
+    End Sub
+
+    Private Sub PasteToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles PasteToolStripMenuItem.Click
+        RtxBiography.Paste()
+    End Sub
+
+    Private Sub DeleteToolStripMenuItem3_Click(sender As Object, e As EventArgs) Handles DeleteToolStripMenuItem3.Click
+        If RtxBiography.SelectionLength > 0 Then
+            RtxBiography.Text = ""
+        End If
+    End Sub
+
+    Private Sub SelectAllToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SelectAllToolStripMenuItem.Click
+        RtxBiography.SelectAll()
+    End Sub
+
+    Private Sub CopyToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles CopyToolStripMenuItem1.Click
+        If RtxBiography.SelectionLength > 0 Then
+            RtxBiography.Copy()
+        End If
+    End Sub
+
+    Private Sub CutToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles CutToolStripMenuItem1.Click
+        If RtxBiography.SelectionLength > 0 Then
+            RtxBiography.Cut()
+        End If
+    End Sub
+
+    Private Sub PasteToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles PasteToolStripMenuItem1.Click
+        RtxBiography.Paste()
+    End Sub
+
+    Private Sub SelectAllToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles SelectAllToolStripMenuItem1.Click
+        RtxBiography.SelectAll()
     End Sub
 
 #End Region
@@ -216,7 +278,7 @@ Public Class FrmMain
                     End If
                     'if individual only do for them otherwise do for all records
                     If (individual And (CInt(BiographyRecord(0)) = BioID)) Or (Not individual) Then
-                        'If (individual And (CInt(BiographyRecord(0)) = BioID)) Or (Not individual) Or (individual And FrmSelectView.CkbAllBios.Checked And (selectedbiobirthdate <= CDate(BiographyRecord(2)))) Then
+                        'If (individual And (CInt(BiographyRecord(0)) = BioID)) Or (Not individual) Or ((individual And FrmSelectView.CkbAllBios.Checked) And (selectedbiobirthdate <= CDate(BiographyRecord(2)))) Then
 
                         'Write the birth record
                         '(0) "Biog" for biography record
@@ -983,66 +1045,8 @@ Public Class FrmMain
         End Try
     End Sub
 
-    Private Sub TimeDateToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles TimeDateToolStripMenuItem.Click
-        RtxBiography.SelectedText = System.DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss")
-    End Sub
-
-    Private Sub UndoToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles UndoToolStripMenuItem.Click
-        RtxBiography.Undo()
-    End Sub
-
-    Private Sub RedoToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles RedoToolStripMenuItem.Click
-        RtxBiography.Redo()
-    End Sub
-
-    Private Sub CopyToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CopyToolStripMenuItem.Click
-        If RtxBiography.SelectionLength > 0 Then
-            RtxBiography.Copy()
-        End If
-    End Sub
-
-    Private Sub CutToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CutToolStripMenuItem.Click
-        If RtxBiography.SelectionLength > 0 Then
-            RtxBiography.Cut()
-        End If
-    End Sub
-
-    Private Sub PasteToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles PasteToolStripMenuItem.Click
-        RtxBiography.Paste()
-    End Sub
-
-    Private Sub DeleteToolStripMenuItem3_Click(sender As Object, e As EventArgs) Handles DeleteToolStripMenuItem3.Click
-        If RtxBiography.SelectionLength > 0 Then
-            RtxBiography.Text = ""
-        End If
-    End Sub
-
-    Private Sub SelectAllToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SelectAllToolStripMenuItem.Click
-        RtxBiography.SelectAll()
-    End Sub
-
-    Private Sub CopyToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles CopyToolStripMenuItem1.Click
-        If RtxBiography.SelectionLength > 0 Then
-            RtxBiography.Copy()
-        End If
-    End Sub
-
-    Private Sub CutToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles CutToolStripMenuItem1.Click
-        If RtxBiography.SelectionLength > 0 Then
-            RtxBiography.Cut()
-        End If
-    End Sub
-
-    Private Sub PasteToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles PasteToolStripMenuItem1.Click
-        RtxBiography.Paste()
-    End Sub
-
-    Private Sub SelectAllToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles SelectAllToolStripMenuItem1.Click
-        RtxBiography.SelectAll()
-    End Sub
-
-
 #End Region
+
 
 #End Region
 
