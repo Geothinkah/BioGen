@@ -29,7 +29,7 @@ Module ModBioGen
 #Region "***** Variables *****"
 
 
-    Friend AllDatabaseFile As String = "AllDatabaseFile.tsv"
+    ' Friend AllDatabaseFile As String = "AllDatabaseFile.tsv"
     Friend BiographyFile As String = "Biography.tsv"
     Friend SettingsFile As String = "Settings.tsv"
     Friend PresidentsFile As String = "Presidents.tsv"
@@ -81,7 +81,6 @@ Module ModBioGen
     'Biography Variables
     Friend BioFileName As String 'created for individual's database
     Friend BiographyArrayIndex As Integer = 0 'Currently selected BiographyArray(index)
-    Friend SelectedBiography As String 'Hold the entire string of the selected biography record
 
     'Biography File Layout
     Friend BioID As Integer = 0 '           (0) 
@@ -91,6 +90,14 @@ Module ModBioGen
     Friend BioDeathDate As Date = Nothing ' (4)
     Friend BioNickName As String = Nothing '(5)
 
+    'Root Biography Record - the person being processed
+    Friend SelectedBiography As String 'Hold the entire string of the selected biography record
+    Friend RootBioID As Integer            '(0)
+    Friend RootBioName As String           '(1)
+    Friend RootBioBirthDate As Date        '(2)
+    Friend RootBioLiving As String         '(3)
+    Friend RootBioDeathDate As Date        '(4)
+    Friend RootBioNickName As String       '(5)
 
 #End Region
 

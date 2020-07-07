@@ -28,7 +28,6 @@ Partial Class FrmOpenBiography
         Me.txtvBirthDate = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.txtvLiving = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.BtnOption = New System.Windows.Forms.Button()
-        Me.BtnAll = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'LstvOpenBiography
@@ -78,24 +77,12 @@ Partial Class FrmOpenBiography
         Me.BtnOption.Text = "Option"
         Me.BtnOption.UseVisualStyleBackColor = False
         '
-        'BtnAll
-        '
-        Me.BtnAll.BackColor = System.Drawing.Color.Bisque
-        Me.BtnAll.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.BtnAll.Location = New System.Drawing.Point(12, 403)
-        Me.BtnAll.Name = "BtnAll"
-        Me.BtnAll.Size = New System.Drawing.Size(75, 29)
-        Me.BtnAll.TabIndex = 10
-        Me.BtnAll.Text = "All"
-        Me.BtnAll.UseVisualStyleBackColor = False
-        '
         'FrmOpenBiography
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.DeepSkyBlue
         Me.ClientSize = New System.Drawing.Size(534, 444)
-        Me.Controls.Add(Me.BtnAll)
         Me.Controls.Add(Me.BtnOption)
         Me.Controls.Add(Me.LstvOpenBiography)
         Me.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -118,5 +105,4 @@ Partial Class FrmOpenBiography
     Friend WithEvents txtvBirthDate As ColumnHeader
     Friend WithEvents txtvLiving As ColumnHeader
     Friend WithEvents BtnOption As Button
-    Friend WithEvents BtnAll As Button
 End Class

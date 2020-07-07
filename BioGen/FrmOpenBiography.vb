@@ -79,6 +79,13 @@ Public Class FrmOpenBiography
         BioNickName = BiographyRecord(5)
         TextFileName = BioID & "_" & BioName.Replace(" ", "") & ".tsv" ' remove spaces from their name for use in the filename
 
+        'Assign the Module level Root Biography variables
+        RootBioID = CInt(BiographyRecord(0))
+        RootBioName = BiographyRecord(1)
+        RootBioBirthDate = CDate(BiographyRecord(2))
+        RootBioLiving = BiographyRecord(3)
+        RootBioDeathDate = CDate(BiographyRecord(4))
+        RootBioNickName = BiographyRecord(5)
     End Sub
 
     Private Sub BtnOption_Click(sender As Object, e As EventArgs) Handles BtnOption.Click
@@ -138,11 +145,12 @@ Public Class FrmOpenBiography
         End Select
     End Sub
 
-    Private Sub BtnAll_Click(sender As Object, e As EventArgs) Handles BtnAll.Click
-        FrmMain.LblBiography.Text = "All Biographies"
-        TextFileName = AllDatabaseFile
-        FrmSelectView.Enabled = True
-        FrmSelectView.Show()
-        Close()
-    End Sub
+
+    'Private Sub BtnAll_Click(sender As Object, e As EventArgs) Handles BtnAll.Click
+    '    FrmMain.LblBiography.Text = "All Biographies"
+    '    TextFileName = AllDatabaseFile
+    '    FrmSelectView.Enabled = True
+    '    FrmSelectView.Show()
+    '    Close()
+    'End Sub
 End Class

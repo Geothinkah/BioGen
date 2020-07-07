@@ -33,7 +33,7 @@ Public Class FrmSelectView
         FrmOpenBiography.Show()
     End Sub
     Friend Sub FillCblCategories()
-        'sort the biography file
+        'sort the category file
         FrmMain.SortTsv(DataPath & "\" & CategoryFile, New Integer() {2}) 'sort column is 1 based not 0
         ClbCategories.Items.Clear() 'clears the listviewbox
         Try

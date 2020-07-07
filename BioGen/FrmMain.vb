@@ -245,14 +245,14 @@ Public Class FrmMain
     Friend Sub BioGenDatabase(ByVal filename As String)
 
         'set type = True for the AllDatabaseFile and False for individual files
-        Dim individual As Boolean 'set to True for individual biography database and False for the all inclusive database
-        If filename = AllDatabaseFile Then
-            TextFileName = AllDatabaseFile
-            individual = False 'build all inclusive database
-        Else
-            TextFileName = filename
-            individual = True 'build database for this biography only
-        End If
+        'Dim individual As Boolean 'set to True for individual biography database and False for the all inclusive database
+        'If filename = AllDatabaseFile Then
+        '    TextFileName = AllDatabaseFile
+        '    individual = False 'build all inclusive database
+        'Else
+        TextFileName = filename
+        'individual = True 'build database for this biography only
+        'End If
 
         'IF TextFileName EXISTS ALREADY, DELETE IT AND START FRESH
         Try
@@ -267,44 +267,56 @@ Public Class FrmMain
                 Dim record As String = Nothing ' used to writhe the record to the database file
                 Dim filewriter As New StreamWriter(DataPath & "\" & TextFileName, True) 'True appends the record to the file. False replaces the file.
                 Dim sortdate As String = Nothing 'sort on their birthday calculated - not their birth date
-                Dim selectedbiobirthdate As Date
                 'Process each biography record
                 Do While biographyReader.Peek <> -1 'see if there is another record to process
 
                     'Create the Biography Record Array
                     BiographyRecord = Split(biographyReader.ReadLine(), delimiter) '** Module Array ** holds the fields of the currently selected record
-                    If (individual And (CInt(BiographyRecord(0)) = BioID)) Then
-                        selectedbiobirthdate = CDate(BiographyRecord(2))
-                    End If
 
-                    'if individual only do for them otherwise do for all records
-                    If (individual And (CInt(BiographyRecord(0)) = BioID)) Or (Not individual) Then
-                        'If (individual And (CInt(BiographyRecord(0)) = BioID)) Or (Not individual) Or ((individual And FrmSelectView.CkbAllBios.Checked) And (selectedbiobirthdate <= CDate(BiographyRecord(2)))) Then
+                    'Process the biography record
+                    If FrmSelectView.CkbAllBios.Checked Or (RootBioID = CInt(BiographyRecord(0))) Then
+                        If (RootBioBirthDate <= CDate(BiographyRecord(2))) Or ((BiographyRecord(3) = "No") And (RootBioBirthDate <= CDate(BiographyRecord(4)))) Then
 
-                        'Write the birth record
-                        '(0) "Biog" for biography record
-                        '(1) sort date = BiographyRecord(2) / BioBirthDate
-                        '(2) name = BiographyRecord(1) / BioName
-                        sortdate = CStr(CDate(BiographyRecord(2)).Ticks) ' BioBirthDate - convert to ticks for sorting purposes
-                        'record = type, birth date, name, death date
-                        'record = "Biog" & delimiter & sortdate & delimiter & BiographyRecord(1) & delimiter & BiographyRecord(5)
-
-                        'birth record = type' vbtab birthdate in ticks' vbtab name
-                        record = "Biog" & vbTab & sortdate & vbTab & BiographyRecord(1)
-                        filewriter.WriteLine(record)
-                        If FrmSelectView.CbxDeaths.Checked Then
-                            'Write the death record to the database
-                            '(0) "Dead" for death record
-                            '(1) sort date = BiographyRecord(5) / BioDeathDate
-                            '(2) name = BiographyRecord(1) / BioName
-                            '(3) birth date = BiographyRecord(2) / BioBirthDate (needed to calculate age at death)
-                            sortdate = CStr(CDate(BiographyRecord(4)).Ticks) ' convert to ticks for sorting purposes
-                            If BiographyRecord(3) = "No" Then ' Create a death record
-                                'record = type, death date, name, birth date
-                                record = "Dead" & delimiter & sortdate & delimiter & BiographyRecord(1) & delimiter & BiographyRecord(2)
-                                filewriter.WriteLine(record)
+                            If RootBioBirthDate <= CDate(BiographyRecord(2)) Then
+                                If BiographyRecord(3) = "Yes" And RootBioLiving = "Yes" Then
+                                    'Write the birth record
+                                    sortdate = CStr(CDate(BiographyRecord(2)).Ticks) ' BioBirthDate - convert to ticks for sorting purposes
+                                    'birth record = type (0), birthdate(1) in ticks, name(2)
+                                    record = "Biog" & vbTab & sortdate & vbTab & BiographyRecord(1)
+                                    filewriter.WriteLine(record)
+                                Else
+                                    'if the root person was living when this biography was born process it
+                                    If RootBioDeathDate >= CDate(BiographyRecord(2)) Then
+                                        'Write the birth record
+                                        sortdate = CStr(CDate(BiographyRecord(2)).Ticks) ' BioBirthDate - convert to ticks for sorting purposes
+                                        'birth record = type (0), birthdate(1) in ticks, name(2)
+                                        record = "Biog" & vbTab & sortdate & vbTab & BiographyRecord(1)
+                                        filewriter.WriteLine(record)
+                                    End If
+                                End If
                             End If
+                            If FrmSelectView.CbxDeaths.Checked Then
+
+                                'Write the death record
+                                sortdate = CStr(CDate(BiographyRecord(4)).Ticks) ' convert to ticks for sorting purposes
+
+                                If BiographyRecord(3) = "No" And RootBioBirthDate <= CDate(BiographyRecord(4)) Then
+                                    'record = type, death date, name, birth date
+                                    If RootBioLiving = "Yes" Then
+                                        record = "Dead" & delimiter & sortdate & delimiter & BiographyRecord(1) & delimiter & BiographyRecord(2)
+                                        filewriter.WriteLine(record)
+                                    Else
+                                        'if this person died in the lifetime of the root person the process it
+                                        If RootBioDeathDate >= CDate(BiographyRecord(4)) Then
+                                            record = "Dead" & delimiter & sortdate & delimiter & BiographyRecord(1) & delimiter & BiographyRecord(2)
+                                            filewriter.WriteLine(record)
+                                        End If
+                                    End If
+                                End If
+                            End If
+
                         End If
+
                         If FrmSelectView.CbxBirthdays.Checked Then
                             'Write the BIRTHDAY records to the database
                             '(0) "Bday" for birthday record
@@ -316,30 +328,53 @@ Public Class FrmMain
                             'Create the birthday records
                             Dim monthsValue As Integer = 12 'used to increase the birthdate by one year
                             Dim newDate As Date = CDate(BiographyRecord(2)) '= DateAdd(DateInterval.Month, monthsValue, dateValue)
-                            If BiographyRecord(3) = "Yes" Then 'this person is still living
-                                Do While newDate < Now
-                                    newDate = DateAdd(DateInterval.Month, monthsValue, newDate) 'calculate next birthday
-                                    If newDate < Now Then
-                                        sortdate = CStr(newDate.Ticks) ' convert to ticks for sorting purposes
+                            If RootBioLiving = "Yes" Then
+                                If BiographyRecord(3) = "Yes" Then 'this person is still living
+                                    Do While newDate < Now
+                                        newDate = DateAdd(DateInterval.Month, monthsValue, newDate) 'calculate next birthday
 
-                                        'Type, birthday, name, living?, birthdate
-                                        record = "Bday" & delimiter & sortdate & delimiter & BiographyRecord(1) & delimiter & BiographyRecord(2)
-                                        filewriter.WriteLine(record)
-                                    End If
-                                Loop
-                            Else    'this person has passed away
-                                Do While newDate < CDate(BiographyRecord(4))
-                                    newDate = DateAdd(DateInterval.Month, monthsValue, newDate) 'calculate next birthday
-                                    If newDate < CDate(BiographyRecord(4)) Then 'calculate only while they were alive
-                                        sortdate = CStr(newDate.Ticks) ' convert to ticks for sorting purposes
+                                        If (newDate < Now) And (newDate >= RootBioBirthDate) Then
+                                            sortdate = CStr(newDate.Ticks) ' convert to ticks for sorting purposes
 
-                                        'Type, birthday, name, living?, birthdate
-                                        'record = "Bday" & delimiter & sortdate & delimiter & BiographyRecord(1) & delimiter & BiographyRecord(2)
-                                        record = "Bday" & delimiter & sortdate & delimiter & BiographyRecord(1) & delimiter & BiographyRecord(2)
-                                        filewriter.WriteLine(record)
+                                            'Type, birthday, name, living?, birthdate
+                                            record = "Bday" & delimiter & sortdate & delimiter & BiographyRecord(1) & delimiter & BiographyRecord(2)
+                                            filewriter.WriteLine(record)
+                                        End If
+                                    Loop
+                                Else    'this person has passed away
+
+                                    ' Do While (newDate < CDate(BiographyRecord(4))) And (newDate >= RootBioBirthDate)
+                                    Do While (newDate < CDate(BiographyRecord(4)))
+                                        newDate = DateAdd(DateInterval.Month, monthsValue, newDate) 'calculate next birthday
+                                        If newDate >= RootBioBirthDate Then
+                                            If newDate < CDate(BiographyRecord(4)) Then 'calculate only while they were alive
+                                                sortdate = CStr(newDate.Ticks) ' convert to ticks for sorting purposes
+
+                                                'Type, birthday, name, living?, birthdate
+                                                'record = "Bday" & delimiter & sortdate & delimiter & BiographyRecord(1) & delimiter & BiographyRecord(2)
+                                                record = "Bday" & delimiter & sortdate & delimiter & BiographyRecord(1) & delimiter & BiographyRecord(2)
+                                                filewriter.WriteLine(record)
+                                            End If
+                                        End If
+                                    Loop
+                                End If
+                            Else
+                                'if root person is not living put code here
+                                Do While (newDate < RootBioDeathDate) And (newDate >= RootBioBirthDate)
+                                    newDate = DateAdd(DateInterval.Month, monthsValue, newDate) 'calculate next birthday
+                                    If newDate >= RootBioBirthDate And (newDate >= RootBioBirthDate) Then
+                                        If newDate < RootBioDeathDate Then 'calculate only while they were alive
+                                            sortdate = CStr(newDate.Ticks) ' convert to ticks for sorting purposes
+
+                                            'Type, birthday, name, living?, birthdate
+                                            'record = "Bday" & delimiter & sortdate & delimiter & BiographyRecord(1) & delimiter & BiographyRecord(2)
+                                            record = "Bday" & delimiter & sortdate & delimiter & BiographyRecord(1) & delimiter & BiographyRecord(2)
+                                            filewriter.WriteLine(record)
+                                        End If
                                     End If
                                 Loop
                             End If
+                            'End If
                         End If
                     End If
                 Loop
@@ -363,26 +398,26 @@ Public Class FrmMain
                                         Do While eventsReader.Peek <> -1
                                             Dim viewrecord As String = eventsReader.ReadLine()
                                             temprecord = Split(viewrecord, vbTab)
-                                            If individual Then
-                                                If BioBirthDate <= CDate(temprecord(1)) Then
-                                                    If BioLiving = "Yes" Then
-                                                        record = temprecord(0) & vbTab & CStr(CDate(temprecord(1)).Ticks & vbTab &
+                                            'If individual Then
+                                            If RootBioBirthDate <= CDate(temprecord(1)) Then
+                                                If RootBioLiving = "Yes" Then
+                                                    record = temprecord(0) & vbTab & CStr(CDate(temprecord(1)).Ticks & vbTab &
                                                 temprecord(2) & vbTab & temprecord(3))
-                                                        'MsgBox("record: " & record)
-                                                        filewriter.WriteLine(record)
-                                                    Else
-                                                        If BioDeathDate >= CDate(temprecord(2)) Then
-                                                            record = temprecord(0) & vbTab & CStr(CDate(temprecord(1)).Ticks & vbTab &
+                                                    'MsgBox("record: " & record)
+                                                    filewriter.WriteLine(record)
+                                                Else
+                                                    If RootBioDeathDate >= CDate(temprecord(2)) Then
+                                                        record = temprecord(0) & vbTab & CStr(CDate(temprecord(1)).Ticks & vbTab &
                                                                                                   temprecord(2) & vbTab & temprecord(3))
-                                                            filewriter.WriteLine(record)
-                                                        End If
+                                                        filewriter.WriteLine(record)
                                                     End If
                                                 End If
-                                            Else
-                                                record = temprecord(0) & vbTab & CStr(CDate(temprecord(1)).Ticks & vbTab &
-                                            temprecord(2) & vbTab & temprecord(3))
-                                                filewriter.WriteLine(record)
                                             End If
+                                            'Else
+                                            '    record = temprecord(0) & vbTab & CStr(CDate(temprecord(1)).Ticks & vbTab &
+                                            'temprecord(2) & vbTab & temprecord(3))
+                                            '    filewriter.WriteLine(record)
+                                            'End If
                                         Loop
                                         eventsReader.Close()
                                     End Using

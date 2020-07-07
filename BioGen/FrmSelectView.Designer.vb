@@ -111,7 +111,6 @@ Partial Class FrmSelectView
         'CkbAllBios
         '
         Me.CkbAllBios.AutoSize = True
-        Me.CkbAllBios.Enabled = False
         Me.CkbAllBios.Location = New System.Drawing.Point(3, 90)
         Me.CkbAllBios.Name = "CkbAllBios"
         Me.CkbAllBios.Size = New System.Drawing.Size(189, 24)
