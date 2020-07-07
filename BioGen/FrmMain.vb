@@ -271,11 +271,12 @@ Public Class FrmMain
                 'Process each biography record
                 Do While biographyReader.Peek <> -1 'see if there is another record to process
 
-                    'Create the Record Array
+                    'Create the Biography Record Array
                     BiographyRecord = Split(biographyReader.ReadLine(), delimiter) '** Module Array ** holds the fields of the currently selected record
                     If (individual And (CInt(BiographyRecord(0)) = BioID)) Then
                         selectedbiobirthdate = CDate(BiographyRecord(2))
                     End If
+
                     'if individual only do for them otherwise do for all records
                     If (individual And (CInt(BiographyRecord(0)) = BioID)) Or (Not individual) Then
                         'If (individual And (CInt(BiographyRecord(0)) = BioID)) Or (Not individual) Or ((individual And FrmSelectView.CkbAllBios.Checked) And (selectedbiobirthdate <= CDate(BiographyRecord(2)))) Then
