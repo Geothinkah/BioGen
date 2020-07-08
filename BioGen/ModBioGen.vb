@@ -15,19 +15,18 @@ Module ModBioGen
     Friend SelectedCategoryName As String
     Friend SelectedCategoryFile As String
 
-    'category event record = (0) description, (1) date, (2) end date, (3) range
-    'category file variables (0) CatEventDescription, (1) CatEventDate, (2) CatEventEndDate, (3) CatRange
+#End Region
+
+#Region "----- Event File -----"
+    'category event file variables (0) CatEventDescription, (1) CatEventDate, (2) CatEventEndDate, (3) CatRange
     Friend CatEventDescription As String
     Friend CatEventDate As Date
     Friend CatEventEndDate As Date
     Friend CatRange As String 'Yes/No
-    'Friend CatEventFile As String
-
-
 
 #End Region
-#Region "***** Variables *****"
 
+#Region "***** Variables *****"
 
     ' Friend AllDatabaseFile As String = "AllDatabaseFile.tsv"
     Friend BiographyFile As String = "Biography.tsv"
@@ -35,7 +34,7 @@ Module ModBioGen
     Friend PresidentsFile As String = "Presidents.tsv"
     Friend EventsFile As String = "Events.tsv"
 
-    Friend GeneratedFileName As String
+    'Friend GeneratedFileName As String
 
     Friend DataPath As String = Application.UserAppDataPath
     Friend SelectBiographyOnly As Boolean = False 'used from the event pane to set a flag in FrmOpenBiography to adjest it's exit behavior
@@ -159,8 +158,6 @@ Module ModBioGen
     Friend PresidentArray(100) As String
 
 #End Region
-
-
 
 #Region "***** Deletes a record *****"
 

@@ -44,13 +44,16 @@ Partial Class FrmMain
         Me.TxtFacts = New System.Windows.Forms.TextBox()
         Me.PnlEditor = New System.Windows.Forms.Panel()
         Me.RtxBiography = New System.Windows.Forms.RichTextBox()
+        Me.ContextMenuStrip1 = New System.Windows.Forms.ContextMenuStrip(Me.components)
+        Me.CopyToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.CutToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.PasteToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.SelectAllToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnuEditor = New System.Windows.Forms.MenuStrip()
         Me.FileToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.OpenToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.SaveToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.SaveAsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.FormatToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.FontToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.EditToolStripMenuItem2 = New System.Windows.Forms.ToolStripMenuItem()
         Me.UndoToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.RedoToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -63,6 +66,8 @@ Partial Class FrmMain
         Me.SelectAllToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripSeparator4 = New System.Windows.Forms.ToolStripSeparator()
         Me.TimeDateToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.FormatToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.FontToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.BtnSearch = New System.Windows.Forms.Button()
         Me.TxbSearch = New System.Windows.Forms.TextBox()
         Me.SaveFileDialog1 = New System.Windows.Forms.SaveFileDialog()
@@ -70,6 +75,7 @@ Partial Class FrmMain
         Me.FontDialog1 = New System.Windows.Forms.FontDialog()
         Me.lblSelectedBiography = New System.Windows.Forms.Label()
         Me.PnlSelectView = New System.Windows.Forms.Panel()
+        Me.DtpYearOnly = New System.Windows.Forms.DateTimePicker()
         Me.LblBiography = New System.Windows.Forms.Label()
         Me.BtnSelectView = New System.Windows.Forms.Button()
         Me.PnlBiography = New System.Windows.Forms.Panel()
@@ -86,18 +92,13 @@ Partial Class FrmMain
         Me.EditToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.DeleteToolStripMenuItem2 = New System.Windows.Forms.ToolStripMenuItem()
         Me.Label5 = New System.Windows.Forms.Label()
-        Me.ContextMenuStrip1 = New System.Windows.Forms.ContextMenuStrip(Me.components)
-        Me.CopyToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
-        Me.CutToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
-        Me.PasteToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
-        Me.SelectAllToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnuMain.SuspendLayout()
         Me.PnlEditor.SuspendLayout()
+        Me.ContextMenuStrip1.SuspendLayout()
         Me.MnuEditor.SuspendLayout()
         Me.PnlSelectView.SuspendLayout()
         Me.PnlBiography.SuspendLayout()
         Me.MenuStrip1.SuspendLayout()
-        Me.ContextMenuStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
         'MnuMain
@@ -259,6 +260,36 @@ Partial Class FrmMain
         Me.RtxBiography.TabIndex = 1
         Me.RtxBiography.Text = ""
         '
+        'ContextMenuStrip1
+        '
+        Me.ContextMenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.CopyToolStripMenuItem1, Me.CutToolStripMenuItem1, Me.PasteToolStripMenuItem1, Me.SelectAllToolStripMenuItem1})
+        Me.ContextMenuStrip1.Name = "ContextMenuStrip1"
+        Me.ContextMenuStrip1.Size = New System.Drawing.Size(123, 92)
+        '
+        'CopyToolStripMenuItem1
+        '
+        Me.CopyToolStripMenuItem1.Name = "CopyToolStripMenuItem1"
+        Me.CopyToolStripMenuItem1.Size = New System.Drawing.Size(122, 22)
+        Me.CopyToolStripMenuItem1.Text = "Copy"
+        '
+        'CutToolStripMenuItem1
+        '
+        Me.CutToolStripMenuItem1.Name = "CutToolStripMenuItem1"
+        Me.CutToolStripMenuItem1.Size = New System.Drawing.Size(122, 22)
+        Me.CutToolStripMenuItem1.Text = "Cut"
+        '
+        'PasteToolStripMenuItem1
+        '
+        Me.PasteToolStripMenuItem1.Name = "PasteToolStripMenuItem1"
+        Me.PasteToolStripMenuItem1.Size = New System.Drawing.Size(122, 22)
+        Me.PasteToolStripMenuItem1.Text = "Paste"
+        '
+        'SelectAllToolStripMenuItem1
+        '
+        Me.SelectAllToolStripMenuItem1.Name = "SelectAllToolStripMenuItem1"
+        Me.SelectAllToolStripMenuItem1.Size = New System.Drawing.Size(122, 22)
+        Me.SelectAllToolStripMenuItem1.Text = "Select All"
+        '
         'MnuEditor
         '
         Me.MnuEditor.BackColor = System.Drawing.Color.Bisque
@@ -296,19 +327,6 @@ Partial Class FrmMain
         Me.SaveAsToolStripMenuItem.Name = "SaveAsToolStripMenuItem"
         Me.SaveAsToolStripMenuItem.Size = New System.Drawing.Size(176, 26)
         Me.SaveAsToolStripMenuItem.Text = "Save as"
-        '
-        'FormatToolStripMenuItem
-        '
-        Me.FormatToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FontToolStripMenuItem})
-        Me.FormatToolStripMenuItem.Name = "FormatToolStripMenuItem"
-        Me.FormatToolStripMenuItem.Size = New System.Drawing.Size(72, 25)
-        Me.FormatToolStripMenuItem.Text = "Format"
-        '
-        'FontToolStripMenuItem
-        '
-        Me.FontToolStripMenuItem.Name = "FontToolStripMenuItem"
-        Me.FontToolStripMenuItem.Size = New System.Drawing.Size(180, 26)
-        Me.FontToolStripMenuItem.Text = "Font"
         '
         'EditToolStripMenuItem2
         '
@@ -388,6 +406,19 @@ Partial Class FrmMain
         Me.TimeDateToolStripMenuItem.Size = New System.Drawing.Size(217, 26)
         Me.TimeDateToolStripMenuItem.Text = "Time & Date"
         '
+        'FormatToolStripMenuItem
+        '
+        Me.FormatToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FontToolStripMenuItem})
+        Me.FormatToolStripMenuItem.Name = "FormatToolStripMenuItem"
+        Me.FormatToolStripMenuItem.Size = New System.Drawing.Size(72, 25)
+        Me.FormatToolStripMenuItem.Text = "Format"
+        '
+        'FontToolStripMenuItem
+        '
+        Me.FontToolStripMenuItem.Name = "FontToolStripMenuItem"
+        Me.FontToolStripMenuItem.Size = New System.Drawing.Size(111, 26)
+        Me.FontToolStripMenuItem.Text = "Font"
+        '
         'BtnSearch
         '
         Me.BtnSearch.BackColor = System.Drawing.Color.Bisque
@@ -429,6 +460,7 @@ Partial Class FrmMain
         Me.PnlSelectView.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.PnlSelectView.BackColor = System.Drawing.Color.OldLace
+        Me.PnlSelectView.Controls.Add(Me.DtpYearOnly)
         Me.PnlSelectView.Controls.Add(Me.LblBiography)
         Me.PnlSelectView.Controls.Add(Me.BtnSelectView)
         Me.PnlSelectView.Controls.Add(Me.TxtFacts)
@@ -436,6 +468,18 @@ Partial Class FrmMain
         Me.PnlSelectView.Name = "PnlSelectView"
         Me.PnlSelectView.Size = New System.Drawing.Size(550, 828)
         Me.PnlSelectView.TabIndex = 16
+        '
+        'DtpYearOnly
+        '
+        Me.DtpYearOnly.Checked = False
+        Me.DtpYearOnly.CustomFormat = "yyyy"
+        Me.DtpYearOnly.Format = System.Windows.Forms.DateTimePickerFormat.Custom
+        Me.DtpYearOnly.Location = New System.Drawing.Point(431, 5)
+        Me.DtpYearOnly.Name = "DtpYearOnly"
+        Me.DtpYearOnly.ShowCheckBox = True
+        Me.DtpYearOnly.ShowUpDown = True
+        Me.DtpYearOnly.Size = New System.Drawing.Size(101, 26)
+        Me.DtpYearOnly.TabIndex = 31
         '
         'LblBiography
         '
@@ -450,7 +494,7 @@ Partial Class FrmMain
         Me.BtnSelectView.BackColor = System.Drawing.Color.Bisque
         Me.BtnSelectView.Location = New System.Drawing.Point(18, 3)
         Me.BtnSelectView.Name = "BtnSelectView"
-        Me.BtnSelectView.Size = New System.Drawing.Size(514, 28)
+        Me.BtnSelectView.Size = New System.Drawing.Size(407, 28)
         Me.BtnSelectView.TabIndex = 26
         Me.BtnSelectView.Text = "Select View"
         Me.BtnSelectView.UseVisualStyleBackColor = False
@@ -569,36 +613,6 @@ Partial Class FrmMain
         Me.Label5.Text = "Biography Area"
         Me.Label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
-        'ContextMenuStrip1
-        '
-        Me.ContextMenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.CopyToolStripMenuItem1, Me.CutToolStripMenuItem1, Me.PasteToolStripMenuItem1, Me.SelectAllToolStripMenuItem1})
-        Me.ContextMenuStrip1.Name = "ContextMenuStrip1"
-        Me.ContextMenuStrip1.Size = New System.Drawing.Size(181, 114)
-        '
-        'CopyToolStripMenuItem1
-        '
-        Me.CopyToolStripMenuItem1.Name = "CopyToolStripMenuItem1"
-        Me.CopyToolStripMenuItem1.Size = New System.Drawing.Size(180, 22)
-        Me.CopyToolStripMenuItem1.Text = "Copy"
-        '
-        'CutToolStripMenuItem1
-        '
-        Me.CutToolStripMenuItem1.Name = "CutToolStripMenuItem1"
-        Me.CutToolStripMenuItem1.Size = New System.Drawing.Size(180, 22)
-        Me.CutToolStripMenuItem1.Text = "Cut"
-        '
-        'PasteToolStripMenuItem1
-        '
-        Me.PasteToolStripMenuItem1.Name = "PasteToolStripMenuItem1"
-        Me.PasteToolStripMenuItem1.Size = New System.Drawing.Size(180, 22)
-        Me.PasteToolStripMenuItem1.Text = "Paste"
-        '
-        'SelectAllToolStripMenuItem1
-        '
-        Me.SelectAllToolStripMenuItem1.Name = "SelectAllToolStripMenuItem1"
-        Me.SelectAllToolStripMenuItem1.Size = New System.Drawing.Size(180, 22)
-        Me.SelectAllToolStripMenuItem1.Text = "Select All"
-        '
         'FrmMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
@@ -628,6 +642,7 @@ Partial Class FrmMain
         Me.MnuMain.PerformLayout()
         Me.PnlEditor.ResumeLayout(False)
         Me.PnlEditor.PerformLayout()
+        Me.ContextMenuStrip1.ResumeLayout(False)
         Me.MnuEditor.ResumeLayout(False)
         Me.MnuEditor.PerformLayout()
         Me.PnlSelectView.ResumeLayout(False)
@@ -636,7 +651,6 @@ Partial Class FrmMain
         Me.PnlBiography.PerformLayout()
         Me.MenuStrip1.ResumeLayout(False)
         Me.MenuStrip1.PerformLayout()
-        Me.ContextMenuStrip1.ResumeLayout(False)
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -709,4 +723,5 @@ Partial Class FrmMain
     Friend WithEvents CutToolStripMenuItem1 As ToolStripMenuItem
     Friend WithEvents PasteToolStripMenuItem1 As ToolStripMenuItem
     Friend WithEvents SelectAllToolStripMenuItem1 As ToolStripMenuItem
+    Friend WithEvents DtpYearOnly As DateTimePicker
 End Class
