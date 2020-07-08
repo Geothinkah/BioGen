@@ -65,6 +65,8 @@ Partial Class FrmSelectView
         '
         Me.CbxBirthdays.AutoSize = True
         Me.CbxBirthdays.BackColor = System.Drawing.Color.OldLace
+        Me.CbxBirthdays.Checked = True
+        Me.CbxBirthdays.CheckState = System.Windows.Forms.CheckState.Checked
         Me.CbxBirthdays.FlatStyle = System.Windows.Forms.FlatStyle.Popup
         Me.CbxBirthdays.Location = New System.Drawing.Point(3, 32)
         Me.CbxBirthdays.Name = "CbxBirthdays"
@@ -111,6 +113,8 @@ Partial Class FrmSelectView
         'CkbAllBios
         '
         Me.CkbAllBios.AutoSize = True
+        Me.CkbAllBios.Checked = True
+        Me.CkbAllBios.CheckState = System.Windows.Forms.CheckState.Checked
         Me.CkbAllBios.Location = New System.Drawing.Point(3, 90)
         Me.CkbAllBios.Name = "CkbAllBios"
         Me.CkbAllBios.Size = New System.Drawing.Size(189, 24)
@@ -122,6 +126,8 @@ Partial Class FrmSelectView
         '
         Me.CbxDeaths.AutoSize = True
         Me.CbxDeaths.BackColor = System.Drawing.Color.OldLace
+        Me.CbxDeaths.Checked = True
+        Me.CbxDeaths.CheckState = System.Windows.Forms.CheckState.Checked
         Me.CbxDeaths.FlatStyle = System.Windows.Forms.FlatStyle.Popup
         Me.CbxDeaths.Location = New System.Drawing.Point(3, 60)
         Me.CbxDeaths.Name = "CbxDeaths"
@@ -134,6 +140,8 @@ Partial Class FrmSelectView
         '
         Me.CbxBirthDate.AutoSize = True
         Me.CbxBirthDate.BackColor = System.Drawing.Color.OldLace
+        Me.CbxBirthDate.Checked = True
+        Me.CbxBirthDate.CheckState = System.Windows.Forms.CheckState.Checked
         Me.CbxBirthDate.FlatStyle = System.Windows.Forms.FlatStyle.Popup
         Me.CbxBirthDate.Location = New System.Drawing.Point(3, 2)
         Me.CbxBirthDate.Name = "CbxBirthDate"

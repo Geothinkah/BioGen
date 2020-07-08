@@ -44,6 +44,7 @@ Public Class FrmSelectView
                     CategoryView(indx) = False
                     Dim temprecord() As String = Split(CategoryArray(indx), delimiter) '** Module Array ** holds the fields of the currently selected record
                     ClbCategories.Items.Add(temprecord(1)) 'display name
+
                     'LstvSelectCategory.Items(indx).SubItems.Add(temprecord(1)) 'display Living (Yes/No)
                     indx += 1   'Increase the index for use on the next record
                 Loop
