@@ -86,19 +86,25 @@ Public Class FrmNewBio
         Select Case BtnOption.Text
             Case "Add"
                 If Trim(TxtName.Text) IsNot "" Then
+                    ReadSettings()
 
                     'set module level variables for the new biography
                     RecordID += 1 'increase the id for use by this record
                     BioID = RecordID 'assign the new RecordID to the BioID
+                    RootBioID = BioID
                     BioName = Trim(TxtName.Text)
+                    RootBioName = BioName
                     BioBirthDate = DtpBirthDate.Value
+                    RootBioBirthDate = BioBirthDate
                     BioLiving = CbxLiving.Text
+                    RootBioLiving = BioLiving
                     Select Case CbxLiving.Text
                         Case "Yes"
                             BioDeathDate = CDate("12/2/2005") 'my father's death date. I don't want the program to bomb out for lack of a date
                         Case Else
                             BioDeathDate = DtpDeathDate.Value
                     End Select
+                    RootBioDeathDate = BioDeathDate
                     BioNickName = Trim(TxtNickName.Text)
                     If BioNickName = Nothing Then 'If there is no nickname set it to their first name
                         Dim namearray() = Split(BioName, " ")
@@ -106,7 +112,7 @@ Public Class FrmNewBio
                     Else
                         BioNickName = Trim(BioNickName)
                     End If
-
+                    RootBioNickName = BioNickName
                     'create the string variable of the tab delimited record
                     SelectedBiography = CStr(BioID) & vbTab _
                 & BioName & vbTab _
