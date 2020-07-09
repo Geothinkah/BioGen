@@ -92,6 +92,7 @@ Partial Class FrmMain
         Me.EditToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.DeleteToolStripMenuItem2 = New System.Windows.Forms.ToolStripMenuItem()
         Me.Label5 = New System.Windows.Forms.Label()
+        Me.LblFileName = New System.Windows.Forms.Label()
         Me.MnuMain.SuspendLayout()
         Me.PnlEditor.SuspendLayout()
         Me.ContextMenuStrip1.SuspendLayout()
@@ -239,6 +240,7 @@ Partial Class FrmMain
             Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.PnlEditor.BackColor = System.Drawing.Color.OldLace
         Me.PnlEditor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.PnlEditor.Controls.Add(Me.LblFileName)
         Me.PnlEditor.Controls.Add(Me.RtxBiography)
         Me.PnlEditor.Controls.Add(Me.MnuEditor)
         Me.PnlEditor.Location = New System.Drawing.Point(584, 97)
@@ -312,20 +314,20 @@ Partial Class FrmMain
         '
         Me.OpenToolStripMenuItem1.Name = "OpenToolStripMenuItem1"
         Me.OpenToolStripMenuItem1.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.O), System.Windows.Forms.Keys)
-        Me.OpenToolStripMenuItem1.Size = New System.Drawing.Size(176, 26)
+        Me.OpenToolStripMenuItem1.Size = New System.Drawing.Size(180, 26)
         Me.OpenToolStripMenuItem1.Text = "Open"
         '
         'SaveToolStripMenuItem
         '
         Me.SaveToolStripMenuItem.Name = "SaveToolStripMenuItem"
         Me.SaveToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.S), System.Windows.Forms.Keys)
-        Me.SaveToolStripMenuItem.Size = New System.Drawing.Size(176, 26)
+        Me.SaveToolStripMenuItem.Size = New System.Drawing.Size(180, 26)
         Me.SaveToolStripMenuItem.Text = "Save"
         '
         'SaveAsToolStripMenuItem
         '
         Me.SaveAsToolStripMenuItem.Name = "SaveAsToolStripMenuItem"
-        Me.SaveAsToolStripMenuItem.Size = New System.Drawing.Size(176, 26)
+        Me.SaveAsToolStripMenuItem.Size = New System.Drawing.Size(180, 26)
         Me.SaveAsToolStripMenuItem.Text = "Save as"
         '
         'EditToolStripMenuItem2
@@ -613,6 +615,15 @@ Partial Class FrmMain
         Me.Label5.Text = "Biography Area"
         Me.Label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
+        'LblFileName
+        '
+        Me.LblFileName.BackColor = System.Drawing.Color.Bisque
+        Me.LblFileName.Location = New System.Drawing.Point(185, 4)
+        Me.LblFileName.Name = "LblFileName"
+        Me.LblFileName.Size = New System.Drawing.Size(579, 21)
+        Me.LblFileName.TabIndex = 2
+        Me.LblFileName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
         'FrmMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
@@ -724,4 +735,5 @@ Partial Class FrmMain
     Friend WithEvents PasteToolStripMenuItem1 As ToolStripMenuItem
     Friend WithEvents SelectAllToolStripMenuItem1 As ToolStripMenuItem
     Friend WithEvents DtpYearOnly As DateTimePicker
+    Friend WithEvents LblFileName As Label
 End Class

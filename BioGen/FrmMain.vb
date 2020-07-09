@@ -83,6 +83,7 @@ Public Class FrmMain
                 If myStream IsNot Nothing Then
                     RtxBiography.LoadFile(OpenFileDialog1.FileName, RichTextBoxStreamType.PlainText)
                     url = OpenFileDialog1.FileName
+                    LblFileName.Text = Trim(OpenFileDialog1.FileName)
                 End If
             Catch ex As Exception
                 MessageBox.Show("Can not read file from disk. Original error." & ex.Message)
@@ -108,6 +109,7 @@ Public Class FrmMain
 
         Try
             RtxBiography.SaveFile(SaveFileDialog1.FileName, RichTextBoxStreamType.PlainText) ' may want to change this to RichText
+            LblFileName.Text = Trim(OpenFileDialog1.FileName)
         Catch ex As Exception
             Call SaveAs_Document_Click(Me, e)
         End Try
@@ -122,8 +124,9 @@ Public Class FrmMain
         SaveFileDialog1.FilterIndex = 1
         SaveFileDialog1.RestoreDirectory = True
 
-        If (SaveFileDialog1.ShowDialog() = DialogResult.OK) Then
+        If SaveFileDialog1.ShowDialog() = DialogResult.OK Then
             RtxBiography.SaveFile(SaveFileDialog1.FileName, RichTextBoxStreamType.PlainText) ' may want to change this to RichText
+            LblFileName.Text = Trim(OpenFileDialog1.FileName)
         End If
 
     End Sub
@@ -918,17 +921,17 @@ Public Class FrmMain
         RecordID += 1
         WriteBiographies(DataPath, BiographyFile, CStr(RecordID), "Eleanor Soper", "8/2/1904", "No", "11/16/1981", "Grammie Soper")
         RecordID += 1
-        WriteBiographies(DataPath, BiographyFile, CStr(RecordID), "Emily Jean Blatt", "7/24/1985", "Yes", "12/5/2005", "Emily")
+        WriteBiographies(DataPath, BiographyFile, CStr(RecordID), "Emily Jean Blatt", "7/24/1985", "Yes", "12/3/2005", "Emily")
         RecordID += 1
-        WriteBiographies(DataPath, BiographyFile, CStr(RecordID), "Janice Lynn DeMille", "10/10/1953", "Yes", "12/5/2005", "Janice")
+        WriteBiographies(DataPath, BiographyFile, CStr(RecordID), "Janice Lynn DeMille", "10/10/1953", "Yes", "12/3/2005", "Janice")
         RecordID += 1
-        WriteBiographies(DataPath, BiographyFile, CStr(RecordID), "Jonathan James Benner", "12/21/1988", "Yes", "12/5/2005", "Jon")
+        WriteBiographies(DataPath, BiographyFile, CStr(RecordID), "Jonathan James Benner", "12/21/1988", "Yes", "12/3/2005", "Jon")
         RecordID += 1
-        WriteBiographies(DataPath, BiographyFile, CStr(RecordID), "Peter Jason Jenkins", "3/24/1971", "Yes", "12/5/2005", "Pete")
+        WriteBiographies(DataPath, BiographyFile, CStr(RecordID), "Peter Jason Jenkins", "3/24/1971", "Yes", "12/3/2005", "Pete")
         RecordID += 1
         WriteBiographies(DataPath, BiographyFile, CStr(RecordID), "Phyllis Evelyn Farris", "7/2/1916", "No", "12/17/1990", "Grammie Benner")
         RecordID += 1
-        WriteBiographies(DataPath, BiographyFile, CStr(RecordID), "Reginia Ray Joice", "6/4/1952", "Yes", "12/2/2005", "Gina")
+        WriteBiographies(DataPath, BiographyFile, CStr(RecordID), "Reginia Ray Joice", "6/4/1952", "Yes", "12/3/2005", "Gina")
         RecordID += 1
         WriteBiographies(DataPath, BiographyFile, CStr(RecordID), "Virginia May Jenkins", "6/22/1935", "No", "6/18/1976", "Ginny")
         RecordID += 1
@@ -938,9 +941,9 @@ Public Class FrmMain
         RecordID += 1
         WriteBiographies(DataPath, BiographyFile, CStr(RecordID), "Florence Elizabeth Tucker", "4/1/1896", "No", "7/1/1979", "Nana")
         RecordID += 1
-        WriteBiographies(DataPath, BiographyFile, CStr(RecordID), "Lawrence Wayne Benner", "5/15/1955", "Yes", "12/5/2005", "Larry")
+        WriteBiographies(DataPath, BiographyFile, CStr(RecordID), "Lawrence Wayne Benner", "5/15/1955", "Yes", "12/3/2005", "Larry")
         RecordID += 1
-        WriteBiographies(DataPath, BiographyFile, CStr(RecordID), "David Wesley Benner", "5/15/1955", "Yes", "12/5/2005", "David")
+        WriteBiographies(DataPath, BiographyFile, CStr(RecordID), "David Wesley Benner", "5/15/1955", "Yes", "12/3/2005", "David")
         RecordID += 1
         WriteBiographies(DataPath, BiographyFile, CStr(RecordID), "Reginald Raymond Benner", "4/26/1932", "No", "12/5/2005", "Reggie")
         RecordID += 1
@@ -958,9 +961,14 @@ Public Class FrmMain
         RecordID += 1
         WriteBiographies(DataPath, BiographyFile, CStr(RecordID), "Philip Earl Jenkins", "3/31/1936", "No", "12/28/1989", "Phil")
         RecordID += 1
-        WriteBiographies(DataPath, BiographyFile, CStr(RecordID), "Peter Jason Jenkins", "2/23/1971", "Yes", "12/5/2005", "Pete")
+        WriteBiographies(DataPath, BiographyFile, CStr(RecordID), "Peter Jason Jenkins", "2/23/1971", "Yes", "12/3/2005", "Pete")
         RecordID += 1
         WriteBiographies(DataPath, BiographyFile, CStr(RecordID), "Earle R Angell", "7/18/1926", "No", "5/26/1998", "Earle")
+        RecordID += 1
+        WriteBiographies(DataPath, BiographyFile, CStr(RecordID), "William DeMille", "12/15/1951", "No", "12/3/2005", "Bill")
+        RecordID += 1
+        WriteBiographies(DataPath, BiographyFile, CStr(RecordID), "Dwight Joice", "10/10/1946", "No", "12/3/2005", "Dwight")
+
 
         SaveSettings()
 
@@ -1070,5 +1078,9 @@ Public Class FrmMain
         End If
     End Sub
 
-
+    Private Sub RtxBiography_TextChanged(sender As Object, e As EventArgs) Handles RtxBiography.TextChanged
+        If LblFileName.Text <> "* " & Trim(OpenFileDialog1.FileName) Then
+            LblFileName.Text = "* " & Trim(OpenFileDialog1.FileName)
+        End If
+    End Sub
 End Class
